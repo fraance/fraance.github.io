@@ -1,50 +1,73 @@
-h1 {
-  color: #0477db;
+.html {
+  font-family: "Inter";
 }
 
 a {
   color: #0477db;
 }
 
-.intro {
-  font-size: 24px;
-  gap: 40px;
+.no-a a:link {
+  color: black;
+  text-decoration: none;
+}
+.no-a a:visited {
+  color: black;
+  text-decoration: none;
+}
+.no-a a:hover {
+  color: black;
+  text-decoration: none;
+}
+.no-a a:active {
+  color: black;
+  text-decoration: none;
 }
 
 .header {
-  font-size: 36px;
-  margin-bottom: 120px;
-  max-width: 80%;
+  font-size: 20px;
+  font-weight: 400;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin-bottom: 60px;
+  font-family: "Inter";
+}
+.header h1 {
+  color: #0477db;
+  font-size: 24px;
+  font-weight: 600;
+}
+.header .intro {
+  gap: 40px;
 }
 
 .page {
   min-height: 100%;
   min-height: 100vh;
 }
-
-.row {
+.page .row {
   padding-bottom: 40px;
 }
-.row a:link {
+.page .row a:link {
   text-decoration: none;
 }
-.row a:visited {
+.page .row a:visited {
   text-decoration: none;
 }
-.row a:hover {
+.page .row a:hover {
   text-decoration: none;
 }
-.row a:active {
+.page .row a:active {
   text-decoration: none;
 }
-
-.card.shadow-lg {
+.page .card.shadow-lg {
   border: 1px solid #d9d9d9;
 }
-
-.card {
-  height: 500px;
+.page .card {
   border-radius: 0px;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
   background-color: #f9f9f9;
   border: 0px solid #d9d9d9;
   font-size: 20px;
@@ -52,31 +75,103 @@ a {
   line-height: 24px;
   color: #333333;
 }
-.card .card-img-background {
+.page .card .card-img-background {
   display: table;
   height: 75%;
   width: 100%;
   background-color: blue;
 }
-.card .card-img-top {
+.page .card .card-img-top {
   margin-left: auto;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   margin-right: auto;
-  width: 50%;
-  transform: translateX(50%);
+  width: 80%;
+  transform: translateX(10%);
 }
-.card .card-title {
-  font-weight: 700;
-  font-size: 20px;
-}
-.card .card-body {
+.page .card .card-body {
   padding: 30px;
 }
-
-.topics {
+.page .card .card-body .card-title {
   font-weight: 700;
+}
+.page .card .card-body .desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.page .card .static {
+  position: absolute;
+  opacity: 100;
+}
+.page .card .static:hover {
+  opacity: 0;
+}
+.page .card .active {
+  opacity: 0;
+}
+.page .card .active:hover {
+  opacity: 100;
+}
+.page .topics {
+  font-weight: bold;
   color: #0477db;
   line-height: 24px;
   font-size: 20px;
+}
+.page h1 {
+  font-size: 64px;
+  font-weight: bold;
+}
+.page h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.page h5 {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 300;
+  font-size: 24px;
+}
+.page h6 {
+  font-family: "Roboto";
+  font-weight: 100;
+  font-size: 16px;
+}
+
+.section {
+  font-family: "Roboto";
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.section li {
+  margin: 15px 0;
+}
+.section h1 span {
+  font-family: "Inter";
+  padding: 8px 16px;
+  font-size: 20px;
+  color: white;
+  background-color: #0477db;
+}
+.section h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.section img {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 30px 0;
+  width: 115%;
+  transform: translateX(-7.5%);
+}
+.section .subsection {
+  margin-bottom: 20px;
+  margin-left: 50px;
 }
 
 .center {
@@ -84,25 +179,50 @@ a {
   vertical-align: middle;
 }
 
-.static {
-  position: absolute;
-  opacity: 100;
-}
-
-.static:hover {
-  opacity: 0;
-}
-
-.active {
-  opacity: 0;
-}
-
-.active:hover {
-  opacity: 100;
-}
-
 .footer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
   width: 100%;
+  height: 90px;
+  background: #147fdd;
+  color: white;
+}
+.footer a:link {
+  color: white;
+  text-decoration: none;
+}
+.footer a:visited {
+  color: white;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+.footer a:active {
+  color: white;
+  text-decoration: none;
+}
+.footer .row {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.header-img-top {
+  margin-left: auto;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-right: auto;
+  width: 80%;
+  transform: translateX(10%);
 }
 
 /*# sourceMappingURL=style.css.map */
