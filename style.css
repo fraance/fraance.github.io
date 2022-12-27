@@ -253,7 +253,15 @@ a {
   transform: translateX(10%);
 }
 
+.breaker {
+  font-size: 14px;
+}
+.breaker img {
+  padding: 10px 0;
+}
 .breaker h2 {
+  font-size: 18px;
+  margin-top: 60px;
   text-align: center;
 }
 .breaker h6 {
