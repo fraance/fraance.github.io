@@ -64,6 +64,10 @@ a {
   font-size: 24px;
   font-weight: 600;
 }
+.header h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
 .header .intro {
   gap: 40px;
 }
