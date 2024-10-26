@@ -60,29 +60,62 @@ a {
   }
 }
 
+.date {
+  font-size: 0.75rem;
+  /* Slightly smaller for subtlety */
+  color: #666;
+  /* Softer, neutral color */
+  font-weight: 500;
+  /* Medium weight for a cleaner appearance */
+  margin-bottom: 0px;
+  /* Added space to separate it from the title */
+  letter-spacing: 0.05em;
+  /* Adds light spacing between letters */
+}
+
 .header {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  color: #333;
+  /* Neutral color for contrast */
+
   h1 {
-    color: #0477db;
-    font-size: 24px;
-    font-weight: 600;
+    color: #035a9b;
+    /* Softer shade of blue */
+    font-size: 2rem;
+    /* Larger and modern title size */
+    font-weight: 500;
+    /* Lighter than bold for a clean appearance */
+    margin-bottom: 0.5rem;
   }
 
   h2 {
-    font-size: 24px;
-    font-weight: 600;
+    color: #555;
+    /* Softer dark grey */
+    font-size: 1.5rem;
+    /* Slightly smaller than h1 for hierarchy */
+    font-weight: 400;
+    /* Light weight for readability */
+    margin-bottom: 1rem;
   }
 
   .intro {
-    gap: 40px;
+    font-size: 1rem;
+    /* Light body text size */
+    font-weight: 300;
+    /* Light font weight for easy readability */
+    color: #777;
+    /* Soft grey for subtlety */
+    gap: 1.5rem;
+    /* Lightened spacing between elements */
   }
 
-  font-size: 20px;
-  font-weight: 400;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  margin-bottom: 60px;
-  font-family: "Inter";
+  padding-top: 3rem;
+  /* Balanced padding for top spacing */
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
 }
+
 
 .page {
   min-height: 100%;
@@ -143,7 +176,7 @@ a {
     }
 
     .card-body {
-      padding: 30px;
+      padding: 20px;
 
       .card-title {
         font-style: normal;
@@ -178,10 +211,11 @@ a {
   }
 
   .topics {
-    font-weight: bold;
-    color: #0477db;
+    font-weight: 500;
+    /* Medium */
+    color: #666;
     line-height: 24px;
-    font-size: 20px;
+    font-size: 16px;
   }
 
   h1 {
