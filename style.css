@@ -1,5 +1,7 @@
+@charset "UTF-8";
 body {
   font-family: "Inter";
+  padding-top: 60px;
 }
 
 @media (min-width: 480px) {
@@ -106,6 +108,7 @@ a {
 .page {
   min-height: 100%;
   min-height: 100vh;
+  padding-top: 80px;
 }
 .page .row {
   padding-bottom: 40px;
@@ -126,45 +129,113 @@ a {
   border: 1px solid #d9d9d9;
 }
 .page .card {
-  border-radius: 0px;
+  border-radius: 8px;
   display: inline-block;
   position: relative;
   width: 100%;
   aspect-ratio: 1/1;
   background-color: #f9f9f9;
   border: 0px solid #d9d9d9;
+  overflow: hidden;
+  transition: all 0.3s ease;
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
   color: #333333;
 }
 .page .card .card-img-background {
-  display: table;
-  height: 75%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: blue;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 0 0;
 }
 .page .card .card-img-top {
-  margin-left: auto;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin-right: auto;
-  width: 80%;
-  transform: translateX(12.5%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .page .card .card-body {
-  padding: 0px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(249, 249, 249, 0.9);
+  padding: 20px;
+  transition: all 0.3s ease;
+  height: auto;
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.page .card .card-body .date {
+  font-size: 0.7rem;
+  margin-bottom: 0.4rem;
+  color: #666;
+  font-weight: 500;
+  letter-spacing: 0.05em;
 }
 .page .card .card-body .card-title {
+  font-family: "Playfair Display", serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
+  margin-bottom: 0.1rem;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  color: #333333;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  border-bottom: none;
+  padding-bottom: 0;
+  transition: all 0.3s ease;
+  text-shadow: none;
+  margin-top: 0.3rem;
 }
-.page .card .card-body .desc {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
+.page .card .card-body .desc, .page .card .card-body .card-desc {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-top: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+.page .card .card-body .topics {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  margin-top: 0.3rem;
+  color: #666;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+.page .card .card-body .desc, .page .card .card-body .topics, .page .card .card-body .date, .page .card .card-body .card-desc {
+  display: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+.page .card:hover .card-img-background {
+  transform: scale(1.05);
+}
+.page .card:hover .card-body {
+  height: auto;
+  max-height: 100%;
+}
+.page .card:hover .card-body .desc, .page .card:hover .card-body .topics, .page .card:hover .card-body .date, .page .card:hover .card-body .card-desc {
+  display: block;
+  opacity: 1;
+}
+.page .card:hover .card-body .card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 .page .card .static {
   position: absolute;
@@ -178,6 +249,36 @@ a {
 }
 .page .card .active:hover {
   opacity: 100;
+}
+.page .card[href="pages/parkour.html"] .card-img-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page .card[href="pages/parkour.html"] .card-img-background img {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+  max-height: 80%;
+}
+.page .card .card-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page .card .card-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 .page .topics {
   font-weight: 500;
@@ -204,6 +305,25 @@ a {
   font-family: "Roboto";
   font-weight: 100;
   font-size: 16px;
+}
+.page .card-description {
+  background-color: rgba(249, 249, 249, 0.9);
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.page .card-description .desc {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #333;
+  margin: 0;
+}
+.page .col-12 {
+  margin-bottom: 30px;
 }
 
 .section {
@@ -319,6 +439,282 @@ a {
   margin: 0px 60px;
   max-width: 360px;
   width: 100%;
+}
+
+.hover-hint {
+  font-family: "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+.hover-hint p {
+  margin-bottom: 0;
+}
+
+.top-bar {
+  background-color: rgba(255, 255, 255, 0.7); /* Added slight transparency */
+  backdrop-filter: blur(5px); /* Added subtle blur effect */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.top-bar .container {
+  max-width: none; /* Remove max-width constraint */
+  width: 100%;
+  margin: 0;
+  padding: 0 40px; /* Add padding to container instead */
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.top-bar .top-bar-content {
+  display: flex;
+  justify-content: space-between; /* Changed from flex-start to space-between */
+  align-items: center;
+  height: 70px;
+  padding: 20px 0 10px 0;
+  width: 100%;
+}
+
+.top-bar .name {
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Changed from "IM Fell French Canon" to match rotating titles */
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: normal;
+  margin-left: 15px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  color: #333;
+  letter-spacing: 0.02em;
+}
+
+.top-bar .name::after {
+  content: " ☺"; /* Added space before smiley */
+  display: inline-block;
+  font-style: normal;
+  margin-left: 5px; /* Increased space */
+  font-size: 1.2rem;
+  opacity: 0; /* Hide by default */
+  transition: opacity 0.3s ease-in-out; /* Match the transition timing */
+}
+
+.top-bar .name:hover {
+  font-style: italic;
+}
+
+.top-bar .name:hover::after {
+  opacity: 1; /* Show on hover */
+}
+
+/* Removed:
+- .top-bar .name::before
+- .top-bar .name:hover color: transparent
+- .top-bar .name:hover::before
+- @keyframes gradient
+*/
+/* Adjust responsive margins for smaller screens */
+@media (max-width: 992px) {
+  .top-bar .container {
+    margin-left: -8px;
+    padding: 0 12px;
+  }
+}
+@media (max-width: 768px) {
+  .top-bar .container {
+    margin-left: -5px;
+    padding: 0 10px;
+  }
+}
+@media (max-width: 768px) {
+  .top-bar .top-bar-content {
+    height: 60px;
+    padding: 18px 0 8px 0; /* Increased top padding from 8px to 18px */
+  }
+  .page {
+    padding-top: 70px;
+  }
+}
+
+/* Updated navigation links styles */
+.top-bar .nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  position: absolute;
+  right: 40px; /* Match container padding */
+  top: 50%;
+  transform: translateY(-50%);
+  padding-right: 0; /* Remove padding */
+}
+
+.top-bar .nav-link {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400; /* Increased from 300 to 400 */
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.top-bar .nav-link:hover {
+  color: #333;
+}
+
+/* Add underline effect on hover */
+.top-bar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #333;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
+
+.top-bar .nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-container {
+  min-height: 60vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 60px;
+}
+
+.header-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title-container {
+  display: flex;
+  align-items: center; /* Changed back to center */
+  justify-content: center;
+  gap: 0;
+  white-space: nowrap;
+  height: 3rem; /* Added fixed height */
+}
+
+.static-text {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300; /* Changed from 400 to 300 for lighter weight */
+  color: #333;
+  margin-right: 25px;
+  display: inline-block;
+  line-height: 1;
+  height: 2.5rem;
+}
+
+.rotating-text {
+  position: relative;
+  height: 3rem;
+  min-width: 500px;
+  display: inline-block;
+  text-align: left;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #999;
+  opacity: 0;
+  visibility: visible;
+  white-space: nowrap;
+  text-align: left;
+  line-height: 1;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(50px); /* Start position below */
+}
+
+.title.entering {
+  transform: translateY(50px); /* Coming from below */
+  opacity: 0;
+}
+
+.title.active {
+  transform: translateY(0); /* Aligned with "I am" */
+  opacity: 1;
+}
+
+.title.exiting {
+  transform: translateY(-50px); /* Moving up */
+  opacity: 0;
+}
+
+/* Keep France title color */
+.title:last-child {
+  color: #333;
+}
+
+.title:last-child.active {
+  color: #333;
+}
+
+.contact-link {
+  position: relative;
+  overflow: hidden;
+  padding-left: 20px;
+  /* Removed --has-animated variable */
+}
+
+.contact-link .arrow {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover .arrow {
+  animation: slideArrow 0.6s ease; /* Removed forwards and animation-play-state */
+}
+
+@keyframes slideArrow {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  49% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.contact-link span {
+  display: inline-block;
 }
 
 /*# sourceMappingURL=style.css.map */

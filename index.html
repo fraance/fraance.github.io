@@ -13,24 +13,128 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap" rel="stylesheet">  <!-- Added Sora font -->
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon:ital@0;1&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="header container px-5">
-    <div class="container-small">
-      <h1>FRANCE HÉMAIN</h1>
+  <nav class="top-bar">
+    <div class="container">
+      <div class="top-bar-content">
+        <h1 class="name" id="name" data-text="France Hémain">France Hémain</h1>
+        <div class="nav-links">
+          <a href="#" class="nav-link">Resume</a>
+          <a href="#" class="nav-link">About me</a>
+          <a href="#" class="nav-link contact-link">
+            <span class="arrow">→</span>
+            <span>Contact</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="header-container">
+    <div class="header-content">
+      <div class="title-container">
+        <span class="static-text">I am</span>
+        <div class="rotating-text">
+          <span class="title">Driven by Growth</span>
+          <span class="title">Highly Empathic</span>
+          <span class="title">User-Centered</span>
+          <span class="title">A Creative Thinker</span>
+          <span class="title">Business-Minded</span>
+          <span class="title">A Service Designer</span>
+          <span class="title">Exploring UX</span>
+          <span class="title">A Problem Solver</span>
+          <span class="title">Collaborative</span>
+          <span class="title">France</span>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="page container px-5">
     <div class="row g-5">
+      <!-- New Project Card 1 -->
+      <div class="col-12 col-md-6">
+        <a href="pages/project4.html">
+          <div class="card">
+            <div class="card-logo">
+              <img src="path/to/project4-logo.png" alt="Project 4 Logo">
+            </div>
+            <div class="card-img-background" style="background-color: #a0d6b4">
+              <div class="center" style="vertical-align: bottom">
+                <img class="card-img-top" src="path/to/project4-image.jpg" />
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="date">2023</p>
+              <h5 class="card-title">Project 4 Title</h5>
+              <p class="desc">Brief description of Project 4.</p>
+              <h6 class="topics">Topic 1, Topic 2, Topic 3</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- New Project Card 2 -->
+      <div class="col-12 col-md-6">
+        <a href="pages/project5.html">
+          <div class="card">
+            <div class="card-logo">
+              <img src="path/to/project5-logo.png" alt="Project 5 Logo">
+            </div>
+            <div class="card-img-background" style="background-color: #ffd700">
+              <div class="center" style="vertical-align: bottom">
+                <img class="card-img-top" src="path/to/project5-image.jpg" />
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="date">2022</p>
+              <h5 class="card-title">Project 5 Title</h5>
+              <p class="desc">Brief description of Project 5.</p>
+              <h6 class="topics">Topic A, Topic B, Topic C</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- New Project Card 3 -->
+      <div class="col-12 col-md-6">
+        <a href="pages/project6.html">
+          <div class="card">
+            <div class="card-logo">
+              <img src="path/to/project6-logo.png" alt="Project 6 Logo">
+            </div>
+            <div class="card-img-background" style="background-color: #ff9999">
+              <div class="center" style="vertical-align: bottom">
+                <img class="card-img-top" src="path/to/project6-image.jpg" />
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="date">2021</p>
+              <h5 class="card-title">Project 6 Title</h5>
+              <p class="desc">Brief description of Project 6.</p>
+              <h6 class="topics">Topic X, Topic Y, Topic Z</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Existing Project Cards -->
       <div class="col-12 col-md-6">
         <a href="pages/catch22.html">
           <div class="card">
+            <div class="card-logo">
+              <img src="path/to/catch22-logo.png" alt="Catch22 Logo">
+            </div>
             <div class="card-img-background" style="background-color: #c2c2ff">
               <div class="center" style="vertical-align: bottom">
                 <img class="card-img-top"
@@ -39,14 +143,9 @@
             </div>
             <div class="card-body">
               <p class="date">2023 - 2024</p>
-              <h5 class="card-title">
-                Micro-Achievments
-              </h5>
-              <p class="desc">
-                A innovative approach to measuring social impact.
-              </p>
-              <h6 class="topics">Design Research, Data-Driven Design, Service Design </h6>
-
+              <h5 class="card-title">Micro-Achievments</h5>
+              <p class="desc">An innovative approach to measuring social impact.</p>
+              <h6 class="topics">Design Research, Data-Driven Design, Service Design</h6>
             </div>
           </div>
         </a>
@@ -54,24 +153,20 @@
       <div class="col-12 col-md-6">
         <a href="pages/parkour.html">
           <div class="card">
+            <div class="card-logo">
+              <img src="path/to/parkour-logo.png" alt="Parkour Logo">
+            </div>
             <div class="card-img-background" style="background-color: #8b9eff">
-              <div class="center">
-                <img class="card-img-top static"
+              <div class="center" style="vertical-align: bottom">
+                <img class="card-img-top"
                   src="https://raw.githubusercontent.com/fraance/portfolio-assets/main/parkour/image00_couverture-min.png" />
-                <img class="card-img-top active"
-                  src="https://raw.githubusercontent.com/fraance/portfolio-assets/main/parkour/image00_parkour_portfolio.gif" />
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">
-                From parkour to prosperity: Revitalizing TDN's website with
-                proactive research and design
-              </h5>
+              <p class="date">2023</p>
+              <h5 class="card-title">Traceurs de Nantes Website</h5>
+              <p class="desc">Help TDN share their values and inspire trust to bring more trainees.</p>
               <h6 class="topics">Research, UX, UI, Proactivity</h6>
-              <p class="desc">
-                Help TDN share their values and inspire trust in order to
-                bring more trainees.
-              </p>
             </div>
           </div>
         </a>
@@ -79,31 +174,30 @@
       <div class="col-12 col-md-6">
         <a href="pages/assmat.html">
           <div class="card">
+            <div class="card-logo">
+              <img src="path/to/assmat-logo.png" alt="Assmat Logo">
+            </div>
             <div class="card-img-background" style="background-color: #f5907e">
-              <div class="center">
-                <img class="card-img-top static" style="width: 50%; transform: translateX(50%)"
+              <div class="center" style="vertical-align: bottom">
+                <img class="card-img-top"
                   src="https://raw.githubusercontent.com/fraance/portfolio-assets/main/assmat/image00_assmat_portfolio_static.gif" />
-                <img class="card-img-top active" style="width: 50%; transform: translateX(50%)"
-                  src="https://raw.githubusercontent.com/fraance/portfolio-assets/main/assmat/image00_assmat_portfolio.gif" />
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">
-                Connecting parents and childminders: A website redesign for
-                enhanced reactivity and efficiency
-              </h5>
+              <p class="date">2022</p>
+              <h5 class="card-title">Connecting parents and childminders</h5>
+              <p class="desc">Facilitate contact between childminders and parents for Loire Atlantique.</p>
               <h6 class="topics">Research, UX, UI, Proactivity</h6>
-              <p class="card-desc">
-                Facilitate contact between childminders and parents for the
-                Loire Atlantique department.
-              </p>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6" style="display: none;">
         <a href="pages/women_in_stem.html">
           <div class="card">
+            <div class="card-logo">
+              <img src="path/to/women_in_stem-logo.png" alt="Women in Stem Logo">
+            </div>
             <div class="card-img-background" style="background-color: rgba(20, 127, 221, 0.1)">
               <div class="center" style="vertical-align: bottom">
                 <img class="card-img-top"
@@ -111,18 +205,20 @@
               </div>
             </div>
             <div class="card-body">
+              <p class="date">2024</p>
               <h5 class="card-title">Undergraduate degree final project</h5>
+              <p class="desc">Women in STEM and blockchain associated technologies.</p>
               <h6 class="topics">Work in progress</h6>
-              <p class="desc">
-                Women in STEM and blockchain associated technologies.
-              </p>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6" style="display: none;">
         <a href="pages/orgerie.html">
           <div class="card">
+            <div class="card-logo">
+              <img src="path/to/orgerie-logo.png" alt="Orgerie Logo">
+            </div>
             <div class="card-img-background" style="background-color: #e4f0cc">
               <div class="center" style="vertical-align: bottom; padding-bottom: 20px">
                 <img class="card-img-top"
@@ -130,37 +226,31 @@
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">
-                Raising the bar: A standout microbrewery branding and
-                benchmarking project
-              </h5>
+              <p class="date">2022</p>
+              <h5 class="card-title">Raising the bar: A standout microbrewery branding project</h5>
+              <p class="desc">How to propose a microbrewery different from others in Nantes.</p>
               <h6 class="topics">Branding, Benchmark</h6>
-              <p class="desc">
-                How to propose a microbrewerie different from the other ones
-                in Nantes.
-              </p>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6" style="display: none;">
         <a href="pages/gentil_coeur.html">
           <div class="card">
-            <div class="card-img-background" style="background-color: #cc485d" #>
+            <div class="card-logo">
+              <img src="path/to/gentil_coeur-logo.png" alt="Gentil Coeur Logo">
+            </div>
+            <div class="card-img-background" style="background-color: #cc485d">
               <div class="center" style="vertical-align: bottom">
                 <img class="card-img-top"
                   src="https://raw.githubusercontent.com/fraance/portfolio-assets/main/MMP/image00_MMP_portfolio.png" />
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">
-                Bringing poetry to life: an interactive AR poster for the
-                "Midi Minuit Poésie" festival
-              </h5>
+              <p class="date">2021</p>
+              <h5 class="card-title">Bringing poetry to life: an interactive AR poster</h5>
+              <p class="desc">Deep dive into contemporary poetry with an AR experience.</p>
               <h6 class="topics">AR, Graphism, Visual Design</h6>
-              <p class="desc">
-                Deep dive into contemporary poetry with an AR experience.
-              </p>
             </div>
           </div>
         </a>
@@ -194,6 +284,8 @@
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"></script>
   <script src="script.js"></script>
+  <!-- Add this before the closing </body> tag -->
+  <script src="nameAnimation.js"></script>
 </body>
 
 </html>
