@@ -577,7 +577,7 @@ a {
 }
 
 .top-bar .nav-link {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   /* Increased from 300 to 400 */
@@ -629,9 +629,9 @@ a {
 
 .static-text,
 .rotating-text {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 2.5rem;
   color: #333;
   white-space: nowrap;
