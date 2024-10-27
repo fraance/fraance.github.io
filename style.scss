@@ -171,13 +171,15 @@ a {
       justify-content: center;
       overflow: hidden;
       transition: all 0.3s ease;
+      border-radius: 8px 8px;
+
     }
 
     .card-img-top {
       position: absolute;
       top: 0;
-      left: 0;
-      width: 100%;
+      left: 5%;
+      width: 90%;
       height: 100%;
       object-fit: contain;
       object-position: center;
@@ -466,9 +468,9 @@ a {
   margin-left: auto;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  margin-right: auto;
-  width: 80%;
-  transform: translateX(12.5%);
+  margin-left: 15%;
+  width: 70%;
+  // transform: translateX(10%);
 }
 
 .breaker {
@@ -530,6 +532,11 @@ a {
   z-index: 1000;
 }
 
+.top-bar a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .top-bar .container {
   max-width: none;
   width: 100%;
@@ -547,6 +554,19 @@ a {
   height: 70px;
   padding: 20px 0 10px 0;
   width: 100%;
+}
+
+.top-bar .home {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: normal;
+  margin-left: 15px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  color: #333;
+  letter-spacing: 0.02em;
 }
 
 .top-bar .name {
@@ -584,17 +604,8 @@ a {
 
 .top-bar .name:hover::after {
   opacity: 1;
-  /* Show on hover */
 }
 
-/* Removed:
-- .top-bar .name::before
-- .top-bar .name:hover color: transparent
-- .top-bar .name:hover::before
-- @keyframes gradient
-*/
-
-/* Adjust responsive margins for smaller screens */
 @media (max-width: 992px) {
   .top-bar .container {
     margin-left: -8px;
@@ -620,8 +631,6 @@ a {
     padding-top: 70px;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
 
 /* Updated navigation links styles */
 .top-bar .nav-links {
@@ -723,7 +732,6 @@ a {
   position: absolute;
   left: 0;
   opacity: 1;
-  transform: translateX(0);
   transition: all 0.3s ease;
 }
 
