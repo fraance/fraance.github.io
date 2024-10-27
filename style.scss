@@ -314,17 +314,16 @@ a {
 
     .card-logo {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: -10px;
+      right: 30px; // Adjusted position
       z-index: 10;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 50%;
-      padding: 5px;
-      width: 40px;
-      height: 40px;
+      width: 100px; // Increased from 40px
+      height: 100px; // Increased from 40px
       display: flex;
       align-items: center;
       justify-content: center;
+      // Removed background-color and border-radius properties
+      padding: 0; // Removed padding
 
       img {
         max-width: 100%;
