@@ -609,7 +609,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: 50vh;
   overflow: hidden;
 }
 
@@ -628,6 +628,7 @@ a {
   line-height: 2.5rem;
   color: #333;
   white-space: nowrap;
+  width: 200px;
 }
 
 .static-text {
@@ -641,7 +642,7 @@ a {
 }
 
 .title {
-  max-width: 260px;
+  max-width: 200px;
 }
 
 .contact-link {
@@ -684,6 +685,12 @@ a {
 }
 .contact-link span {
   display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    justify-content: flex-start;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
