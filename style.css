@@ -615,54 +615,43 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30vh;
-  padding: 0 20px;
+  height: 60vh;
   overflow: hidden;
 }
 
 .title-container {
   display: flex;
-  align-items: center;
   gap: 15px;
-  font-size: 2em;
-  color: #333;
-  flex-wrap: wrap;
-  justify-content: center;
   width: 100%;
-  max-width: 900px;
   padding: 0 20px;
+  justify-content: center;
+}
+
+.static-text,
+.rotating-text {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 2.5rem;
+  color: #333;
+  white-space: nowrap;
+  width: 160px;
 }
 
 .static-text {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: #333;
-  white-space: nowrap;
+  font-weight: 500;
+  width: 80px;
 }
 
-.rotating-text {
-  position: relative;
-  height: 2.5em;
-  min-width: 300px;
-  width: 100%;
-  max-width: 500px;
-}
-
-.title {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: #333;
-  white-space: nowrap;
-  text-align: left;
+.france {
+  /* Weight for the france title */
+  font-weight: 400;
 }
 
 .contact-link {
   position: relative;
   overflow: hidden;
   padding-left: 20px;
-  /* Removed --has-animated variable */
 }
 
 .contact-link .arrow {
@@ -699,35 +688,6 @@ a {
 }
 .contact-link span {
   display: inline-block;
-}
-
-@media (max-width: 768px) {
-  .title-container {
-    font-size: 1.5em;
-  }
-  .static-text,
-  .title {
-    font-size: 2rem;
-  }
-  .rotating-text {
-    min-width: 200px;
-  }
-}
-@media (max-width: 480px) {
-  .title-container {
-    font-size: 1.2em;
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-  }
-  .static-text,
-  .title {
-    font-size: 1.5rem;
-  }
-  .rotating-text {
-    min-width: 150px;
-    height: 2em;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */
