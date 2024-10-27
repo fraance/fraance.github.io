@@ -164,9 +164,6 @@ a {
     color: #333333;
 
     .card-img-background {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       display: flex;
@@ -174,13 +171,15 @@ a {
       justify-content: center;
       overflow: hidden;
       transition: all 0.3s ease;
-      border-radius: 8px 8px 0 0; // Added to round the top corners of the image
     }
 
     .card-img-top {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
     }
 
@@ -256,8 +255,8 @@ a {
     }
 
     &:hover {
-      .card-img-background {
-        transform: scale(1.05);
+      .card-img-top {
+        transform: scale(0.8) translateY(-10%);
       }
 
       .card-body {
@@ -274,13 +273,12 @@ a {
 
         .card-title {
           font-weight: 600;
-          font-size: 1.1rem; // Increased size on hover
+          font-size: 1.1rem;
         }
       }
     }
 
     .static {
-      position: absolute;
       opacity: 100;
     }
 
@@ -296,25 +294,9 @@ a {
       opacity: 100;
     }
 
-    // Specific styling for the Traceurs de Nantes Website card
-    &[href="pages/parkour.html"] {
-      .card-img-background {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-          width: 70%; // Reduced from 90% to 70%
-          height: auto;
-          object-fit: contain;
-          max-height: 80%; // Added to ensure the image doesn't touch the edges
-        }
-      }
-    }
-
     .card-logo {
       position: absolute;
-      top: -10px;  // Original position
+      top: -10px; // Original position
       right: 40px; // Original position
       z-index: 10;
       width: 100px;
@@ -334,8 +316,8 @@ a {
       &.small-logo {
         width: 30px;
         height: 30px;
-        top: 30px;    // Different position for small logo
-        right: 30px;  // Different position for small logo
+        top: 30px; // Different position for small logo
+        right: 30px; // Different position for small logo
       }
     }
   }
@@ -779,5 +761,5 @@ a {
 @media (max-width: 768px) {
   .header-container {
     justify-content: flex-start;
-  } 
+  }
 }

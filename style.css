@@ -144,9 +144,6 @@ a {
   color: #333333;
 }
 .page .card .card-img-background {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -154,12 +151,14 @@ a {
   justify-content: center;
   overflow: hidden;
   transition: all 0.3s ease;
-  border-radius: 8px 8px 0 0;
 }
 .page .card .card-img-top {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 .page .card .card-body {
@@ -226,8 +225,8 @@ a {
   transition: opacity 0.3s ease;
   opacity: 0;
 }
-.page .card:hover .card-img-background {
-  transform: scale(1.05);
+.page .card:hover .card-img-top {
+  transform: scale(0.8) translateY(-10%);
 }
 .page .card:hover .card-body {
   height: auto;
@@ -245,7 +244,6 @@ a {
   font-size: 1.1rem;
 }
 .page .card .static {
-  position: absolute;
   opacity: 100;
 }
 .page .card .static:hover {
@@ -256,17 +254,6 @@ a {
 }
 .page .card .active:hover {
   opacity: 100;
-}
-.page .card[href="pages/parkour.html"] .card-img-background {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.page .card[href="pages/parkour.html"] .card-img-background img {
-  width: 70%;
-  height: auto;
-  object-fit: contain;
-  max-height: 80%;
 }
 .page .card .card-logo {
   position: absolute;
