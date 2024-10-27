@@ -615,8 +615,9 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 30vh;
   padding: 0 20px;
+  overflow: hidden;
 }
 
 .title-container {
@@ -625,6 +626,11 @@ a {
   gap: 15px;
   font-size: 2em;
   color: #333;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
 }
 
 .static-text {
@@ -637,8 +643,10 @@ a {
 
 .rotating-text {
   position: relative;
-  height: 5em;
-  min-width: 500px;
+  height: 2.5em;
+  min-width: 300px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .title {
@@ -691,6 +699,35 @@ a {
 }
 .contact-link span {
   display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .title-container {
+    font-size: 1.5em;
+  }
+  .static-text,
+  .title {
+    font-size: 2rem;
+  }
+  .rotating-text {
+    min-width: 200px;
+  }
+}
+@media (max-width: 480px) {
+  .title-container {
+    font-size: 1.2em;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+  .static-text,
+  .title {
+    font-size: 1.5rem;
+  }
+  .rotating-text {
+    min-width: 150px;
+    height: 2em;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

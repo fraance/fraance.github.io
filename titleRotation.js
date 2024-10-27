@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let titles = Array.from(rotatingText.getElementsByClassName('title'));
     const visibleTitles = 5; // Total number of visible titles (2 above, 1 current, 2 below)
     
+    // Calculate spacing based on screen size
+    function getSpacing() {
+        return window.innerWidth <= 480 ? 40 : 60; // Smaller spacing on mobile
+    }
+    
     // Set initial positions and styles
     function initializeTitles() {
         titles.forEach((title, index) => {
@@ -16,9 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update position and opacity of each title
     function updateTitlePosition(index) {
         const title = titles[index];
+        const spacing = getSpacing();
         
         // Calculate vertical position (middle title at index 0)
-        const yPos = index * 60 - 60; // Spacing between titles, offset to center
+        const yPos = index * spacing - spacing; // Spacing between titles, offset to center
         
         // Calculate opacity based on distance from center
         const opacity = Math.max(0, 1 - Math.abs(index - 1) * 0.4);
@@ -42,6 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update positions
         titles.forEach((_, index) => updateTitlePosition(index));
     }
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            titles.forEach((_, index) => updateTitlePosition(index));
+        }, 250);
+    });
 
     // Initialize and start rotation
     initializeTitles();
