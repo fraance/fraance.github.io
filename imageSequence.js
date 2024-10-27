@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('.sequence-image');
     let currentIndex = 0;
 
+    // Set initial state
+    images.forEach((img, index) => {
+        img.style.opacity = index === 0 ? '1' : '0';
+    });
+
     function cycleImages() {
         // Hide current image
         images[currentIndex].style.opacity = '0';
@@ -11,8 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show next image
         images[currentIndex].style.opacity = '1';
+        
+        console.log('Cycling to image:', currentIndex); // Debug log
     }
 
     // Start the cycle
-    setInterval(cycleImages, 2000); // Change image every 2 seconds
+    setInterval(cycleImages, 3000);
 });
