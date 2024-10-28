@@ -411,25 +411,12 @@ a {
 }
 .section .subsection h3 {
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  color: #0477db;
+  color: #979797;
   margin-bottom: 10px;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 0.05em;
-}
-.section .subsection p {
-  font-size: 16px;
-  line-height: 1.4;
-  margin-bottom: 10px;
-}
-.section .subsection ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-.section .subsection ul li {
-  margin: 6px 0;
-  font-size: 16px;
 }
 
 .center {

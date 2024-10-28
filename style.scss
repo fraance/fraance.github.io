@@ -475,28 +475,12 @@ a {
 
     h3 {
         font-family: "Inter", sans-serif;
-        font-size: 14px;  // Reduced from 18px
+        font-size: 12px;  // Reduced from 18px
         font-weight: 600;
-        color: #0477db;
+        color: #979797;
         margin-bottom: 10px;  // Reduced from 15px
-        text-transform: uppercase;  // Added to maintain visibility despite smaller size
+        text-transform: lowercase;  // Added to maintain visibility despite smaller size
         letter-spacing: 0.05em;  // Added for better readability
-    }
-
-    p {
-        font-size: 16px;  // Reduced text size
-        line-height: 1.4;
-        margin-bottom: 10px;  // Added smaller margin
-    }
-
-    ul {
-        list-style-type: disc;
-        padding-left: 20px;
-        
-        li {
-            margin: 6px 0;  // Reduced from 8px
-            font-size: 16px;  // Reduced text size
-        }
     }
   }
 }
