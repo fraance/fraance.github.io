@@ -272,30 +272,30 @@ a {
 .page .card .active:hover {
   opacity: 100;
 }
-.page .card .card-logo {
-  position: absolute;
-  top: -10px;
-  right: 40px;
-  z-index: 10;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-.page .card .card-logo img {
-  max-width: 100%;
+.page .card img {
+  max-width: 300%;
   max-height: 100%;
   object-fit: contain;
 }
-.page .card .card-logo.small-logo {
-  width: 30px;
-  height: 30px;
-  top: 30px;
-  right: 30px;
+.page .stellantis-logo {
+  width: 100px;
+  height: 100px;
+  top: -10px;
+  right: 40px;
 }
-.page .card .image-sequence {
+.page .catch22-logo {
+  width: 200px;
+  height: 200px;
+  top: -10px;
+  right: 40px;
+}
+.page .rca-logo {
+  width: 60px;
+  height: 60px;
+  top: 20px;
+  right: calc(50% - 60px);
+}
+.page .image-sequence {
   position: relative;
   width: 85%;
   height: 400px;
@@ -305,6 +305,32 @@ a {
   justify-content: center;
   align-items: center;
   margin-bottom: 40%;
+}
+.page .card-logo {
+  position: absolute;
+  top: -10px;
+  right: 40px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.page .card-logo.catch22-logo {
+  top: 20px;
+  right: calc(50% + 20px);
+}
+.page .card-logo.catch22-logo img {
+  width: 15px !important;
+  height: 15px !important;
+}
+.page .card-logo.rca-logo {
+  top: 20px;
+  right: calc(50% - 60px);
+}
+.page .card-logo.rca-logo img {
+  width: 60px;
+  height: 60px;
 }
 .page .topics {
   font-weight: 500;
