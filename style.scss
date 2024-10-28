@@ -471,7 +471,33 @@ a {
   }
 
   .subsection {
-    margin-bottom: 20px;
+    margin: 20px 0;  // Reduced from 30px
+
+    h3 {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;  // Reduced from 18px
+        font-weight: 600;
+        color: #0477db;
+        margin-bottom: 10px;  // Reduced from 15px
+        text-transform: uppercase;  // Added to maintain visibility despite smaller size
+        letter-spacing: 0.05em;  // Added for better readability
+    }
+
+    p {
+        font-size: 16px;  // Reduced text size
+        line-height: 1.4;
+        margin-bottom: 10px;  // Added smaller margin
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        
+        li {
+            margin: 6px 0;  // Reduced from 8px
+            font-size: 16px;  // Reduced text size
+        }
+    }
   }
 }
 
@@ -869,12 +895,90 @@ a {
     }
 }
 
+.card {
+    // ... existing card styles ...
 
+    .card-img-top {
+        &.static {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
 
+        &.active {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 
+    &:hover {
+        .card-img-top {
+            &.static {
+                opacity: 0;
+            }
 
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+}
 
+.project-nav {
+    margin: 40px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
 
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
 
+    li {
+        margin: 0;
+    }
+
+    a {
+        color: #333;
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        transition: all 0.2s ease;
+        padding: 5px 0;
+        position: relative;
+
+        &:hover {
+            color: #0477db;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0477db;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.2s ease;
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    }
+}
 
 
