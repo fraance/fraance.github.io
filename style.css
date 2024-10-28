@@ -855,4 +855,21 @@ a {
   transform-origin: left;
 }
 
+.project-media {
+  margin: 40px 0;
+  text-align: center;
+}
+.project-media img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+.project-media .media-caption {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
 /*# sourceMappingURL=style.css.map */
