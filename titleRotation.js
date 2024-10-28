@@ -5,15 +5,14 @@ document.addEventListener('DOMContentLoaded', function () {
             title.style.width = '100%';
             title.style.transition = 'all 0.5s ease-in-out';
             title.style.transform = `translateY(${(index - mid) * spacing}px)`;
-            title.style.opacity = Math.max(0, 1 - Math.abs(index - mid) * 0.3);
+            title.style.opacity = Math.max(0, 1 - Math.abs(index - mid) * 0.15);
         });
     }
 
     function updateTitlePosition(titles, index) {
         const title = titles[index];
         title.style.transform = `translateY(${(index - mid) * spacing}px)`;
-        title.style.opacity = Math.max(0, 1 - Math.abs(index - mid) * 0.3);
-        title.style.visibility = Math.abs(index - mid) <= 4 ? 'visible' : 'hidden';
+        title.style.opacity = Math.max(0, 1 - Math.abs(index - mid) * 0.15);
     }
 
     // Rotate titles by moving last to first

@@ -19,10 +19,10 @@
 </head>
 
 <body>
-  <nav class="top-bar">
+  <nav class="top-bar" id="navbar">
     <div class="container">
       <div class="top-bar-content">
-        <h1 class=" name" id="name" data-text="France Hémain"> France Hémain </h1>
+        <h1 class="name" id="name" onclick="scroll_projects()"> Projects </h1>
         <div class="nav-links">
           <a href="https://github.com/fraance/portfolio-assets/raw/e97b70b5f292b836a13088c8a40d9fc8033122f5/France__Resume.pdf"
             download="France_Hemain_Resume.pdf" class="nav-link">
@@ -52,12 +52,14 @@
         <span class="title">exploring UX</span>
         <span class="title">a problem solver</span>
         <span class="title">collaborative</span>
+        <span class="title">Change me</span>
+        <span class="title">More great qualities</span>
+        <span class="title">Many attributes</span>
       </div>
     </div>
   </div>
 
-
-  <div class="page container px-5">
+  <div class="page container px-5" id="projects">
     <div class="row g-5">
       <!-- New Project Card 1 -->
       <div class="col-12 col-md-6">
@@ -65,15 +67,26 @@
           <div class="card">
             <!-- Stellantis logo -->
             <div class="card-logo stellantis-logo">
-              <img src="https://raw.githubusercontent.com/fraance/portfolio-assets/8235bbf76428bf03d34355fd5ec15e84ed5986ab/stellantis/StellantisLogo.svg" alt="Stellantis Logo">
+              <img
+                src="https://raw.githubusercontent.com/fraance/portfolio-assets/8235bbf76428bf03d34355fd5ec15e84ed5986ab/stellantis/StellantisLogo.svg"
+                alt="Stellantis Logo">
             </div>
-            <div class="card-img-background" style="background-image: url('https://raw.githubusercontent.com/fraance/portfolio-assets/e57e1a0d143693de76179781f483a8fa23a3de82/stellantis/StartsBackground.jpg'); background-size: cover; background-position: center;">
+            <div class="card-img-background"
+              style="background-image: url('https://raw.githubusercontent.com/fraance/portfolio-assets/e57e1a0d143693de76179781f483a8fa23a3de82/stellantis/StartsBackground.jpg'); background-size: cover; background-position: center;">
               <div class="center">
                 <div class="image-sequence">
-                  <img class="sequence-image" src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen1.png" alt="E-Routes 1">
-                  <img class="sequence-image" src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen2.png" alt="E-Routes 2">
-                  <img class="sequence-image" src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen3.png" alt="E-Routes 3">
-                  <img class="sequence-image" src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen4.png" alt="E-Routes 4">
+                  <img class="sequence-image"
+                    src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen1.png"
+                    alt="E-Routes 1">
+                  <img class="sequence-image"
+                    src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen2.png"
+                    alt="E-Routes 2">
+                  <img class="sequence-image"
+                    src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen3.png"
+                    alt="E-Routes 3">
+                  <img class="sequence-image"
+                    src="https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen4.png"
+                    alt="E-Routes 4">
                 </div>
               </div>
             </div>
@@ -93,12 +106,17 @@
           <div class="card">
             <!-- Catch22 and RCA logos -->
             <div class="card-logo catch22-logo">
-              <img src="https://raw.githubusercontent.com/fraance/portfolio-assets/e424a63efeade1d81b61da0c5daef0b1be534bb4/catch22_logo.svg" alt="Catch22 Logo" style="width: 15px; height: 15px;">
+              <img
+                src="https://raw.githubusercontent.com/fraance/portfolio-assets/e424a63efeade1d81b61da0c5daef0b1be534bb4/catch22_logo.svg"
+                alt="Catch22 Logo" style="width: 15px; height: 15px;">
             </div>
             <div class="card-logo rca-logo">
-              <img src="https://raw.githubusercontent.com/fraance/portfolio-assets/5d1a8d62a8bac3d353330fe4b9bb53378a13a00f/RCA%20Full%20Version%20Logo/For%20screen%20(RGB)/Positive%20(Black)/RCA_FullLogo_Positive_RGB.svg" alt="RCA Logo">
+              <img
+                src="https://raw.githubusercontent.com/fraance/portfolio-assets/5d1a8d62a8bac3d353330fe4b9bb53378a13a00f/RCA%20Full%20Version%20Logo/For%20screen%20(RGB)/Positive%20(Black)/RCA_FullLogo_Positive_RGB.svg"
+                alt="RCA Logo">
             </div>
-            <div class="card-img-background" style="background-image: url('https://raw.githubusercontent.com/fraance/portfolio-assets/5a76af050f44738def045c4354f9bee9e6fff265/Catch_Image_Board.webp'); background-size: cover; background-position: center;">
+            <div class="card-img-background"
+              style="background-image: url('https://raw.githubusercontent.com/fraance/portfolio-assets/5a76af050f44738def045c4354f9bee9e6fff265/Catch_Image_Board.webp'); background-size: cover; background-position: center;">
               <div class="center" style="vertical-align: bottom">
                 <img class="card-img-top" src="path/to/project5-image.jpg" />
               </div>
