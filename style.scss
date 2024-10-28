@@ -205,13 +205,13 @@ a {
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: rgba(249, 249, 249, 0.95); // Slightly increased opacity for better readability
+      background-color: rgba(249, 249, 249, 0.95);
       padding: 20px;
       transition: all 0.3s ease;
-      height: auto;
-      max-height: 100%;
+      height: 40%;  // Set a fixed height
+      max-height: 40%;  // Match fixed height
       overflow-y: auto;
-
+      z-index: 2;  // Ensure it's always on top
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -311,31 +311,78 @@ a {
       opacity: 100;
     }
 
-    .card-logo {
-      position: absolute;
-      top: -10px; // Original position
-      right: 40px; // Original position
-      z-index: 10;
-      width: 100px;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-
       img {
-        max-width: 100%;
+        max-width: 300%;
         max-height: 100%;
         object-fit: contain;
       }
+    }
 
-      // Special size for Catch22 logo only
-      &.small-logo {
-        width: 30px;
-        height: 30px;
-        top: 30px; // Different position for small logo
-        right: 30px; // Different position for small logo
-      }
+    // Move these outside of .card-logo
+    .stellantis-logo {
+        width: 100px;
+        height: 100px;
+        top: -10px;
+        right: 40px;
+    }
+
+    .catch22-logo {
+      img {
+            width: 200px;
+            height: 200px;
+        }
+        top: -10px;
+        right: 40px;
+    }
+
+    .rca-logo {
+        width: 60px;
+        height: 60px;
+        top: 20px;
+        right: calc(50% - 60px);
+    }
+
+    .image-sequence {
+        position: relative;
+        width: 85%;
+        height: 400px;
+        z-index: 1;  // Keep behind card-body
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40%;  // Add margin to account for card-body height
+    }
+
+    .card-logo {
+        position: absolute;
+        top: -10px;
+        right: 40px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+        &.catch22-logo {
+            top: 20px;
+            right: calc(50% + 20px);
+            
+            img {
+                width: 15px !important;
+                height: 15px !important;
+            }
+        }
+
+        &.rca-logo {
+            top: 20px;
+            right: calc(50% - 60px);
+            
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
     }
   }
 
@@ -823,4 +870,13 @@ a {
         width: 100%;
     }
 }
+
+
+
+
+
+
+
+
+
 
