@@ -8,13 +8,7 @@ $(document).ready(function () {
   );
 
   function handleScroll() {
-    const scrollPosition = window.scrollY; // Current scroll position
-    console.log(scrollPosition);
-    console.log(0.45 * window.innerHeight);
-    console.log(scrollPosition > 0.45 * window.innerHeight);
-    // if scroll position is more than 90vh, transform bg color to white
-    // and show the nav bar otherwise, transform bg color to black
-    // and hide the nav bar
+    const scrollPosition = window.scrollY;
     if (scrollPosition > 0.45 * window.innerHeight) {
       document.documentElement.style.setProperty('--bg-color', 'white');
       document.documentElement.style.setProperty('--fg-color', 'black');
@@ -35,6 +29,5 @@ $(document).ready(function () {
 });
 
 function scroll_projects() {
-  console.log('scrolling');
   document.getElementById('projects').scrollIntoView();
 }
