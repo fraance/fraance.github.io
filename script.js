@@ -7,7 +7,7 @@ $(document).ready(function () {
     }
   );
 
-  window.addEventListener("scroll", () => {
+  function handleScroll() {
     const scrollPosition = window.scrollY; // Current scroll position
     console.log(scrollPosition);
     console.log(0.45 * window.innerHeight);
@@ -28,7 +28,10 @@ $(document).ready(function () {
       document.documentElement.style.setProperty('--primary-color', '#0477db');
       document.getElementById('name').textContent = 'Projects';
     }
-  });
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
 });
 
 function scroll_projects() {

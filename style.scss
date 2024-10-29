@@ -77,7 +77,6 @@ a {
   margin-bottom: 3rem;
 }
 
-
 .page {
   min-height: 100%;
   min-height: 100vh;
@@ -113,7 +112,7 @@ a {
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
-    background-color: #f9f9f9;
+    background-color: var(--bg-color);
     border: 0px solid #d9d9d9;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -121,7 +120,33 @@ a {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    color: #333333;
+    color: var(--fg-color);
+
+    .card-logos {
+      position: absolute;
+      top: 5px;
+      right: 20px;
+      gap: 10px;
+      display: flex;
+
+      .card-logo {
+        max-width: 100px;
+        min-width: 15px;
+        height: 35px;
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+
+      }
+
+      // rca logo has some transparency, scale it up to make it more visible
+      .rca-logo {
+        height: 50px;
+        transform: translateY(-7.5px);
+      }
+    }
+
 
     .card-img-background {
       width: 100%;
@@ -129,18 +154,11 @@ a {
       display: flex;
       align-items: center;
       justify-content: center;
+      background-size: cover;
+      background-position: center;
       overflow: hidden;
       transition: all 0.3s ease;
       border-radius: 8px;
-
-      .card-img-overlay {
-        width: 45%;
-        height: auto;
-        object-fit: contain;
-        position: relative;
-        z-index: 1;
-        opacity: 0.9; // Added opacity (0.7 = 70% visible)
-      }
 
       .center {
         display: flex;
@@ -153,12 +171,27 @@ a {
 
     .card-img-top {
       position: absolute;
-      top: 0;
-      left: 5%;
-      width: 90%;
-      height: 100%;
+      top: 10%;
+      height: 60%;
       object-fit: contain;
       object-position: center;
+
+      &.static {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+
+      &.active {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
     }
 
     .card-body {
@@ -166,13 +199,13 @@ a {
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: rgba(249, 249, 249, 0.95);
+      background-color: rgba(255, 255, 255, 0.90);
       padding: 20px;
       transition: all 0.3s ease;
-      height: 40%; // Set a fixed height
-      max-height: 40%; // Match fixed height
+      height: 30%;
+      max-height: 30%;
       overflow-y: auto;
-      z-index: 2; // Ensure it's always on top
+      z-index: 2;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -182,7 +215,7 @@ a {
       .date {
         font-size: 0.7rem;
         margin-bottom: 0.4rem;
-        color: #666;
+        color: var(--fg-color-soft);
         font-weight: 500;
         letter-spacing: 0.05em;
       }
@@ -194,7 +227,7 @@ a {
         margin-bottom: 0.1rem;
         font-size: 0.95rem; // Decreased from 1.1rem
         line-height: 1.2; // Adjusted for the smaller font size
-        color: #333333;
+        color: var(--fg-color);
         letter-spacing: 0.02em;
         text-transform: none;
         border-bottom: none;
@@ -234,11 +267,19 @@ a {
 
     &:hover {
       .card-img-top {
-        transform: scale(0.8) translateY(-10%);
+        &.static {
+          opacity: 0;
+        }
+
+        &.active {
+          opacity: 1;
+        }
+
+        transform: scale(0.85) translateY(-7.5%);
       }
 
       .card-body {
-        height: auto;
+        height: 40%;
         max-height: 100%;
 
         .desc,
@@ -256,94 +297,12 @@ a {
       }
     }
 
-    .static {
-      opacity: 100;
-    }
-
-    .static:hover {
-      opacity: 0;
-    }
-
-    .active {
-      opacity: 0;
-    }
-
-    .active:hover {
-      opacity: 100;
-    }
-
     img {
       max-width: 300%;
       max-height: 100%;
       object-fit: contain;
     }
   }
-
-  // Move these outside of .card-logo
-  .stellantis-logo {
-    width: 100px;
-    height: 100px;
-    top: -10px;
-    right: 40px;
-  }
-
-  .catch22-logo {
-    width: 200px;
-    height: 200px;
-    top: -10px;
-    right: 40px;
-  }
-
-  .rca-logo {
-    width: 60px;
-    height: 60px;
-    top: 20px;
-    right: calc(50% - 60px);
-  }
-
-  .image-sequence {
-    position: relative;
-    width: 85%;
-    height: 400px;
-    z-index: 1; // Keep behind card-body
-    opacity: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40%; // Add margin to account for card-body height
-  }
-
-  .card-logo {
-    position: absolute;
-    top: -10px;
-    right: 40px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-
-    &.catch22-logo {
-      top: 20px;
-      right: calc(50% + 20px);
-
-      img {
-        width: 15px !important;
-        height: 15px !important;
-      }
-    }
-
-    &.rca-logo {
-      top: 20px;
-      right: calc(50% - 60px);
-
-      img {
-        width: 60px;
-        height: 60px;
-      }
-    }
-  }
-
 
   .topics {
     font-weight: 500;
@@ -377,7 +336,7 @@ a {
   }
 
   .card-description {
-    background-color: rgba(249, 249, 249, 0.9);
+    background-color: rgba(249, 249, 249, 0.85);
     padding: 15px;
     margin-top: 10px;
     border-radius: 0 0 4px 4px;
@@ -711,45 +670,45 @@ a {
   transform-origin: left;
 }
 
-.header-container {
+.homepage-hero-animation {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
+
+  .title-container {
+    display: flex;
+    gap: 15px;
+    padding: 0 20px;
+    justify-content: center;
+  }
+
+  .static-text,
+  .rotating-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 200;
+    line-height: 2.5rem;
+    white-space: nowrap;
+    width: 200px;
+    transform: translateX(-50px);
+  }
+
+  .static-text {
+    font-weight: 500;
+    width: 80px;
+  }
+
+  .france {
+    font-weight: 400;
+  }
+
+  .title {
+    max-width: 200px;
+  }
 }
 
-.title-container {
-  display: flex;
-  gap: 15px;
-  padding: 0 20px;
-  justify-content: center;
-}
-
-.static-text,
-.rotating-text {
-  font-family: "Roboto", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 200;
-  line-height: 2.5rem;
-  white-space: nowrap;
-  width: 200px;
-  transform: translateX(-50px);
-}
-
-.static-text {
-  font-weight: 500;
-  width: 80px;
-}
-
-.france {
-  /* Weight for the france title */
-  font-weight: 400;
-}
-
-.title {
-  max-width: 200px;
-}
 
 .contact-link {
   position: relative;
@@ -808,76 +767,6 @@ a {
 
 }
 
-.image-sequence {
-  position: relative;
-  width: 85%; // Increased from 65% to 85%
-  height: 400px; // Increased from 300px to 400px
-  z-index: 1;
-  opacity: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .sequence-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-
-    &:first-child {
-      opacity: 1;
-    }
-  }
-}
-
-.card-img-background {
-  .center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-.card {
-  // ... existing card styles ...
-
-  .card-img-top {
-    &.static {
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-
-    &.active {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &:hover {
-    .card-img-top {
-      &.static {
-        opacity: 0;
-      }
-
-      &.active {
-        opacity: 1;
-      }
-    }
-  }
-}
 
 .project-nav {
   margin: 40px 0;

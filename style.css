@@ -98,14 +98,34 @@ a {
   position: relative;
   width: 100%;
   aspect-ratio: 1/1;
-  background-color: #f9f9f9;
+  background-color: var(--bg-color);
   border: 0px solid #d9d9d9;
   overflow: hidden;
   transition: all 0.3s ease;
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
-  color: #333333;
+  color: var(--fg-color);
+}
+.page .card .card-logos {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  gap: 10px;
+  display: flex;
+}
+.page .card .card-logos .card-logo {
+  max-width: 100px;
+  min-width: 15px;
+  height: 35px;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.page .card .card-logos .rca-logo {
+  height: 50px;
+  transform: translateY(-7.5px);
 }
 .page .card .card-img-background {
   width: 100%;
@@ -113,17 +133,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
   transition: all 0.3s ease;
   border-radius: 8px;
-}
-.page .card .card-img-background .card-img-overlay {
-  width: 45%;
-  height: auto;
-  object-fit: contain;
-  position: relative;
-  z-index: 1;
-  opacity: 0.9;
 }
 .page .card .card-img-background .center {
   display: flex;
@@ -134,23 +148,35 @@ a {
 }
 .page .card .card-img-top {
   position: absolute;
-  top: 0;
-  left: 5%;
-  width: 90%;
-  height: 100%;
+  top: 10%;
+  height: 60%;
   object-fit: contain;
   object-position: center;
+}
+.page .card .card-img-top.static {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.page .card .card-img-top.active {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .page .card .card-body {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(249, 249, 249, 0.95);
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   transition: all 0.3s ease;
-  height: 40%;
-  max-height: 40%;
+  height: 30%;
+  max-height: 30%;
   overflow-y: auto;
   z-index: 2;
   display: flex;
@@ -162,7 +188,7 @@ a {
 .page .card .card-body .date {
   font-size: 0.7rem;
   margin-bottom: 0.4rem;
-  color: #666;
+  color: var(--fg-color-soft);
   font-weight: 500;
   letter-spacing: 0.05em;
 }
@@ -173,7 +199,7 @@ a {
   margin-bottom: 0.1rem;
   font-size: 0.95rem;
   line-height: 1.2;
-  color: #333333;
+  color: var(--fg-color);
   letter-spacing: 0.02em;
   text-transform: none;
   border-bottom: none;
@@ -207,10 +233,16 @@ a {
   opacity: 0;
 }
 .page .card:hover .card-img-top {
-  transform: scale(0.8) translateY(-10%);
+  transform: scale(0.85) translateY(-7.5%);
+}
+.page .card:hover .card-img-top.static {
+  opacity: 0;
+}
+.page .card:hover .card-img-top.active {
+  opacity: 1;
 }
 .page .card:hover .card-body {
-  height: auto;
+  height: 40%;
   max-height: 100%;
 }
 .page .card:hover .card-body .desc,
@@ -224,77 +256,10 @@ a {
   font-weight: 600;
   font-size: 1.1rem;
 }
-.page .card .static {
-  opacity: 100;
-}
-.page .card .static:hover {
-  opacity: 0;
-}
-.page .card .active {
-  opacity: 0;
-}
-.page .card .active:hover {
-  opacity: 100;
-}
 .page .card img {
   max-width: 300%;
   max-height: 100%;
   object-fit: contain;
-}
-.page .stellantis-logo {
-  width: 100px;
-  height: 100px;
-  top: -10px;
-  right: 40px;
-}
-.page .catch22-logo {
-  width: 200px;
-  height: 200px;
-  top: -10px;
-  right: 40px;
-}
-.page .rca-logo {
-  width: 60px;
-  height: 60px;
-  top: 20px;
-  right: calc(50% - 60px);
-}
-.page .image-sequence {
-  position: relative;
-  width: 85%;
-  height: 400px;
-  z-index: 1;
-  opacity: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 40%;
-}
-.page .card-logo {
-  position: absolute;
-  top: -10px;
-  right: 40px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-.page .card-logo.catch22-logo {
-  top: 20px;
-  right: calc(50% + 20px);
-}
-.page .card-logo.catch22-logo img {
-  width: 15px !important;
-  height: 15px !important;
-}
-.page .card-logo.rca-logo {
-  top: 20px;
-  right: calc(50% - 60px);
-}
-.page .card-logo.rca-logo img {
-  width: 60px;
-  height: 60px;
 }
 .page .topics {
   font-weight: 500;
@@ -323,7 +288,7 @@ a {
   font-size: 16px;
 }
 .page .card-description {
-  background-color: rgba(249, 249, 249, 0.9);
+  background-color: rgba(249, 249, 249, 0.85);
   padding: 15px;
   margin-top: 10px;
   border-radius: 0 0 4px 4px;
@@ -631,23 +596,21 @@ a {
   transform-origin: left;
 }
 
-.header-container {
+.homepage-hero-animation {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   overflow: hidden;
 }
-
-.title-container {
+.homepage-hero-animation .title-container {
   display: flex;
   gap: 15px;
   padding: 0 20px;
   justify-content: center;
 }
-
-.static-text,
-.rotating-text {
+.homepage-hero-animation .static-text,
+.homepage-hero-animation .rotating-text {
   font-family: "Roboto", sans-serif;
   font-size: 2.5rem;
   font-weight: 200;
@@ -656,18 +619,14 @@ a {
   width: 200px;
   transform: translateX(-50px);
 }
-
-.static-text {
+.homepage-hero-animation .static-text {
   font-weight: 500;
   width: 80px;
 }
-
-.france {
-  /* Weight for the france title */
+.homepage-hero-animation .france {
   font-weight: 400;
 }
-
-.title {
+.homepage-hero-animation .title {
   max-width: 200px;
 }
 
@@ -721,60 +680,6 @@ a {
     transform: translateX(10px);
   }
 }
-.image-sequence {
-  position: relative;
-  width: 85%;
-  height: 400px;
-  z-index: 1;
-  opacity: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.image-sequence .sequence-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-.image-sequence .sequence-image:first-child {
-  opacity: 1;
-}
-
-.card-img-background .center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-}
-
-.card .card-img-top.static {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-.card .card-img-top.active {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.card:hover .card-img-top.static {
-  opacity: 0;
-}
-.card:hover .card-img-top.active {
-  opacity: 1;
-}
-
 .project-nav {
   margin: 40px 0;
   border-bottom: 1px solid #eee;
