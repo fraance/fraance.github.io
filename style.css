@@ -269,7 +269,11 @@ a {
 }
 .page h2 {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: extra-light;
+}
+.page h3 {
+  font-size: 12px;
+  font-weight: regular;
 }
 .page h5 {
   font-family: "Roboto";
@@ -299,12 +303,12 @@ a {
   margin: 0;
 }
 .page .col-12 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .section {
   font-family: "Roboto";
-  margin-top: 30px;
+  margin-top: 80px;
   font-size: 18px;
   font-weight: 400;
 }
@@ -313,8 +317,13 @@ a {
 }
 .section h1 span {
   font-family: "Inter";
-  padding: 8px 16px;
-  font-size: 20px;
+  padding: 8px 40px;
+  font-size: 12px;
+  font-weight: 100px;
+  opacity: 0.4;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   color: white;
   background-color: #0477db;
 }
