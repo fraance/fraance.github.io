@@ -61,8 +61,9 @@ a {
   h2 {
     color: var(--fg-color-soft);
     font-size: 1.5rem;
-    font-weight: 400;
     margin-bottom: 1rem;
+        
+
   }
   .intro {
     font-size: 1rem;
@@ -313,7 +314,6 @@ a {
 
   h2 {
     font-size: 24px;
-    font-weight: extra-light;
   }
 
   h3 {
@@ -334,6 +334,8 @@ a {
     font-weight: 100;
     font-size: 16px;
   }
+
+
 
   .card-description {
     background-color: rgba(249, 249, 249, 0.85);
@@ -383,8 +385,8 @@ a {
 
   h2 {
     font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-weight: 10px;
+    margin-bottom: 50px;
   }
 
   img {
@@ -396,20 +398,56 @@ a {
   }
 
   .subsection {
-    margin: 20px 0; // Reduced from 30px
+    margin: 20px 0; // 
 
     h3 {
       font-family: "Inter", sans-serif;
-      font-size: 12px; // Reduced from 18px
-      font-weight: 600;
+      font-size: 12px; // 
+      font-weight: 400;
       color: #979797;
-      margin-bottom: 10px; // Reduced from 15px
-      text-transform: lowercase; // Added to maintain visibility despite smaller size
-      letter-spacing: 0.05em; // Added for better readability
+      margin-bottom: 0px; //
+      letter-spacing: 0.05em; 
     }
   }
 }
 
+/* mark {
+  background-color: #dbdaff3f; 
+  color: #00ffff;               
+  padding: 2px 6px;
+  font-style: italic;
+  letter-spacing: 0.5px; 
+}*/
+
+mark {
+  background-color: #dbdaff3f;
+  color: #1100ff;
+  padding: 2px 6px;
+  font-style: italic;
+  letter-spacing: 0.5px;       
+  /* background gaussian blur */
+  box-shadow: 0.6px 0.3px 0.6px rgba(0, 0, 0, 0.1);
+  
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+    /* Animation properties */
+  animation: highlight-animation 2s infinite alternate;
+}
+
+/* Keyframes for the background color animation */
+@keyframes highlight-animation {
+0% {
+  background-color: #0800ff;
+}
+50% {
+  background-color: #a3a0ff8f;
+}
+100% {
+  background-color: #da06ff;
+}
+}
 
 
 .center {
@@ -845,3 +883,11 @@ a {
     }
   }
 }
+
+.highlight {
+  background-image: linear-gradient(rgb(255, 255, 255, 0), rgb(255, 255, 255, 0)), linear-gradient(#F8FA5B, #F8FA5B);
+  background-size: 100% 15px, 0 15px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s linear;
+} 
