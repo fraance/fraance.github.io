@@ -7,7 +7,8 @@
 }
 
 body {
-  font-family: "Inter";
+  font-family: "Roboto";
+  font-size: 0.2rem;
   background-color: var(--bg-color);
   color: var(--fg-color);
   transition: background-color 0.5s ease;
@@ -35,7 +36,7 @@ a {
 }
 
 .date {
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   color: var(--fg-color-soft);
   font-weight: 500;
   margin-bottom: 0px;
@@ -50,15 +51,9 @@ a {
   padding-bottom: 3rem;
   margin-bottom: 3rem;
 }
-.header h1 {
-  color: var(--fg-color);
-  font-size: 2rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
 .header h2 {
   color: var(--fg-color-soft);
-  font-size: 1.5rem;
+  font-size: 100rem;
   margin-bottom: 1rem;
 }
 .header .intro {
@@ -101,10 +96,6 @@ a {
   border: 0px solid #d9d9d9;
   overflow: hidden;
   transition: all 0.3s ease;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24px;
-  color: var(--fg-color);
 }
 .page .card .card-logos {
   position: absolute;
@@ -148,7 +139,7 @@ a {
 .page .card .card-img-top {
   position: absolute;
   top: 10%;
-  height: 80%;
+  height: 70%;
   object-fit: contain;
   object-position: center;
 }
@@ -179,19 +170,21 @@ a {
   align-items: center;
   text-align: center;
 }
-.page .card .card-body .date {
-  font-size: 0.7rem;
-  margin-bottom: 0.4rem;
-  color: var(--fg-color-soft);
-  font-weight: 500;
-  letter-spacing: 0.05em;
+.page .card .card-body .topics {
+  font-size: 0.6rem;
+  line-height: 4;
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+  color: #7b7b7b;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  order: 1;
 }
 .page .card .card-body .card-title {
-  font-family: "Playfair Display", serif;
+  font-weight: 300;
   font-style: normal;
-  font-weight: 400;
-  margin-bottom: 0.1rem;
-  font-size: 0.95rem;
+  font-size: 0.7rem;
+  margin-bottom: 0rem;
   line-height: 1.2;
   color: var(--fg-color);
   letter-spacing: 0.02em;
@@ -200,23 +193,26 @@ a {
   padding-bottom: 0;
   transition: all 0.3s ease;
   text-shadow: none;
-  margin-top: 0.3rem;
+  order: 2;
 }
 .page .card .card-body .desc,
 .page .card .card-body .card-desc {
-  font-size: 0.8rem;
-  line-height: 1.3;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.6rem;
+  color: var(--fg-color);
   margin-top: 0.1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
+  order: 3;
 }
-.page .card .card-body .topics {
-  font-size: 0.75rem;
-  line-height: 1.3;
-  margin-top: 0.3rem;
-  color: #666;
-  font-weight: 500;
+.page .card .card-body .date {
+  font-size: 0.6rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: var(--fg-color-soft);
+  font-weight: 300;
   letter-spacing: 0.05em;
-  font-style: italic;
+  order: 4;
 }
 .page .card .card-body .desc,
 .page .card .card-body .topics,
@@ -248,7 +244,8 @@ a {
 }
 .page .card:hover .card-body .card-title {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-style: normal;
+  font-size: 0.8rem;
 }
 .page .card img {
   max-width: 300%;
@@ -311,19 +308,18 @@ a {
   font-weight: 400;
 }
 .section li {
-  margin: 15px 0;
+  margin: 40px 20px;
+}
+.section li:first-child {
+  margin-top: 0;
 }
 .section h1 span {
-  font-family: "Inter";
-  padding: 8px 40px;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
-  font-weight: 100px;
-  opacity: 0.4;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: white;
-  background-color: #0477db;
+  font-weight: 400;
+  color: #979797;
+  margin-bottom: 0px;
+  letter-spacing: 0.05em;
 }
 .section h2 {
   font-size: 18px;
