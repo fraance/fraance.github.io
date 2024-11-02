@@ -1,7 +1,7 @@
 @charset "UTF-8";
 :root {
-  --bg-color: black;
-  --fg-color: white;
+  --bg-color: #fcfcfc;
+  --fg-color: rgb(0, 0, 0);
   --fg-color-soft: #f0f0f0;
   --primary-color: #0477db;
 }
