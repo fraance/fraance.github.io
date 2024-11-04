@@ -1,13 +1,13 @@
 :root {
   --bg-color: #fcfcfc;
   --fg-color: rgb(0, 0, 0);
-  --fg-color-soft: #f0f0f0;
+  --fg-color-soft: #333333;
   --primary-color: #0477db;
 }
 
 body {
   font-family: "Roboto";
-  font-size: 0.2rem;
+  font-size: 12px;
   background-color: var(--bg-color);
   color: var(--fg-color);
   transition: background-color 0.5s ease;
@@ -55,7 +55,7 @@ a {
 
   h2 {
     color: var(--fg-color-soft);
-    font-size: 100rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
   }
 
@@ -196,7 +196,7 @@ a {
       align-items: center;
       text-align: center;
 
-   
+
       .topics {
         font-size: 0.6rem;
         line-height: 4;
@@ -315,7 +315,7 @@ a {
   h3 {
     font-size: 12px;
     font-weight: regular;
-    
+
   }
 
   h5 {
@@ -356,6 +356,14 @@ a {
   }
 }
 
+.project {
+  width: 720px;
+  // center
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 .section {
   font-family: "Roboto";
   margin-top: 80px;
@@ -364,20 +372,20 @@ a {
 
   li {
     margin: 40px 20px;
-    
+
     &:first-child {
-      margin-top: 0;  // Remove top margin for first li element
+      margin-top: 0; // Remove top margin for first li element
     }
   }
 
   h1 span {
-      font-family: "Inter", sans-serif;
-      font-size: 12px; // 
-      font-weight: 400;
-      color: #979797;
-      margin-bottom: 0px; //
-      letter-spacing: 0.05em; 
-    }
+    font-family: "Inter", sans-serif;
+    font-size: 12px; // 
+    font-weight: 400;
+    color: #979797;
+    margin-bottom: 0px; //
+    letter-spacing: 0.05em;
+  }
 
   h2 {
     font-size: 18px;
@@ -402,7 +410,7 @@ a {
       font-weight: 400;
       color: #979797;
       margin-bottom: 0px; //
-      letter-spacing: 0.05em; 
+      letter-spacing: 0.05em;
     }
   }
 }
@@ -420,29 +428,31 @@ mark {
   color: #1100ff;
   padding: 2px 6px;
   font-style: italic;
-  letter-spacing: 0.5px;       
+  letter-spacing: 0.5px;
   /* background gaussian blur */
   box-shadow: 0.6px 0.3px 0.6px rgba(0, 0, 0, 0.1);
-  
+
   position: relative;
   overflow: hidden;
   display: inline-block;
 
-    /* Animation properties */
+  /* Animation properties */
   animation: highlight-animation 2s infinite alternate;
 }
 
 /* Keyframes for the background color animation */
 @keyframes highlight-animation {
-0% {
-  background-color: #0800ff;
-}
-50% {
-  background-color: #a3a0ff8f;
-}
-100% {
-  background-color: #da06ff;
-}
+  0% {
+    background-color: #0800ff;
+  }
+
+  50% {
+    background-color: #a3a0ff8f;
+  }
+
+  100% {
+    background-color: #da06ff;
+  }
 }
 
 
@@ -886,4 +896,4 @@ mark {
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
   transition: background-size 0.3s linear;
-} 
+}

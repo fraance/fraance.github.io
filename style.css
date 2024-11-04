@@ -2,13 +2,13 @@
 :root {
   --bg-color: #fcfcfc;
   --fg-color: rgb(0, 0, 0);
-  --fg-color-soft: #f0f0f0;
+  --fg-color-soft: #333333;
   --primary-color: #0477db;
 }
 
 body {
   font-family: "Roboto";
-  font-size: 0.2rem;
+  font-size: 12px;
   background-color: var(--bg-color);
   color: var(--fg-color);
   transition: background-color 0.5s ease;
@@ -53,7 +53,7 @@ a {
 }
 .header h2 {
   color: var(--fg-color-soft);
-  font-size: 100rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 .header .intro {
@@ -299,6 +299,12 @@ a {
 }
 .page .col-12 {
   margin-bottom: 10px;
+}
+
+.project {
+  width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section {
