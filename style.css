@@ -63,30 +63,30 @@ a {
   gap: 1.5rem;
 }
 
-.page {
+.homepage {
   min-height: 100%;
   min-height: 100vh;
   padding-top: 80px;
 }
-.page .row {
+.homepage .row {
   padding-bottom: 40px;
 }
-.page .row a:link {
+.homepage .row a:link {
   text-decoration: none;
 }
-.page .row a:visited {
+.homepage .row a:visited {
   text-decoration: none;
 }
-.page .row a:hover {
+.homepage .row a:hover {
   text-decoration: none;
 }
-.page .row a:active {
+.homepage .row a:active {
   text-decoration: none;
 }
-.page .card.shadow-lg {
+.homepage .card.shadow-lg {
   border: 1px solid #d9d9d9;
 }
-.page .card {
+.homepage .card {
   border-radius: 8px;
   display: inline-block;
   position: relative;
@@ -97,14 +97,14 @@ a {
   overflow: hidden;
   transition: all 0.3s ease;
 }
-.page .card .card-logos {
+.homepage .card .card-logos {
   position: absolute;
   top: 5px;
   right: 20px;
   gap: 10px;
   display: flex;
 }
-.page .card .card-logos .card-logo {
+.homepage .card .card-logos .card-logo {
   max-width: 100px;
   min-width: 15px;
   height: 35px;
@@ -113,11 +113,11 @@ a {
   justify-content: center;
   padding: 0;
 }
-.page .card .card-logos .rca-logo {
+.homepage .card .card-logos .rca-logo {
   height: 50px;
   transform: translateY(-7.5px);
 }
-.page .card .card-img-background {
+.homepage .card .card-img-background {
   width: 100%;
   height: 100%;
   display: flex;
@@ -129,30 +129,30 @@ a {
   transition: all 0.3s ease;
   border-radius: 8px;
 }
-.page .card .card-img-background .center {
+.homepage .card .card-img-background .center {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
 }
-.page .card .card-img-top {
+.homepage .card .card-img-top {
   position: absolute;
   top: 10%;
   height: 70%;
   object-fit: contain;
   object-position: center;
 }
-.page .card .card-img-top.static {
+.homepage .card .card-img-top.static {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.page .card .card-img-top.active {
+.homepage .card .card-img-top.active {
   opacity: 0;
   transition: opacity 0.3s ease;
   position: absolute;
 }
-.page .card .card-body {
+.homepage .card .card-body {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -170,7 +170,7 @@ a {
   align-items: center;
   text-align: center;
 }
-.page .card .card-body .topics {
+.homepage .card .card-body .topics {
   font-size: 0.6rem;
   line-height: 4;
   margin-top: 0;
@@ -180,7 +180,7 @@ a {
   letter-spacing: 0.08em;
   order: 1;
 }
-.page .card .card-body .card-title {
+.homepage .card .card-body .card-title {
   font-weight: 300;
   font-style: normal;
   font-size: 0.7rem;
@@ -195,8 +195,8 @@ a {
   text-shadow: none;
   order: 2;
 }
-.page .card .card-body .desc,
-.page .card .card-body .card-desc {
+.homepage .card .card-body .desc,
+.homepage .card .card-body .card-desc {
   font-weight: 400;
   font-style: normal;
   font-size: 0.6rem;
@@ -205,7 +205,7 @@ a {
   margin-bottom: 0.1rem;
   order: 3;
 }
-.page .card .card-body .date {
+.homepage .card .card-body .date {
   font-size: 0.6rem;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -214,74 +214,74 @@ a {
   letter-spacing: 0.05em;
   order: 4;
 }
-.page .card .card-body .desc,
-.page .card .card-body .topics,
-.page .card .card-body .date,
-.page .card .card-body .card-desc {
+.homepage .card .card-body .desc,
+.homepage .card .card-body .topics,
+.homepage .card .card-body .date,
+.homepage .card .card-body .card-desc {
   display: none;
   transition: opacity 0.3s ease;
   opacity: 0;
 }
-.page .card:hover .card-img-top {
+.homepage .card:hover .card-img-top {
   transform: scale(0.85) translateY(-7.5%);
 }
-.page .card:hover .card-img-top.static {
+.homepage .card:hover .card-img-top.static {
   opacity: 0;
 }
-.page .card:hover .card-img-top.active {
+.homepage .card:hover .card-img-top.active {
   opacity: 1;
 }
-.page .card:hover .card-body {
+.homepage .card:hover .card-body {
   height: 40%;
   max-height: 100%;
 }
-.page .card:hover .card-body .desc,
-.page .card:hover .card-body .topics,
-.page .card:hover .card-body .date,
-.page .card:hover .card-body .card-desc {
+.homepage .card:hover .card-body .desc,
+.homepage .card:hover .card-body .topics,
+.homepage .card:hover .card-body .date,
+.homepage .card:hover .card-body .card-desc {
   display: block;
   opacity: 1;
 }
-.page .card:hover .card-body .card-title {
+.homepage .card:hover .card-body .card-title {
   font-weight: 600;
   font-style: normal;
   font-size: 0.8rem;
 }
-.page .card img {
+.homepage .card img {
   max-width: 300%;
   max-height: 100%;
   object-fit: contain;
 }
-.page .topics {
+.homepage .topics {
   font-weight: 500;
   /* Medium */
   color: #666;
   line-height: 24px;
   font-size: 16px;
 }
-.page h1 {
+.homepage h1 {
   font-size: 64px;
   font-weight: bold;
 }
-.page h2 {
+.homepage h2 {
   font-size: 24px;
 }
-.page h3 {
+.homepage h3 {
   font-size: 12px;
   font-weight: regular;
 }
-.page h5 {
+.homepage h5 {
   font-family: "Roboto";
   font-style: italic;
   font-weight: 300;
   font-size: 24px;
 }
-.page h6 {
+.homepage h6 {
   font-family: "Roboto";
   font-weight: 100;
   font-size: 16px;
 }
-.page .card-description {
+.homepage .card-description {
   background-color: rgba(249, 249, 249, 0.85);
   padding: 15px;
   margin-top: 10px;
@@ -291,13 +291,13 @@ a {
   opacity: 0;
   transform: translateY(-10px);
 }
-.page .card-description .desc {
+.homepage .card-description .desc {
   font-size: 0.8rem;
   line-height: 1.4;
   color: #333;
   margin: 0;
 }
-.page .col-12 {
+.homepage .col-12 {
   margin-bottom: 10px;
 }
 
@@ -305,50 +305,38 @@ a {
   width: 720px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.section {
   font-family: "Roboto";
   margin-top: 80px;
-  font-size: 18px;
-  font-weight: 400;
-}
-.section li {
-  margin: 40px 20px;
-}
-.section li:first-child {
-  margin-top: 0;
-}
-.section h1 span {
-  font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #979797;
+}
+.project h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 64px;
+  font-weight: bold;
   margin-bottom: 0px;
   letter-spacing: 0.05em;
 }
-.section h2 {
+.project h2 {
   font-size: 18px;
   font-weight: 10px;
   margin-bottom: 50px;
 }
-.section img {
-  margin-right: auto;
-  margin-left: auto;
-  padding: 30px 0;
-  width: 125%;
-  transform: translateX(-10%);
-}
-.section .subsection {
-  margin: 20px 0;
-}
-.section .subsection h3 {
+.project h3 {
   font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #979797;
-  margin-bottom: 0px;
   letter-spacing: 0.05em;
+}
+.project li {
+  margin: 1rem 20px;
+}
+.project li:first-child {
+  margin-top: 0;
+}
+.project li:last-child {
+  margin-bottom: 0;
 }
 
 /* mark {
