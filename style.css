@@ -268,10 +268,10 @@ a {
 
 .page .page-top-header {
   padding: 50px;
-  margin: 2.5vw;
   margin-top: 70px;
   background: var(--primary-color);
-  max-width: 95vw;
+  max-width: 100%;
+  max-height: 60vh;
   overflow: hidden;
 }
 .page h1 {
@@ -531,6 +531,7 @@ mark {
   font-weight: 400;
   font-style: normal;
   position: relative;
+  margin-left: 15px;
   overflow: hidden;
   display: inline-block;
   letter-spacing: 0.02em;
