@@ -350,13 +350,6 @@ a {
     letter-spacing: 0.05em;
   }
 
-  h6 {
-    font-family: "Inter", sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--fg-color-soft);
-
-  }
 
   li {
     margin: 1rem 20px;
@@ -386,13 +379,18 @@ a {
   .project-nav {
     margin: 40px 0;
     padding-bottom: 20px;
+    padding-top: 20px;
+    // Line before 
+    border-bottom: 1px solid #00000012;
+    border-top: 1px solid #00000012;
 
     ul {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
-      gap: 30px;
+      column-gap: 30px;
+      row-gap: 15px;
       flex-wrap: wrap;
     }
 
@@ -411,7 +409,7 @@ a {
       position: relative;
 
       &:hover {
-        color: var(--primary-color);
+        color: var(--fg-color-soft);
       }
 
       &::after {
@@ -421,7 +419,7 @@ a {
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: var(--primary-color);
+        background-color: var(--fg-color-soft);
         transform: scaleX(0);
         transform-origin: right;
         transition: transform 0.2s ease;
