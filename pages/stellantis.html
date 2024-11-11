@@ -23,8 +23,8 @@
         :root {
             --bg-color: #ffffff;
             --fg-color: rgb(0, 0, 0);
-            --fg-color-soft: #0727c4;
-            --primary-color: #001682;
+            --fg-color-soft: rgb(0, 0, 0);
+            --primary-color: #147AFA1C;
         }
     </style>
 </head>
@@ -50,9 +50,9 @@
     </nav>
     <div class="page"">
         <!-- Header Section with Background -->
-        <div class=" page-top-header">
-        <img class="header-img-top img-fluid"
-            src="https://github.com/fraance/portfolio-assets/blob/main/bayanai/Bandeau_Top_Bayanay.png?raw=true"
+        <div class=" page-top-header" style="padding: 0;">
+        <img class="header-img-top img-fluid" style="width:100%; margin-left: 0;"
+            src="https://github.com/fraance/portfolio-assets/blob/main/stellantis/stellantis_header.png?raw=true"
             alt="BayanAI Header" />
     </div>
 
@@ -73,20 +73,24 @@
         </div>
 
 
+    </div>
+    <div class="page-content container-xl">
         <!-- e-routes -->
-        <div class="section" id="project1">
-            <h1>e-ROUTES</h1>
-            <h2>September 2022 - December 2022</h2>
+        <div class="section" id="project1"
+            style="background-color: var(--primary-color); padding:20px; padding-right: 0px;">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="subsection">
-                        <h3>Role</h3>
+
+            <div class="d-flex justify-content-between">
+                <div class="col-md-6 d-flex flex-column">
+                    <div class=" subsection" style="padding-left: 50px; padding-right: 50px;">
+                        <h1>e-ROUTES</h1>
+                        <h3>September 2022 - December 2022</h3>
+                        <h3>ROLE</h3>
                         <p>UX Designer for Charging Station Navigation Experience within the Co-Pilote app for
                             electric vehicles (EVs). Responsible for creating intuitive and visually appealing
                             interfaces tailored to the unique needs of EV drivers.</p>
 
-                        <h3>Process</h3>
+                        <h3>PROCESS</h3>
                         <ul>
                             <li>Conducted four in-depth benchmarks, analyzing current solutions both within the EV
                                 industry and from other relevant sectors.</li>
@@ -96,35 +100,23 @@
                                 experience.</li>
                         </ul>
 
-                        <h3>Impact</h3>
+                        <h3>IMPACT</h3>
                         <p>This application, now live, is helping drivers efficiently locate and navigate to
                             charging stations.</p>
-
-                        <!-- App Store Link -->
-                        <a href="https://apps.apple.com/fr/app/e-routes/id6449592949" target="_blank"
-                            class="app-store-link" style="display: inline-block; 
-                                      background: linear-gradient(145deg, #ff0099, #00ffeaa2);
-                                      padding: 15px 30px;
-                                      border-radius: 12px;
-                                      text-decoration: none;
-                                      color: white;
-                                      transition: all 0.3s ease;
-                                      box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                            <div style="display: flex; align-items: center; gap: 15px;">
-                                <i class="fab fa-apple" style="font-size: 2.5em;"></i>
-                                <div style="text-align: left;">
-                                    <div style="font-size: 0.7em; margin-bottom: 2px;">Download on the</div>
-                                    <div style="font-size: 1.2em; font-weight: 500;">App Store</div>
-                                </div>
-                            </div>
-                        </a>
                     </div>
+                    <h3><a href="#project1">→ App Store</a></h3>
+                    <h3><a href="#project2">→ Video</a></h3>
+                    <h3><a href="#project3">→ Article</a></h3>
                 </div>
 
-                <div class="col-md-4" style="display: flex; align-items: stretch;">
-                    <img class="img-fluid" style="height: auto; object-fit: cover;"
-                        src="https://raw.githubusercontent.com/fraance/portfolio-assets/43143a60e8c5c53ebc23346707b0e6e7703aff01/stellantis/e-route.gif"
-                        alt="E-Route Features">
+                <div class="col-md-6 d-flex flex-column justify-content-around">
+                    <div class="row"><img class="img-fluid" style="width: 100%;"
+                            src="https://github.com/fraance/portfolio-assets/blob/main/stellantis/1.png?raw=true"
+                            alt="E-Route Features"></div>
+                    <div class="row"><img class="img-fluid" style="width: 100%;"
+                            src="https://github.com/fraance/portfolio-assets/blob/main/stellantis/1.png?raw=true"
+                            alt="E-Route Features"></div>
+
                 </div>
             </div>
         </div>

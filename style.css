@@ -15,7 +15,7 @@ body {
 }
 
 a {
-  color: var(--primary-color);
+  color: var(--fg-color-soft);
 }
 
 .no-a a:link {
@@ -274,6 +274,12 @@ a {
   max-height: 60vh;
   overflow: hidden;
 }
+.page .header-img-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-left: 15%;
+  width: 70%;
+}
 .page h1 {
   font-family: "Inter", sans-serif;
   font-size: 40px;
@@ -436,14 +442,6 @@ mark {
   align-items: center;
   justify-content: center;
   height: 100%;
-}
-
-.header-img-top {
-  margin-left: auto;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  margin-left: 15%;
-  width: 70%;
 }
 
 .breaker {
