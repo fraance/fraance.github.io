@@ -349,8 +349,16 @@ a {
 
   h3 {
     font-family: "Inter", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
+    color: var(--fg-color-soft);
+    letter-spacing: 0.05em;
+  }
+
+  h4 {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--fg-color-soft);
     letter-spacing: 0.05em;
   }
