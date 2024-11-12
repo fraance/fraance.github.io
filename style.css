@@ -319,6 +319,9 @@ a {
   font-size: 12px;
   font-weight: 400;
 }
+.page .page-content img {
+  margin-bottom: 10px;
+}
 .page .project-nav {
   margin: 40px 0;
   padding-bottom: 20px;
