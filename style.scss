@@ -337,8 +337,6 @@ a {
     font-family: "Inter", sans-serif;
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 20px;
-    margin-top: 20px;
     letter-spacing: 0.05em;
     color: var(--fg-color-soft);
   }
@@ -436,6 +434,35 @@ a {
       }
     }
   }
+
+  .hover-container {
+    position: relative;
+    margin: 0 auto;
+
+    .base-image {
+      width: 100%;
+      display: block;
+
+      &:hover {
+        opacity: 0;
+      }
+
+    }
+
+    .hover-image {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
 }
 
 
