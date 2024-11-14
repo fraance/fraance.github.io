@@ -21,5 +21,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Start the cycle
-    setInterval(cycleImages, 3000);
+    setInterval(cycleImages, 1000);
 });
