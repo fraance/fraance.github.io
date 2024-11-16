@@ -329,14 +329,6 @@ a {
 .page .page-content img {
   margin-bottom: 10px;
 }
-.page .page-content .catch22 .img-fluid {
-  margin: 50px;
-}
-.page .page-content .catch22 .hover-container .img-fluid {
-  margin: 50px;
-  top: 50px;
-  left: 50px;
-}
 .page .project-nav {
   margin: 40px 0;
   padding-bottom: 20px;
