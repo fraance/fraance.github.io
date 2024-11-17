@@ -273,7 +273,6 @@ a {
   margin-top: 70px;
   background: var(--primary-color);
   max-width: 100%;
-  max-height: 60vh;
   overflow: hidden;
 }
 .page .header-img-top {
@@ -398,6 +397,28 @@ a {
 }
 .page .hover-container .hover-image:hover {
   opacity: 1;
+}
+.page .project-desc {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--fg-color-soft);
+}
+.page .project-desc em {
+  color: var(--fg-color-soft);
+  font-weight: bold;
+  font-style: normal;
+}
+.page .project-desc strong {
+  color: var(--fg-color);
+  font-weight: bold;
+}
+.page .project-desc h3 {
+  color: var(--fg-color);
+}
+.page .img-caption {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--fg-color);
 }
 
 /* mark {
@@ -746,6 +767,46 @@ mark {
   color: #333;
   font-size: 0.9em;
   /* Text color for copyright and other small text */
+}
+
+@media screen and (min-width: 960px) {
+  .v-fill-lg {
+    height: 5vw;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .v-fill-lg {
+    height: 50px;
+  }
+}
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+.image-container img {
+  display: block;
+  width: 100%;
+  /* or specify a fixed width */
+  height: auto;
+}
+.image-container .overlay-text {
+  position: absolute;
+  bottom: 8%;
+  left: 10%;
+}
+.image-container .overlay-text h3 {
+  color: white;
+}
+.image-container .overlay-text h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 0;
+}
+.image-container .overlay-text h2 {
+  color: white;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

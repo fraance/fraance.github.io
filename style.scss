@@ -322,7 +322,6 @@ a {
     margin-top: 70px;
     background: var(--primary-color);
     max-width: 100%;
-    max-height: 60vh;
     overflow: hidden;
   }
 
@@ -473,6 +472,35 @@ a {
         opacity: 1;
       }
     }
+  }
+
+  .project-desc {
+    font-size: 18px;
+    font-weight: 400;
+
+    color: var(--fg-color-soft);
+
+    em {
+      color: var(--fg-color-soft);
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    strong {
+      color: var(--fg-color);
+      font-weight: bold;
+    }
+
+    h3 {
+      color: var(--fg-color);
+    }
+  }
+
+  .img-caption {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--fg-color);
+
   }
 
 }
@@ -855,6 +883,56 @@ mark {
 .footer small {
   color: #333;
   font-size: 0.9em;
-  
+
   /* Text color for copyright and other small text */
+}
+
+@media screen and (min-width: 960px) {
+  .v-fill-lg {
+    height: 5vw;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .v-fill-lg {
+    height: 50px;
+  }
+}
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+
+  img {
+    display: block;
+    width: 100%;
+    /* or specify a fixed width */
+    height: auto;
+  }
+
+  .overlay-text {
+    position: absolute;
+    bottom: 8%;
+    left: 10%;
+    // text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+
+    h3 {
+      color: white;
+    }
+
+    h1 {
+      color: white;
+      font-weight: bold;
+      font-size: 40px;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: white;
+      font-weight: 300;
+      font-size: 20px;
+    }
+  }
+
 }
