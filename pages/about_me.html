@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Settings -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,64 +19,133 @@
     <!-- Include Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../style.css" />
-  <!-- favicon -->
-  <head>
+    <!-- favicon -->
+
     <link rel="icon" href="https://github.com/fraance/portfolio-assets/blob/main/favicon.svg?raw=true"
-      type="image/svg+xml">
-  </head>
+        type="image/svg+xml">
     <style>
         :root {
-            --bg-color: E9ECEF;
+            --bg-color: #E9ECEF;
             --fg-color: rgb(0, 0, 0);
             --fg-color-soft: #333;
             --primary-color: #fcfcfc;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const aboutMeLg = document.getElementById("about-me-lg");
+            const aboutMeXs = document.getElementById("about-me-xs");
+            const checkScreenWidth = () => {
+                if (window.innerWidth < 992) {
+                    aboutMeLg.style.display = "none";
+                    aboutMeXs.style.display = "flex";
+                } else {
+                    aboutMeLg.style.display = "flex";
+                    aboutMeXs.style.display = "none";
+                }
+            };
+
+            // Run on initial load
+            checkScreenWidth();
+
+            // Add event listener for resizing the window
+            window.addEventListener("resize", checkScreenWidth);
+        });
+
+    </script>
 
 </head>
-<!-- Top Bar -->
-<body></body>
 
-    <nav class="top-bar" style="background-color: transparent; backdrop-filter: none;">
-        <div class="container">
-            <div class="top-bar-content">
-                <h1 class="home"><a href="../index.html"style="color: white;font-size: 18px;></a><i class="fas fa-arrow-left"></i> France Hémain</a></h1>
-                
-                <div class="nav-links">
-                    <a href="https://github.com/fraance/portfolio-assets/raw/e97b70b5f292b836a13088c8a40d9fc8033122f5/France__Resume.pdf"
-                        download="France_Hemain_Resume.pdf" class="nav-link">
-                        Resume
-                    </a>
-                    <a href="#" class="nav-link" onclick="alert('About me page is coming soon!')">About me</a>
-                    <a href="mailto:francehemain@gmail.com" class="nav-link E-mail-link">
-                        <span class="arrow">→</span>
-                        <span>E-mail</span>
-                    </a>
+<body>
+    <div id="about-me-lg" class="page flex-wrap" style="margin: 0; color: black;">
+        <nav class="top-bar" style="background-color: transparent; backdrop-filter: none;">
+            <div class="container">
+                <div class="top-bar-content">
+                    <h1 class="home"><a href="../index.html" style="color: white;font-size: 18px;"><i class=" fas
+                            fa-arrow-left"></i> France Hémain</a></h1>
+
+                    <div class="nav-links">
+                        <a href="https://github.com/fraance/portfolio-assets/raw/e97b70b5f292b836a13088c8a40d9fc8033122f5/France__Resume.pdf"
+                            download="France_Hemain_Resume.pdf" class="nav-link">
+                            Resume
+                        </a>
+                        <a href="mailto:francehemain@gmail.com" class="nav-link E-mail-link">
+                            <span class="arrow">→</span>
+                            <span>E-mail</span>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </nav>
+        <div class="col-lg-6">
+            <img class=" img-fluid" style="width: 100%; height: 100%; object-fit: cover;"
+                src="https://github.com/fraance/portfolio-assets/raw/e08abb405f14fd7738c8f751311765970e9d0922/portrait%20session5267.jpg"
+                alt="Portrait" />
         </div>
-    </nav>
-
-    <div class="page" style="margin: 0; padding: 0;">
-        <!-- Wrapper for Flexbox Layout -->
-        <div class="content-wrapper" style="display: flex; align-items: flex-start; padding-top: 0;">
-    
-            <!-- Image Section -->
-            <div class="page" style="flex: 1; padding: 0; margin: 0;">
-                <img class="portrait" style="width: 100%; max-width: 800px; margin: 0;"
-                    src="https://github.com/fraance/portfolio-assets/raw/e08abb405f14fd7738c8f751311765970e9d0922/portrait%20session5267.jpg"
-                    alt="Portrait" />
+        <div class="col-lg-6 d-flex  flex-column align-items-center justify-content-around">
+            <div class="col-lg-6">
+                <div class="v-fill-lg"></div>
+                <div class="v-fill-lg"></div>
+                <div class="v-fill-lg"></div>
+                <div class="v-fill-lg"></div>
+                <h1> I'm a French designer who started out in UI/UX at Stellantis and
+                    never
+                    looked back.</h1>
+                <h2> I'm always up for a challenge so I honed my skills in the world top design school and learned a
+                    dash of business knowledge along the way.</h2>
             </div>
-    
-            <!-- Text Section -->
-            <div class="portrait2" style="flex: 1; padding-left: 160px; padding-right: 160px;">
-                <!-- Header -->
-                <h1 style="margin-bottom: 30px;"> I'm a French designer who started out in UI/UX at Stellantis and never looked back.</h1>
-                <h2 style="font-weight: lightbold;"> I’m always up for a challenge so I honed my skills in the world top design school and learned a dash of business knowledge along the way.</h2>
+            <div class="col-lg-6 img-caption">
+                <hr style="width: 8%; height: 4px; background-color: black; opacity: 1;">
+                <p class="lead">
+                    “France has undeniable qualities of adaptation and a sense of
+                    listening
+                    to
+                    others which
+                    allowed her to demonstrate very good collaborative work and team communication skills in projects.”
+                    <br>
+                    Pauline Renverse, UX Researcher, Stellantis
+                </p>
+                <div class="v-fill-lg"></div>
+                <div class="v-fill-lg"></div>
+                <div class="v-fill-lg"></div>
+                <div class="v-fill-lg"></div>
             </div>
-            
-
-            
         </div>
     </div>
-    
+
+    <div id="about-me-xs" class="page inverse-colors" style="margin: 0; background-color: black;">
+        <nav class="top-bar" style="background-color: transparent; backdrop-filter: none;">
+            <div class="container">
+                <div class="top-bar-content">
+                    <h1 class="home"><a href="../index.html" style="color: white;font-size: 18px;"><i class=" fas
+                            fa-arrow-left"></i> France Hémain</a></h1>
+
+                    <div class="nav-links">
+                        <a style="color: white;"
+                            href="https://github.com/fraance/portfolio-assets/raw/e97b70b5f292b836a13088c8a40d9fc8033122f5/France__Resume.pdf"
+                            download="France_Hemain_Resume.pdf" class="nav-link">
+                            Resume
+                        </a>
+                        <a style="color: white;" href="mailto:francehemain@gmail.com" class="nav-link E-mail-link">
+                            <span class="arrow">→</span>
+                            <span>E-mail</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" style="height: 100vh; overflow: hidden;">
+            <div class="col-8 m-5 py-5" style="z-index: 5;">
+                <h1> I'm a French designer who started out in UI/UX at Stellantis
+                    and
+                    never
+                    looked back.</h1>
+                <h2> I'm always up for a challenge so I honed my skills in the world top design school and learned a
+                    dash of business knowledge along the way.</h2>
+            </div>
+            <img class=" img-fluid" style="width: 100%; object-fit: cover; transform: translateY(-35%); z-index: 1;"
+                src="https://github.com/fraance/portfolio-assets/raw/e08abb405f14fd7738c8f751311765970e9d0922/portrait%20session5267.jpg"
+                alt="Portrait" />
+        </div>
+    </div>
+</body>
