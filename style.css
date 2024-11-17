@@ -671,11 +671,11 @@ mark {
 .homepage-hero-animation .static-text,
 .homepage-hero-animation .rotating-text {
   font-family: "Roboto", sans-serif;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: 200;
   line-height: 10px;
   white-space: nowrap;
-  width: 100px;
+  width: 200px;
   transform: translateX(-10px);
 }
 .homepage-hero-animation .static-text {
