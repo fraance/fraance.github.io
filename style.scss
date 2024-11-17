@@ -341,8 +341,8 @@ a {
   }
 
   h2 {
-    font-size: 18px;
-    font-weight: 10px;
+    font-size: 20px;
+    font-weight: 300;
     color: var(--fg-color-soft);
   }
 
@@ -494,13 +494,26 @@ a {
     h3 {
       color: var(--fg-color);
     }
+
+    li {
+
+      margin: 0px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .img-caption {
+    font-weight: 300;
     font-size: 14px;
     font-style: italic;
     color: var(--fg-color);
-
   }
 
 }
@@ -886,15 +899,20 @@ mark {
   /* Text color for copyright and other small text */
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 992px) {
   .v-fill-lg {
     height: 5vw;
+  }
+
+  .overlay-col {
+    width: 50vw;
+    transform: translateX(-7.5vw);
   }
 }
 
 @media screen and (min-width: 1440px) {
   .v-fill-lg {
-    height: 50px;
+    height: 72px;
   }
 }
 
@@ -929,12 +947,11 @@ mark {
 
     h2 {
       color: white;
-      font-weight: 300;
-      font-size: 20px;
     }
   }
 
 }
+
 .page {
   .portrait {
     padding: 50px;
@@ -952,4 +969,60 @@ mark {
     max-width: 50%;
     max-height: 60vh;
     overflow: hidden;
-  }}
+  }
+}
+
+.inverse-colors {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+
+  h1 {
+    color: var(--bg-color);
+  }
+
+  h2 {
+    color: var(--bg-color);
+  }
+
+  h3 {
+    color: var(--bg-color);
+  }
+
+  .project-desc {
+    color: var(--bg-color-soft);
+    font-weight: 300;
+
+    em {
+      color: var(--bg-color-soft);
+    }
+
+    strong {
+      color: var(--bg-color);
+    }
+
+    h3 {
+      color: var(--bg-color);
+    }
+  }
+
+  h4 {
+    color: var(--bg-color);
+  }
+
+  .nav-link {
+    color: var(--bg-color);
+  }
+
+  .nav-link:hover {
+    color: var(--bg-color);
+  }
+
+  .nav-link::after {
+    background-color: var(--bg-color);
+  }
+
+  .img-caption {
+    color: var(--bg-color);
+  }
+
+}

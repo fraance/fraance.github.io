@@ -289,8 +289,8 @@ a {
   color: var(--fg-color-soft);
 }
 .page h2 {
-  font-size: 18px;
-  font-weight: 10px;
+  font-size: 20px;
+  font-weight: 300;
   color: var(--fg-color-soft);
 }
 .page h3 {
@@ -415,7 +415,17 @@ a {
 .page .project-desc h3 {
   color: var(--fg-color);
 }
+.page .project-desc li {
+  margin: 0px;
+}
+.page .project-desc li:first-child {
+  margin-top: 0;
+}
+.page .project-desc li:last-child {
+  margin-bottom: 0;
+}
 .page .img-caption {
+  font-weight: 300;
   font-size: 14px;
   font-style: italic;
   color: var(--fg-color);
@@ -749,7 +759,6 @@ mark {
 
 .footer {
   background-color: #e9ecef;
-  /* Light gray background */
   padding: 20px 0;
   font-size: 0.9em;
   /* Slightly smaller font size */
@@ -769,14 +778,18 @@ mark {
   /* Text color for copyright and other small text */
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 992px) {
   .v-fill-lg {
     height: 5vw;
+  }
+  .overlay-col {
+    width: 50vw;
+    transform: translateX(-7.5vw);
   }
 }
 @media screen and (min-width: 1440px) {
   .v-fill-lg {
-    height: 50px;
+    height: 72px;
   }
 }
 .image-container {
@@ -805,8 +818,65 @@ mark {
 }
 .image-container .overlay-text h2 {
   color: white;
+}
+
+.page .portrait {
+  padding: 50px;
+  margin-top: 70px;
+  background: var(--primary-color);
+  max-width: 50%;
+  max-height: 60vh;
+  overflow: hidden;
+}
+.page .portrait2 {
+  padding: 50px;
+  margin-top: 70px;
+  background: var(--primary-color);
+  max-width: 50%;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+.inverse-colors {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+}
+.inverse-colors h1 {
+  color: var(--bg-color);
+}
+.inverse-colors h2 {
+  color: var(--bg-color);
+}
+.inverse-colors h3 {
+  color: var(--bg-color);
+}
+.inverse-colors .project-desc {
+  color: var(--bg-color-soft);
   font-weight: 300;
-  font-size: 20px;
+}
+.inverse-colors .project-desc em {
+  color: var(--bg-color-soft);
+}
+.inverse-colors .project-desc strong {
+  color: var(--bg-color);
+}
+.inverse-colors .project-desc h3 {
+  color: var(--bg-color);
+}
+.inverse-colors h4 {
+  color: var(--bg-color);
+}
+.inverse-colors .nav-link {
+  color: var(--bg-color);
+}
+.inverse-colors .nav-link:hover {
+  color: var(--bg-color);
+}
+.inverse-colors .nav-link::after {
+  background-color: var(--bg-color);
+}
+.inverse-colors .img-caption {
+  color: var(--bg-color);
 }
 
 /*# sourceMappingURL=style.css.map */
