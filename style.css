@@ -878,4 +878,8 @@ mark {
   color: var(--bg-color);
 }
 
+.img-fluid {
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */
