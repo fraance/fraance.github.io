@@ -317,7 +317,6 @@ a {
   margin-bottom: 0;
 }
 .page .page-content {
-  width: 720px;
   margin-left: auto;
   margin-right: auto;
   font-family: "Roboto";
@@ -544,6 +543,7 @@ mark {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   height: 70px;
   padding: 20px 0 10px 0;
   width: 100%;
@@ -602,6 +602,9 @@ mark {
     margin-left: -8px;
     padding: 0 12px;
   }
+  .top-bar .nav-links {
+    gap: 10px;
+  }
 }
 @media (max-width: 768px) {
   .top-bar .container {
@@ -619,7 +622,6 @@ mark {
 /* Updated navigation links styles */
 .top-bar .nav-links {
   display: flex;
-  gap: 40px;
   align-items: center;
   position: absolute;
   right: 40px;
@@ -785,6 +787,12 @@ mark {
   .overlay-col {
     width: 50vw;
     transform: translateX(-7.5vw);
+  }
+  .page-content {
+    width: 720px;
+  }
+  .top-bar .nav-links {
+    gap: 40px;
   }
 }
 @media screen and (min-width: 1440px) {
