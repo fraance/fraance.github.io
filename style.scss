@@ -796,7 +796,18 @@ mark {
     gap: 15px;
     padding: 0 20px;
     justify-content: center;
+    align-items: center;
   }
+
+#sphere-canvas {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 
   .static-text,
   .rotating-text {
@@ -809,6 +820,7 @@ mark {
     transform: translateX(-10px);
   }
 
+
   .static-text {
     font-weight: 500;
     width: 80px;
@@ -819,7 +831,7 @@ mark {
   }
 
   .title {
-    max-width: 200px;
+    max-width: 500px;
   }
 }
 
