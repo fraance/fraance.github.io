@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.homepage-hero-animation {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.homepage-hero-animation .title-container {
+  display: flex;
+  gap: 15px;
+  padding: 0 20px;
+  justify-content: center;
+  align-items: center;
+}
+.homepage-hero-animation #sphere-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.homepage-hero-animation .static-text,
+.homepage-hero-animation .rotating-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 10px;
+  white-space: nowrap;
+  width: 200px;
+  transform: translateX(-10px);
+  height: 40px;
+}
+.homepage-hero-animation .static-text {
+  font-weight: 500;
+  width: 80px;
+}
+.homepage-hero-animation .france {
+  font-weight: 400;
+}
+.homepage-hero-animation .title {
+  max-width: 500px;
+}
