@@ -74,17 +74,32 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 ) : null}
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-5 transition-all duration-300 ease-in-out h-[10%] group-hover:h-2/5 grid place-items-center group-hover:flex group-hover:flex-col group-hover:justify-center text-center">
-                <p className="text-xs text-gray-500 tracking-widest order-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 col-start-1 row-start-1">
+            <div
+                className={`absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-5 transition-all duration-300 ease-in-out flex flex-col items-center justify-center text-center ${isHovered ? "h-2/5" : "h-[10%]"
+                    }`}
+            >
+                <p
+                    className={`text-xs text-gray-500 tracking-widest order-1 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"
+                        }`}
+                >
                     {project.topics}
                 </p>
-                <h5 className="text-xl font-semibold mt-0 mb-1 order-2 transition-all duration-300 group-hover:font-light group-hover:text-base col-start-1 row-start-1">
+                <h5
+                    className={`text-xl mt-0 mb-1 order-2 transition-all duration-300 ${isHovered ? "font-bold" : "font-normal"
+                        }`}
+                >
                     {project.title}
                 </h5>
-                <p className="text-xs text-gray-700 mt-0.5 mb-0.5 order-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 col-start-1 row-start-1">
+                <p
+                    className={`text-xs text-gray-700 mt-0.5 mb-0.5 order-3 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"
+                        }`}
+                >
                     {project.description}
                 </p>
-                <p className="text-xs text-gray-500 tracking-wider mt-4 order-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 col-start-1 row-start-1">
+                <p
+                    className={`text-xs text-gray-500 tracking-wider mt-4 order-4 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"
+                        }`}
+                >
                     {project.date}
                 </p>
             </div>
