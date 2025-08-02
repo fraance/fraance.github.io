@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  background-color: var(--bg-color, #fcfcfc);
+  color: var(--fg-color, rgb(0, 0, 0));
+  transition: background-color 0.5s ease;
+}
+
+a {
+  color: var(--fg-color-soft);
+}
 
 .nav-link {
     position: relative;
@@ -66,4 +77,519 @@
 }
 .homepage-hero-animation .title {
   max-width: 500px;
+}
+
+.page .page-top-header {
+  padding: 50px;
+  margin-top: 70px;
+  background: var(--primary-color);
+  max-width: 100%;
+  overflow: hidden;
+}
+.page .header-img-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-left: 15%;
+  width: 70%;
+}
+.page h0 {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0em;
+  color: var(--fg-color-soft);
+}
+.page h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: var(--fg-color-soft);
+}
+.page h2 {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--fg-color-soft);
+}
+.page h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--fg-color-soft);
+  letter-spacing: 0.05em;
+}
+.page h4 {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--fg-color-soft);
+  letter-spacing: 0.05em;
+}
+.page li {
+  margin: 1rem 20px;
+}
+.page li:first-child {
+  margin-top: 0;
+}
+.page li:last-child {
+  margin-bottom: 0;
+}
+.page .page-content {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Roboto";
+  margin-top: 80px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.page .page-content img {
+  margin-bottom: 10px;
+}
+.page .project-nav {
+  margin: 40px 0;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0705882353);
+  border-top: 1px solid rgba(0, 0, 0, 0.0705882353);
+}
+.page .project-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  column-gap: 30px;
+  row-gap: 15px;
+  flex-wrap: wrap;
+}
+.page .project-nav li {
+  margin: 0;
+}
+.page .project-nav a {
+  color: var(--fg-color);
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  padding: 5px 0;
+  position: relative;
+}
+.page .project-nav a:hover {
+  color: var(--fg-color-soft);
+}
+.page .project-nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--fg-color-soft);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
+.page .project-nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.page .hover-container {
+  position: relative;
+  margin: 0 auto;
+}
+.page .hover-container .base-image {
+  width: 100%;
+  display: block;
+}
+.page .hover-container .base-image:hover {
+  opacity: 0;
+}
+.page .hover-container .hover-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.page .hover-container .hover-image:hover {
+  opacity: 1;
+}
+.page .project-desc {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--fg-color-soft);
+}
+.page .project-desc em {
+  color: var(--fg-color-soft);
+  font-weight: bold;
+  font-style: normal;
+}
+.page .project-desc strong {
+  color: var(--fg-color);
+  font-weight: bold;
+}
+.page .project-desc h3 {
+  color: var(--fg-color);
+}
+.page .project-desc li {
+  margin: 0px;
+}
+.page .project-desc li:first-child {
+  margin-top: 0;
+}
+.page .project-desc li:last-child {
+  margin-bottom: 0;
+}
+.page .img-caption {
+  font-weight: 300;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--fg-color);
+}
+
+.page .portrait {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-left: 0%;
+  width: 100%;
+  overflow: visible;
+}
+
+.img-fluid {
+  width: 100%;
+}
+
+.poem {
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 500;
+}
+.poem p {
+  line-height: 50px;
+  margin-bottom: 24px;
+}
+
+
+.breaker {
+  font-size: 14px;
+}
+.breaker img {
+  padding: 10px 0;
+}
+.breaker h2 {
+  font-size: 18px;
+  margin-top: 60px;
+  text-align: center;
+}
+.breaker h6 {
+  text-align: end;
+}
+
+
+mark {
+  background-color: rgba(219, 218, 255, 0.2470588235);
+  color: #1100ff;
+  padding: 2px 6px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  /* background gaussian blur */
+  box-shadow: 0.6px 0.3px 0.6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  /* Animation properties */
+  animation: highlight-animation 2s infinite alternate;
+}
+
+/* Page-specific theming support */
+.bayanai-page {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
+.bayanai-page .page-top-header {
+  background: var(--primary-color);
+}
+
+.bayanai-page h1,
+.bayanai-page h2,
+.bayanai-page h3,
+.bayanai-page h4 {
+  color: var(--fg-color-soft);
+}
+
+.bayanai-page .project-nav a {
+  color: var(--fg-color);
+}
+
+.bayanai-page .project-nav a:hover {
+  color: var(--fg-color-soft);
+}
+
+.bayanai-page .project-nav a::after {
+  background-color: var(--fg-color-soft);
+}
+
+.catch22-page {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
+.catch22-page .page-top-header {
+  background: var(--primary-color);
+}
+
+.catch22-page h1,
+.catch22-page h2,
+.catch22-page h3,
+.catch22-page h4 {
+  color: var(--fg-color-soft);
+}
+
+.catch22-page .project-nav a {
+  color: var(--fg-color);
+}
+
+.catch22-page .project-nav a:hover {
+  color: var(--fg-color-soft);
+}
+
+.catch22-page .project-nav a::after {
+  background-color: var(--fg-color-soft);
+}
+
+.stellanti-page {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
+.stellanti-page .page-top-header {
+  background: var(--primary-color);
+}
+
+.stellanti-page h1,
+.stellanti-page h2,
+.stellanti-page h3,
+.stellanti-page h4 {
+  color: var(--fg-color-soft);
+}
+
+.stellanti-page .project-nav a {
+  color: var(--fg-color);
+}
+
+.stellanti-page .project-nav a:hover {
+  color: var(--fg-color-soft);
+}
+
+.stellanti-page .project-nav a::after {
+  background-color: var(--fg-color-soft);
+}
+
+/* Image container with overlay text for project headers */
+.image-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container .overlay-text {
+  position: absolute;
+  bottom: 8%;
+  left: 10%;
+  color: white;
+  z-index: 2;
+}
+
+.image-container .overlay-text h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.image-container .overlay-text h2 {
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.image-container .overlay-text h3 {
+  color: white;
+}
+
+/* Inverse colors section */
+.inverse-colors {
+  background-color: var(--fg-color-soft);
+  color: var(--bg-color);
+}
+
+.inverse-colors h1,
+.inverse-colors h2,
+.inverse-colors h3,
+.inverse-colors h4 {
+  color: var(--bg-color);
+}
+
+.inverse-colors .project-desc {
+  color: var(--bg-color);
+}
+
+.inverse-colors .project-desc em {
+  color: var(--bg-color);
+  font-weight: bold;
+  font-style: normal;
+}
+
+.inverse-colors .project-desc strong {
+  color: var(--bg-color);
+  font-weight: bold;
+}
+
+.inverse-colors .nav-link {
+  color: var(--bg-color);
+}
+
+.inverse-colors .nav-link:hover {
+  color: var(--bg-color-soft);
+}
+
+/* Bootstrap-like utility classes */
+.d-flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.my-3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.gap-3 {
+  gap: 1rem;
+}
+
+.col-lg-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-lg-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+}
+
+.col-lg-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.container-xl {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.page .page-content.container-xl {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+}
+
+.v-fill-lg {
+  height: 20px;
+}
+
+.overlay-col {
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 992px) {
+  .page .page-content {
+    width: 720px;
+  }
+  
+  .v-fill-lg {
+    height: 5vw;
+  }
+  
+  .overlay-col {
+    width: 50vw;
+    transform: translateX(-7.5vw);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .v-fill-lg {
+    height: 72px;
+  }
+}
+
+@media (max-width: 992px) {
+  .col-lg-6,
+  .col-lg-8,
+  .col-lg-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .image-container .overlay-text h1 {
+    font-size: 32px;
+  }
+  
+  .image-container .overlay-text h2 {
+    font-size: 18px;
+  }
 }

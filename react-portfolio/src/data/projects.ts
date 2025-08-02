@@ -41,7 +41,7 @@ export const projects: Project[] = [
             "https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen3.png",
             "https://raw.githubusercontent.com/fraance/portfolio-assets/3e8518ff6de7fd0c54d7c28502cb09ecad091c15/stellantis/eROUTES_Citroen4.png",
         ],
-        link: "/pages/stellantis.html",
+        link: "/project/stellantis",
     },
     {
         id: "catch22",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
             "https://raw.githubusercontent.com/fraance/portfolio-assets/baea020f9636acab9f349ac90dbdf012553060ae/RCA%20Full%20Version%20Logo/For%20screen%20(RGB)/Positive%20(Black)/Logo__x2B__Strapline.svg"
         ],
         backgroundImage: "https://raw.githubusercontent.com/fraance/portfolio-assets/5a76af050f44738def045c4354f9bee9e6fff265/Catch_Image_Board.webp",
-        link: "/pages/catch22.html",
+        link: "/project/catch22",
     },
     {
         id: "algogame",
@@ -82,7 +82,7 @@ export const projects: Project[] = [
         backgroundImage: "https://github.com/fraance/portfolio-assets/blob/main/bayanai/BayanAICard_Test.png?raw=true",
         images: [
         ],
-        link: "/pages/bayanai.html",
+        link: "/project/bayanai",
     },
     {
         id: "parkour",
@@ -98,7 +98,7 @@ export const projects: Project[] = [
         hoveredImages: [
             "https://raw.githubusercontent.com/fraance/portfolio-assets/main/parkour/image00_parkour_portfolio.gif"
         ],
-        link: "/pages/parkour.html",
+        link: "/project/parkour",
     },
     {
         id: "assmat",

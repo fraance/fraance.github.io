@@ -4,6 +4,10 @@ import { Footer } from "./components/Footer";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { ProjectPage } from "./pages/ProjectPage";
+import BayanaiPage from "./pages/BayanaiPage";
+import Catch22Page from "./pages/Catch22Page";
+import StellantiPage from "./pages/StellantiPage";
+import ParkourPage from "./pages/ParkourPage";
 import { useEffect, useState } from "react";
 
 function AppContent() {
@@ -50,6 +54,10 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage isScrolled={isScrolled} />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/project/bayanai" element={<BayanaiPage />} />
+        <Route path="/project/catch22" element={<Catch22Page />} />
+        <Route path="/project/stellantis" element={<StellantiPage />} />
+        <Route path="/project/parkour" element={<ParkourPage />} />
         <Route path="/project/:id" element={<ProjectPage />} />
       </Routes>
       <Footer />
