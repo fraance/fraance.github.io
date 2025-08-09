@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Portfolio Concept</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --compass-stroke: 1px;
+            --arrow-size: clamp(18px, 2.5vw, 28px);
+            /* Adjusted for smaller compass */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111;
+            /* Dark theme */
+            color: #E2E2E2;
+            /* Light text */
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            cursor: none;
+            /* Hide the default cursor */
+        }
+
+        body.is-dragging {
+            cursor: grabbing;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .page {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        /* Styles for the AI icon */
+        .ai-link-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .ai-icon {
+            width: 80px;
+            height: 80px;
+            stroke: #ffffff;
+            stroke-width: 1;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+            overflow: visible;
+        }
+
+        @keyframes pulse-idle {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+        }
+
+        .idle-dot {
+            fill: #ffffff;
+            stroke: none;
+            transform-origin: center;
+            animation: pulse-idle 3s ease-in-out infinite;
+        }
+
+        .wave {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            opacity: 0;
+            transform-origin: center;
+        }
+
+        .ai-link-container:hover .ai-icon {
+            transform: scale(1.1);
+        }
+
+        .ai-link-container:hover .idle-dot {
+            animation: none;
+            transform: scale(1.8);
+        }
+
+        .ai-link-container.active .idle-dot {
+            animation: none;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .ai-link-container.active .wave {
+            animation: draw-wave 3s cubic-bezier(0.3, 0, 0.1, 1) infinite;
+        }
+
+        .ai-link-container.active .wave-2 {
+            animation-delay: 0.5s;
+        }
+
+        .ai-link-container.active .wave-3 {
+            animation-delay: 1.0s;
+        }
+
+        .ai-link-container.active .wave-4 {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes draw-wave {
+            0% {
+                stroke-dashoffset: 800;
+                opacity: 0;
+                transform: scale(0.3);
+                stroke-width: 0.5;
+            }
+
+            20% {
+                opacity: 1;
+                stroke-width: 1.5;
+            }
+
+            70% {
+                stroke-dashoffset: 0;
+                opacity: 1;
+                transform: scale(1);
+                stroke-width: 1;
+            }
+
+            100% {
+                stroke-dashoffset: -200;
+                opacity: 0;
+                transform: scale(1.1);
+                stroke-width: 0;
+            }
+        }
+
+        .ai-link-container p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+
+        /* --- Styles for Geometric Compass --- */
+        #compass-container-wrapper {
+            position: absolute;
+            top: 60%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: clamp(200px, 30vw, 350px);
+            height: clamp(200px, 30vw, 350px);
+            border-radius: 12px;
+            z-index: 1;
+        }
+
+        #compass-container {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            cursor: grab;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #compass {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .centerpiece,
+        .centerpiece::after {
+            background: #ffffff;
+        }
+
+        .axis {
+            background-color: #ffffff;
+        }
+
+        .arrow svg .shape-element {
+            fill: #ffffff;
+        }
+
+        .label {
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .centerpiece {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 2px;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+
+        .centerpiece::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(90deg);
+        }
+
+        .axis {
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            width: 70%;
+            height: var(--compass-stroke);
+            z-index: 1;
+            transform-origin: center;
+        }
+
+        .diagonal-1 {
+            transform: rotate(45deg);
+        }
+
+        .diagonal-2 {
+            transform: rotate(-45deg);
+        }
+
+        .arrow {
+            position: absolute;
+            width: var(--arrow-size);
+            height: var(--arrow-size);
+            transform-origin: center;
+            z-index: 2;
+            transform: translate(-50%, -50%);
+        }
+
+        .arrow-tl {
+            top: 25.3%;
+            left: 25.3%;
+        }
+
+        .arrow-tr {
+            top: 25.3%;
+            left: 74.7%;
+        }
+
+        .arrow-bl {
+            top: 74.7%;
+            left: 25.3%;
+        }
+
+        .arrow-br {
+            top: 74.7%;
+            left: 74.7%;
+        }
+
+        .arrow svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .label-wrapper {
+            position: absolute;
+            transform-origin: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .label {
+            font-size: clamp(10px, 1.2vw, 14px);
+            font-weight: 400;
+            white-space: nowrap;
+            z-index: 0;
+            display: inline-block;
+            letter-spacing: 0.05em;
+        }
+
+        .product-design-wrapper {
+            top: 15%;
+            left: 85%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .ui-design-wrapper {
+            top: 15%;
+            left: 15%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .service-design-wrapper {
+            top: 85%;
+            left: 15%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .ux-research-wrapper {
+            top: 85%;
+            left: 85%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .product-design-wrapper .label,
+        .ux-research-wrapper .label {
+            transform: translateX(clamp(20px, 4vw, 40px));
+        }
+
+        .ui-design-wrapper .label,
+        .service-design-wrapper .label {
+            transform: translateX(clamp(-40px, -4vw, -20px));
+        }
+
+        .custom-underline {
+            text-decoration: none;
+            border-bottom: 1px solid white;
+            padding-bottom: 3px;
+            /* Adds space between text and underline */
+        }
+
+        #portrait-image {
+            position: fixed;
+            width: 200px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            z-index: 999;
+        }
+
+        /* Glass Mouse Follower */
+    </style>
+    <link rel="stylesheet" href="../scss/cursor.css">
+</head>
+
+<body class="antialiased">
+
+    <canvas id="bg-canvas"></canvas>
+    <div id="mouse-follower"></div>
+    <div id="mouse-follower-dot"></div>
+    <img id="portrait-image"
+        src="https://github.com/fraance/portfolio-assets/raw/e08abb405f14fd7738c8f751311765970e9d0922/portrait%20session5267.jpg"
+        alt="Portrait of France Hémain">
+
+    <div class="content-wrapper flex flex-col h-full px-8 md:px-12 pt-4 md:pt-6 pb-8 md:pb-12">
+        <!-- Header Navigation -->
+        <header class="w-full">
+            <nav class="flex justify-between items-start">
+                <!-- Left side -->
+                <div id="ai-link" class="ai-link-container hidden md:flex">
+                    <svg class="ai-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path class="wave wave-1" d="M 50,5 C 20,20 20,80 50,95 S 80,80 80,50 C 80,20 60,10 50,5 Z"
+                            stroke="#ffffff" />
+                        <path class="wave wave-2" d="M 50,15 C 30,30 30,70 50,85 S 70,70 70,50 C 70,30 65,20 50,15 Z"
+                            stroke="#ffffff" />
+                        <path class="wave wave-3" d="M 50,25 C 40,35 40,65 50,75 S 60,65 60,50 C 60,35 55,30 50,25 Z"
+                            stroke="#ffffff" />
+                        <path class="wave wave-4" d="M 50,35 C 45,40 45,60 50,65 S 55,60 55,50 C 55,40 52,38 50,35 Z"
+                            stroke="#ffffff" />
+                        <circle class="idle-dot" cx="50" cy="50" r="6" />
+                    </svg>
+                    <p class="font-serif">Talk with my AI agent</p>
+                </div>
+
+                <!-- Right side / Mobile Menu -->
+                <div>
+                    <ul id="main-nav" class="hidden md:flex items-center space-x-6 text-sm font-medium pt-2 font-serif">
+                        <li><a href="#" class="group hover:text-white transition-colors duration-300"><span
+                                    class="group-hover:font-bold transition-all duration-300">Resume</span></a></li>
+                        <li><a href="#" id="about-me-link"
+                                class="group hover:text-white transition-colors duration-300"><span
+                                    class="group-hover:font-bold transition-all duration-300">About me</span></a></li>
+                        <li>
+                            <a href="#"
+                                class="group hover:text-white transition-colors duration-300 relative flex items-center">
+                                <span
+                                    class="absolute left-0 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0">→</span>
+                                <span
+                                    class="transition-all duration-300 ease-out group-hover:translate-x-4 group-hover:font-bold pl-1">E-mail</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <button class="md:hidden text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg></button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center text-center">
+            <div id="compass-container-wrapper">
+                <div id="compass-container" title="Hover or Click to Spin">
+                    <div id="compass">
+                        <div class="axis diagonal-1"></div>
+                        <div class="axis diagonal-2"></div>
+                        <div class="arrow arrow-tl"><svg viewBox="0 0 24 24">
+                                <path class="shape-element"
+                                    d="M12 2C16 8 16 8 22 12C16 16 16 16 12 22C8 16 8 16 2 12C8 8 8 8 12 2Z" />
+                            </svg></div>
+                        <div class="arrow arrow-tr"><svg viewBox="0 0 24 24">
+                                <path class="shape-element"
+                                    d="M12 1.5L13.5 8L20 5L15 9.5L22.5 12L15 14.5L20 19L13.5 16L12 22.5L10.5 16L4 19L9 14.5L1.5 12L9 9.5L4 5L10.5 8Z" />
+                            </svg></div>
+                        <div class="arrow arrow-bl"><svg viewBox="0 0 24 24">
+                                <g class="shape-element">
+                                    <path transform="rotate(0, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                    <path transform="rotate(51.4, 12, 12)"
+                                        d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                    <path transform="rotate(102.8, 12, 12)"
+                                        d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                    <path transform="rotate(154.2, 12, 12)"
+                                        d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                    <path transform="rotate(205.6, 12, 12)"
+                                        d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                    <path transform="rotate(257, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                    <path transform="rotate(308.4, 12, 12)"
+                                        d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                </g>
+                            </svg></div>
+                        <div class="arrow arrow-br"><svg viewBox="0 0 24 24">
+                                <g class="shape-element">
+                                    <path transform="rotate(0, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                    <path transform="rotate(51.4, 12, 12)"
+                                        d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                    <path transform="rotate(102.8, 12, 12)"
+                                        d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                    <path transform="rotate(154.2, 12, 12)"
+                                        d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                    <path transform="rotate(205.6, 12, 12)"
+                                        d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                    <path transform="rotate(257, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                    <path transform="rotate(308.4, 12, 12)"
+                                        d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                </g>
+                            </svg></div>
+                        <div class="label-wrapper product-design-wrapper"><span class="label">Product Design</span>
+                        </div>
+                        <div class="label-wrapper service-design-wrapper"><span class="label">Service Design</span>
+                        </div>
+                        <div class="label-wrapper ux-research-wrapper"><span class="label">UX Research</span></div>
+                        <div class="label-wrapper ui-design-wrapper"><span class="label">UI Design</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tagline -->
+            <div class="absolute top-1/2 right-4 md:right-8 transform -translate-y-1/2 text-right z-10">
+                <p id="tagline" class="font-serif text-6xl font-bold text-white mb-4 max-w-2xl w-full md:w-[36rem]">
+                    Product-savvy,<br>
+                    AI-native <br>
+                    junior designer<br>
+                    blending empathy,<br>
+                    systems thinking,<br>
+                    and <br>
+                    visual excellence.
+                </p>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="x-shader/x-vertex" id="vertexShader">
+        varying vec2 vUv;
+        void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentShader">
+        varying vec2 vUv;
+        uniform float u_time;
+        uniform vec2 u_mouse;
+        uniform vec2 u_resolution;
+        vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+        float snoise(vec2 v) { const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439); vec2 i  = floor(v + dot(v, C.yy)); vec2 x0 = v - i + dot(i, C.xx); vec2 i1; i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0); vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod(i, 289.0); vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0)); vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0); m = m*m; m = m*m; vec3 x = 2.0 * fract(p * C.www) - 1.0; vec3 h = abs(x) - 0.5; vec3 ox = floor(x + 0.5); vec3 a0 = x - ox; m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h); vec3 g; g.x  = a0.x  * x0.x  + h.x  * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw; return 130.0 * dot(m, g); }
+        void main() {
+            vec2 warpUv = vUv;
+            warpUv += snoise(vUv * 3.0 + u_time * 0.1) * 0.03; /* Slower animation */
+            vec3 color1 = vec3(1.0, 0.3, 0.1); /* Red/Orange */
+            vec3 color2 = vec3(0.5, 0.8, 1.0); /* Light Blue/Cyan */
+            vec3 color3 = vec3(0.1, 0.7, 0.6); /* Greenish/Teal */
+            vec3 finalColor = mix(color1, color2, smoothstep(-1.0, 1.0, snoise(warpUv * 1.5 + u_time * 0.05))); /* Slower animation */
+            finalColor = mix(finalColor, color3, smoothstep(-1.0, 1.0, snoise(warpUv * 2.0 - u_time * 0.07))); /* Slower animation */
+            float grain = (snoise(vUv * 1000.0) * 2.0 - 1.0) * 0.05;
+            finalColor += grain;
+            gl_FragColor = vec4(finalColor, 1.0);
+        }
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // --- Three.js Background Setup ---
+            let scene, camera, renderer, material, mesh;
+            const canvas = document.getElementById('bg-canvas');
+            function initThreeJS() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 1.5;
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                const geometry = new THREE.PlaneGeometry(4, 4, 1, 1); // Cover more area
+                material = new THREE.ShaderMaterial({
+                    uniforms: { u_time: { value: 0.0 }, u_mouse: { value: new THREE.Vector2(0, 0) }, u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) } },
+                    vertexShader: document.getElementById('vertexShader').textContent,
+                    fragmentShader: document.getElementById('fragmentShader').textContent,
+                });
+                mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+                window.addEventListener('resize', onWindowResize, false);
+            }
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                material.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+            }
+            const clock = new THREE.Clock();
+            function animateThreeJS() {
+                requestAnimationFrame(animateThreeJS);
+                material.uniforms.u_time.value = clock.getElapsedTime();
+                renderer.render(scene, camera);
+            }
+            initThreeJS();
+            animateThreeJS();
+
+            // --- Geometric Compass Script ---
+            const compassContainer = document.getElementById('compass-container');
+            const compass = document.getElementById('compass');
+            let isDragging = false, currentAngle = 0, lastAngle = 0, velocity = 20; // Initial spin velocity
+            const rotationSpeed = 0; // No constant spin
+            const dampingFactor = 0.97; // Friction
+            function animateCompass() {
+                if (!isDragging) {
+                    velocity *= dampingFactor;
+                    if (Math.abs(velocity) < 0.01) {
+                        velocity = 0;
+                    }
+                    currentAngle += velocity;
+                }
+                else {
+                    const velocityOfDrag = currentAngle - lastAngle;
+                    velocity = velocity * 0.8 + velocityOfDrag * 0.2;
+                    lastAngle = currentAngle;
+                }
+                currentAngle %= 360;
+                compass.style.transform = `rotate(${currentAngle}deg)`;
+                requestAnimationFrame(animateCompass);
+            }
+            const startDrag = () => { isDragging = true; velocity = 0; lastAngle = currentAngle; document.body.classList.add('is-dragging'); };
+            const endDrag = () => { isDragging = false; document.body.classList.remove('is-dragging'); };
+            const drag = (x, y) => {
+                if (!isDragging) return;
+                const rect = compassContainer.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                currentAngle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI) + 90;
+            };
+            compassContainer.addEventListener('mousedown', (e) => { startDrag(); e.preventDefault(); });
+            window.addEventListener('mousemove', (e) => { drag(e.clientX, e.clientY); if (isDragging) e.preventDefault(); });
+            window.addEventListener('mouseup', endDrag);
+            window.addEventListener('mouseleave', endDrag);
+            compassContainer.addEventListener('touchstart', (e) => { startDrag(); e.preventDefault(); }, { passive: false });
+            window.addEventListener('touchmove', (e) => { if (!isDragging) return; drag(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); }, { passive: false });
+            window.addEventListener('touchend', endDrag);
+            window.addEventListener('touchcancel', endDrag);
+            animateCompass();
+
+            // --- AI Icon Click Animation ---
+            const aiLink = document.getElementById('ai-link');
+            aiLink.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent link from navigating
+                aiLink.classList.toggle('active');
+            });
+
+            // --- Portrait Hover Effect ---
+            const aboutMeLink = document.getElementById('about-me-link');
+            const portraitImage = document.getElementById('portrait-image');
+
+            aboutMeLink.addEventListener('mouseenter', () => {
+                portraitImage.style.opacity = '1';
+            });
+
+            aboutMeLink.addEventListener('mouseleave', () => {
+                portraitImage.style.opacity = '0';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                portraitImage.style.transform = `translate(${e.clientX + 15}px, ${e.clientY + 15}px)`;
+            });
+
+            // --- Mouse Follower ---
+            const mouseFollower = document.getElementById('mouse-follower');
+            const mouseFollowerDot = document.getElementById('mouse-follower-dot');
+            const interactiveHoverElements = document.querySelectorAll('.ai-link-container, #main-nav a, #compass-container, .scroll-indicator');
+
+            let mouseX = 0, mouseY = 0;
+            let followerX = 0, followerY = 0;
+            let dotX = 0, dotY = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                followerX += (mouseX - followerX) * 0.2;
+                followerY += (mouseY - followerY) * 0.2;
+                dotX += (mouseX - dotX) * 0.8;
+                dotY += (mouseY - dotY) * 0.8;
+
+                mouseFollower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
+                mouseFollowerDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+
+                requestAnimationFrame(animateCursor);
+            }
+
+            document.body.addEventListener('mouseenter', () => {
+                mouseFollower.style.opacity = '1';
+                mouseFollowerDot.style.opacity = '1';
+            });
+
+            document.body.addEventListener('mouseleave', () => {
+                mouseFollower.style.opacity = '0';
+                mouseFollowerDot.style.opacity = '0';
+            });
+
+            interactiveHoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    mouseFollower.style.opacity = '0';
+                    mouseFollowerDot.style.opacity = '0';
+                });
+                el.addEventListener('mouseleave', () => {
+                    mouseFollower.style.opacity = '1';
+                    mouseFollowerDot.style.opacity = '1';
+                });
+            });
+
+            animateCursor();
+
+            // --- Tagline Animation ---
+            const tagline = document.getElementById('tagline');
+            setTimeout(() => {
+                tagline.classList.add('fade-in-up');
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>
