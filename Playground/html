@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Sound Icon</title>
+    <style>
+        /* Basic styles for centering and background */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #000;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            padding: 40px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* The SVG icon itself - Made larger */
+        .sound-icon {
+            width: 120px;
+            height: 120px;
+            stroke: #ffffff;
+            stroke-width: 1;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+            /* This ensures the animation doesn't get clipped by the SVG boundary */
+            overflow: visible;
+        }
+
+        /* Keyframe animation for the new "breathing" idle state - More pronounced */
+        @keyframes pulse-idle {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.7;
+            }
+        }
+
+        /* Style for the central idle dot - NOW ANIMATED */
+        .idle-dot {
+            fill: #ffffff;
+            stroke: none;
+            transform-origin: center;
+            /* Apply the new idle animation */
+            animation: pulse-idle 3s ease-in-out infinite;
+        }
+
+        /* The radiating wave lines */
+        .wave {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            opacity: 0;
+            transform-origin: center;
+        }
+
+        /* Hover state for the icon */
+        .container:hover .sound-icon {
+            transform: scale(1.1);
+        }
+
+        .container:hover .idle-dot {
+            /* Stop the idle animation and apply a more prominent scale effect on hover */
+            animation: none;
+            transform: scale(1.8);
+        }
+
+        /* Active state when the container has the 'active' class */
+        .container.active .idle-dot {
+            /* Hide the dot completely when active */
+            animation: none;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .container.active .wave {
+            /* This triggers the main sound animation */
+            animation: draw-wave 3s cubic-bezier(0.3, 0, 0.1, 1) infinite;
+        }
+
+        /* Stagger the animation for each wave */
+        .container.active .wave-2 {
+            animation-delay: 0.5s;
+        }
+
+        .container.active .wave-3 {
+            animation-delay: 1.0s;
+        }
+
+        .container.active .wave-4 {
+            animation-delay: 1.5s;
+        }
+
+        /* Keyframe animation for the waves */
+        @keyframes draw-wave {
+            0% {
+                stroke-dashoffset: 800;
+                opacity: 0;
+                transform: scale(0.3);
+                stroke-width: 0.5;
+            }
+
+            20% {
+                opacity: 1;
+                stroke-width: 1.5;
+            }
+
+            70% {
+                stroke-dashoffset: 0;
+                opacity: 1;
+                transform: scale(1);
+                stroke-width: 1;
+            }
+
+            100% {
+                stroke-dashoffset: -200;
+                opacity: 0;
+                transform: scale(1.1);
+                stroke-width: 0;
+            }
+        }
+
+        p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="iconContainer">
+        <svg class="sound-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- The organic, generative wave shapes, hidden by default -->
+            <path class="wave wave-1" d="M 50,5 C 20,20 20,80 50,95 S 80,80 80,50 C 80,20 60,10 50,5 Z" />
+            <path class="wave wave-2" d="M 50,15 C 30,30 30,70 50,85 S 70,70 70,50 C 70,30 65,20 50,15 Z" />
+            <path class="wave wave-3" d="M 50,25 C 40,35 40,65 50,75 S 60,65 60,50 C 60,35 55,30 50,25 Z" />
+            <path class="wave wave-4" d="M 50,35 C 45,40 45,60 50,65 S 55,60 55,50 C 55,40 52,38 50,35 Z" />
+
+            <!-- The central dot for the idle state - Made larger -->
+            <circle class="idle-dot" cx="50" cy="50" r="6" />
+        </svg>
+        <p id="statusText">Talk with my AI agent</p>
+    </div>
+
+    <script>
+        // JavaScript to toggle the 'active' class on click
+        const iconContainer = document.getElementById('iconContainer');
+
+        iconContainer.addEventListener('click', () => {
+            iconContainer.classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>

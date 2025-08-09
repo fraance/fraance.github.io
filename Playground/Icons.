@@ -1,0 +1,92 @@
+The Problem Icon
+This icon is a simple four-pointed star, often used to represent a focal point or a "spark."
+
+<svg viewBox="0 0 24 24">
+    <path fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke" d="M12 2C16 8 16 8 22 12C16 16 16 16 12 22C8 16 8 16 2 12C8 8 8 8 12 2Z" />
+</svg>
+
+The Goal Icon
+This one is a more complex starburst shape, suggesting direction, aspiration, or a target.
+
+<svg viewBox="0 0 24 24">
+    <path fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke" d="M12 1.5L13.5 8L20 5L15 9.5L22.5 12L15 14.5L20 19L13.5 16L12 22.5L10.5 16L4 19L9 14.5L1.5 12L9 9.5L4 5L10.5 8Z" />
+</svg>
+
+What I’d Improve Icon
+This is a pointed, daisy-like shape. The multiple points converging inward can symbolize refinement or focusing on several areas for improvement.
+
+<svg viewBox="0 0 24 24">
+    <g fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke">
+        <path transform="rotate(0, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+        <path transform="rotate(51.4, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+        <path transform="rotate(102.8, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+        <path transform="rotate(154.2, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+        <path transform="rotate(205.6, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+        <path transform="rotate(257, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+        <path transform="rotate(308.4, 12, 12)" d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+    </g>
+</svg>
+
+Why This Project Matters Icon
+This icon uses softer, rounded petal shapes. It can represent growth, wholeness, or the positive impact of the project.
+
+<svg viewBox="0 0 24 24">
+    <g fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke">
+        <path transform="rotate(0, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+        <path transform="rotate(51.4, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+        <path transform="rotate(102.8, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+        <path transform="rotate(154.2, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+        <path transform="rotate(205.6, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+        <path transform="rotate(257, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+        <path transform="rotate(308.4, 12, 12)" d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+    </g>
+</svg>
+
+The Crystal Icon
+This faceted, gem-like shape can represent value, clarity, or core insights. It's perfect for highlighting key findings or the essential value of a product.
+
+<svg viewBox="0 0 24 24">
+    <g fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke">
+        <path d="M12 3 L20 9 L20 15 L12 21 L4 15 L4 9 Z" />
+        <path d="M4 9 L12 15 L20 9" />
+        <path d="M12 3 L12 15" />
+    </g>
+</svg>
+
+The Compass Icon
+A stylized compass rose. This icon is ideal for representing direction, strategy, guidance, or exploration.
+
+<svg viewBox="0 0 24 24">
+    <g fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke">
+        <circle cx="12" cy="12" r="2"/>
+        <path d="M12 2 L12 6"/>
+        <path d="M12 22 L12 18"/>
+        <path d="M2 12 L6 12"/>
+        <path d="M22 12 L18 12"/>
+        <path d="M5.6 5.6 L8.5 8.5"/>
+        <path d="M18.4 18.4 L15.5 15.5"/>
+        <path d="M5.6 18.4 L8.5 15.5"/>
+        <path d="M18.4 5.6 L15.5 8.5"/>
+    </g>
+</svg>
+
+The Crescent & Star Icon
+This celestial symbol evokes aspiration, discovery, and moments of brilliance or insight. It's great for sections about future goals or "aha!" moments.
+
+<svg viewBox="0 0 24 24">
+    <g fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke">
+        <path d="M14.5 2.5 A 10 10 0 1 0 21.5 14.5 A 8 8 0 1 1 14.5 2.5 Z"/>
+        <path d="M18 5 L18.5 6.5 L20 7 L18.5 7.5 L18 9 L17.5 7.5 L16 7 L17.5 6.5 Z"/>
+    </g>
+</svg>
+
+The Ripple Icon
+These expanding arcs suggest impact, influence, or a chain reaction. This icon works well for describing project outcomes or the effect of a particular action.
+
+<svg viewBox="0 0 24 24">
+    <g fill="none" stroke="#F97316" stroke-width="1" vector-effect="non-scaling-stroke">
+        <path d="M2 12 C 2 17.52 6.48 22 12 22 S 22 17.52 22 12"/>
+        <path d="M5 12 C 5 15.87 8.13 19 12 19 S 19 15.87 19 12"/>
+        <path d="M8 12 C 8 14.21 9.79 16 12 16 S 16 14.21 16 12"/>
+    </g>
+</svg>

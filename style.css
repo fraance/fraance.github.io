@@ -702,6 +702,7 @@ mark {
   font-size: 40px;
   font-weight: 200;
   line-height: 10px;
+  height: 40px;
   white-space: nowrap;
   width: 200px;
   transform: translateX(-10px);

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Animated Background</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Basic styles to make the canvas fill the screen */
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            /* Prevents horizontal scrollbars */
+            background-color: #111111;
+            /* Fallback color */
+            color: #E2E2E2;
+            font-family: 'Inter', sans-serif;
+            cursor: none;
+            /* Hide default cursor for a more immersive feel */
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            /* Places the canvas behind other content */
+        }
+
+        /* Project Section Styling */
+        .project-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            /* Make section take full viewport height */
+            padding: 8rem 5%;
+            /* Give it plenty of vertical and horizontal space */
+            position: relative;
+            /* Create a stacking context */
+            z-index: 2;
+            /* Ensure text is above the hover image */
+        }
+
+        .project-list {
+            width: 100%;
+            max-width: 1200px;
+            /* Constrain the width for readability */
+        }
+
+        .project-link {
+            display: flex;
+            align-items: baseline;
+            /* Generous vertical padding */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            color: #E2E2E2;
+            transition: color 0.4s ease;
+            cursor: none;
+            /* Use custom cursor/effect */
+            position: relative;
+        }
+
+        .project-link:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project-link:hover {
+            color: #ffffff;
+        }
+
+        /* Move project content to the right on hover */
+        .project-link:hover .project-content {
+            transform: translateX(20px);
+        }
+
+        .project-number {
+            font-size: 0.875rem;
+            /* 14px */
+            font-family: 'Inter', sans-serif;
+            margin-right: 2rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .project-title {
+            font-size: clamp(2rem, 7vw, 4rem);
+            /* Responsive font size */
+            line-height: 1.1;
+            padding-block: 4rem;
+            /* Add smooth transition for the movement */
+        }
+
+        .project-content {
+            transition: transform 0.4s ease;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        .project-description-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            /* Adjust as you see fit */
+        }
+
+        .empty-div {
+            flex-basis: 50%;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            text-align: right;
+            flex-basis: 50%;
+
+            align-content: end;
+
+        }
+
+        .project-link:hover .project-description {
+            max-height: 200px;
+            /* Adjust as needed, should be larger than the content */
+            opacity: 1;
+        }
+
+        .project-description p {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .project-link:hover .project-description p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-link:hover .project-description p:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .project-link:hover .project-description p:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+
+        .project-link:hover .project-description p:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- The canvas element where all Three.js rendering happens -->
+    <canvas id="bg-canvas"></canvas>
+
+    <main>
+        <section class="project-section">
+            <div id="project-list" class="project-list">
+                <a href="#" class="project-link" data-src="https://placehold.co/800x500/1a2b3c/ffffff?text=Project+One">
+                    <span class="project-number">(01)</span>
+                    <div class="project-content">
+                        <h2 class="project-title font-serif">Focus on Code</h2>
+                        <div class="project-description-wrapper">
+                            <div class="project-description">
+                                <p>Outcome: A new feature was launched.</p>
+                                <p>Role: Lead Developer</p>
+                                <p>Focus Area: Frontend Development</p>
+                            </div>
+                            <div class="empty-div"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="project-link" data-src="https://placehold.co/800x500/c2185b/ffffff?text=Project+Two">
+                    <span class="project-number">(02)</span>
+                    <div class="project-content">
+                        <h2 class="project-title font-serif">Level of Detail</h2>
+                        <div class="project-description-wrapper">
+                            <div class="project-description">
+                                <p>Outcome: Improved user engagement by 20%.</p>
+                                <p>Role: UI/UX Designer</p>
+                                <p>Focus Area: User Research</p>
+                            </div>
+                            <div class="empty-div"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="project-link"
+                    data-src="https://placehold.co/800x500/388e3c/ffffff?text=Project+Three">
+                    <span class="project-number">(03)</span>
+                    <div class="project-content">
+                        <h2 class="project-title font-serif">Collaborative Design</h2>
+                        <div class="project-description-wrapper">
+                            <div class="project-description">
+                                <p>Outcome: Streamlined design workflow.</p>
+                                <p>Role: Design Lead</p>
+                                <p>Focus Area: Design Systems</p>
+                            </div>
+                            <div class="empty-div"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="project-link"
+                    data-src="https://placehold.co/800x500/f57c00/ffffff?text=Project+Four">
+                    <span class="project-number">(04)</span>
+                    <div class="project-content">
+                        <h2 class="project-title font-serif">UX Research</h2>
+                        <div class="project-description-wrapper">
+                            <div class="project-description">
+                                <p>Outcome: Validated product-market fit.</p>
+                                <p>Role: Researcher</p>
+                                <p>Focus Area: Market Analysis</p>
+                            </div>
+                            <div class="empty-div"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Import the Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GLSL Vertex Shader for the background -->
+    <script type="x-shader/x-vertex" id="bgVertexShader">
+        varying vec2 vUv;
+        void main() { 
+            vUv = uv; 
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); 
+        }
+    </script>
+
+    <!-- GLSL Fragment Shader for the background -->
+    <script type="x-shader/x-fragment" id="bgFragmentShader">
+        varying vec2 vUv;
+        uniform float u_time;
+        vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+        float snoise(vec2 v) { const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439); vec2 i  = floor(v + dot(v, C.yy)); vec2 x0 = v - i + dot(i, C.xx); vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0); vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod(i, 289.0); vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0)); vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0); m = m*m; m = m*m; vec3 x = 2.0 * fract(p * C.www) - 1.0; vec3 h = abs(x) - 0.5; vec3 ox = floor(x + 0.5); vec3 a0 = x - ox; m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h); vec3 g; g.x  = a0.x  * x0.x  + h.x  * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw; return 130.0 * dot(m, g); }
+        void main() {
+            vec2 warpUv = vUv;
+            warpUv += snoise(vUv * 3.0 + u_time * 0.1) * 0.03;
+            vec3 color1 = vec3(1.0, 0.3, 0.1);
+            vec3 color2 = vec3(0.5, 0.8, 1.0);
+            vec3 color3 = vec3(0.1, 0.7, 0.6);
+            vec3 finalColor = mix(color1, color2, smoothstep(-1.0, 1.0, snoise(warpUv * 1.5 + u_time * 0.05)));
+            finalColor = mix(finalColor, color3, smoothstep(-1.0, 1.0, snoise(warpUv * 2.0 - u_time * 0.07)));
+            float grain = (snoise(vUv * 1000.0) * 2.0 - 1.0) * 0.05;
+            finalColor += grain;
+            gl_FragColor = vec4(finalColor, 1.0);
+        }
+    </script>
+
+    <!-- Shaders for the new fluid hover image effect -->
+    <script type="x-shader/x-vertex" id="hoverVertexShader">
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="hoverFragmentShader">
+        varying vec2 vUv;
+        uniform sampler2D u_texture;
+        uniform sampler2D u_disp;
+        uniform float u_intensity;
+        uniform float u_opacity;
+
+        void main() {
+            vec4 disp = texture2D(u_disp, vUv);
+            vec2 distorted_uv = vec2(vUv.x + u_intensity * (disp.r*2.0 - 1.0), vUv.y + u_intensity * (disp.g*2.0 - 1.0));
+
+            vec4 color = texture2D(u_texture, distorted_uv);
+            
+            gl_FragColor = color;
+            gl_FragColor.a *= u_opacity;
+        }
+    </script>
+
+    <!-- Main script to set up and run the Three.js scene and interactions -->
+    <script>
+        // --- Three.js Scene Setup ---
+        let scene, camera, renderer, clock;
+        const canvas = document.getElementById('bg-canvas');
+
+        function initThreeJS() {
+            scene = new THREE.Scene();
+            clock = new THREE.Clock();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 1;
+
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            initBackground();
+            initHoverEffect();
+
+            window.addEventListener('resize', onWindowResize, false);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // --- Background Effect ---
+        let bgMaterial;
+        function initBackground() {
+            const geometry = new THREE.PlaneGeometry(6, 6, 1, 1);
+            bgMaterial = new THREE.ShaderMaterial({
+                uniforms: { u_time: { value: 0.0 } },
+                vertexShader: document.getElementById('bgVertexShader').textContent,
+                fragmentShader: document.getElementById('bgFragmentShader').textContent,
+                depthWrite: false,
+            });
+            const mesh = new THREE.Mesh(geometry, bgMaterial);
+            mesh.position.z = -1; // Push it back
+            scene.add(mesh);
+        }
+
+        // --- Fluid Hover Effect ---
+        let hoverObject;
+        function initHoverEffect() {
+            const textureLoader = new THREE.TextureLoader();
+            // *** FIX: Set crossOrigin to 'anonymous' to prevent CORS issues with WebGL ***
+            textureLoader.setCrossOrigin('anonymous');
+
+            const projectLinks = document.querySelectorAll('.project-link');
+            const textures = Array.from(projectLinks).map(link => textureLoader.load(link.dataset.src));
+
+            const dispTexture = textureLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/displacement.75344510.jpg');
+            dispTexture.wrapS = dispTexture.wrapT = THREE.RepeatWrapping;
+
+            hoverObject = {
+                mesh: new THREE.Mesh(
+                    new THREE.PlaneGeometry(1, 1, 32, 32),
+                    new THREE.ShaderMaterial({
+                        uniforms: {
+                            u_texture: { value: textures[0] },
+                            u_disp: { value: dispTexture },
+                            u_intensity: { value: 0.0 },
+                            u_opacity: { value: 0.0 }
+                        },
+                        vertexShader: document.getElementById('hoverVertexShader').textContent,
+                        fragmentShader: document.getElementById('hoverFragmentShader').textContent,
+                        transparent: true,
+                        depthWrite: false,
+                    })
+                ),
+                textures: textures,
+                targetIntensity: 0.0,
+                currentIntensity: 0.0,
+                targetOpacity: 0.0,
+                currentOpacity: 0.0,
+                mouse: new THREE.Vector2(),
+                targetPos: new THREE.Vector2(),
+                currentPos: new THREE.Vector2(),
+                velocity: new THREE.Vector2(),
+            };
+
+            // Scale the plane to a good aspect ratio
+            const aspect = 1.6; // approx 350/220
+            const planeSize = 0.4;
+            hoverObject.mesh.scale.set(planeSize * aspect, planeSize, 1);
+            scene.add(hoverObject.mesh);
+
+            projectLinks.forEach((link, i) => {
+                link.addEventListener('mouseenter', () => {
+                    // Update the single texture uniform
+                    hoverObject.mesh.material.uniforms.u_texture.value = hoverObject.textures[i];
+                });
+            });
+
+            const projectList = document.getElementById('project-list');
+            projectList.addEventListener('mouseenter', () => {
+                hoverObject.targetOpacity = 1.0;
+            });
+            projectList.addEventListener('mouseleave', () => {
+                hoverObject.targetOpacity = 0.0;
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                hoverObject.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                hoverObject.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            });
+        }
+
+        // --- Animation Loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            // Animate background
+            bgMaterial.uniforms.u_time.value = elapsedTime;
+
+            // Animate hover effect
+            const ho = hoverObject;
+
+            // Update target position from mouse
+            const vec = new THREE.Vector3(ho.mouse.x, ho.mouse.y, 0.5);
+            vec.unproject(camera);
+            vec.sub(camera.position).normalize();
+            const distance = -camera.position.z / vec.z;
+            ho.targetPos.copy(camera.position).add(vec.multiplyScalar(distance));
+
+            // Lerp current position towards target for smooth following
+            ho.currentPos.lerp(ho.targetPos, 0.07);
+            ho.mesh.position.copy(ho.currentPos);
+
+            // Calculate mouse velocity to control distortion
+            ho.velocity.set(ho.targetPos.x - ho.currentPos.x, ho.targetPos.y - ho.currentPos.y);
+            ho.targetIntensity = Math.min(ho.velocity.length() * 2.5, 0.5);
+            ho.currentIntensity += (ho.targetIntensity - ho.currentIntensity) * 0.05;
+
+            // Lerp opacity for smooth fade in/out
+            ho.currentOpacity += (ho.targetOpacity - ho.currentOpacity) * 0.08;
+
+            // Update shader uniforms
+            const mat = ho.mesh.material.uniforms;
+            mat.u_intensity.value = ho.currentIntensity;
+            mat.u_opacity.value = ho.currentOpacity;
+
+            renderer.render(scene, camera);
+        }
+
+        // Start everything
+        initThreeJS();
+        animate();
+
+    </script>
+</body>
+
+</html>

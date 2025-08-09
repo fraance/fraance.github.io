@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Progress Header</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Animation Keyframes --- */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes dash-flow {
+            to {
+                stroke-dashoffset: -16;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(0.95);
+            }
+        }
+
+        /* --- Animation Utility Classes --- */
+        .animate-rotate {
+            animation: rotate 1s linear infinite;
+        }
+
+        .animate-rotate-fast {
+            animation: rotate 6s linear infinite;
+        }
+
+        .animate-rotate-slow {
+            animation: rotate 90s linear infinite;
+        }
+
+        .animate-rotate-reverse {
+            animation: rotate-reverse 6s linear infinite;
+        }
+
+        .animate-dash {
+            stroke-dasharray: 1 4;
+            stroke-linecap: square;
+            animation: dash-flow 1s linear infinite;
+        }
+
+        /* --- Header Styles --- */
+        .progress-header {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+
+
+            /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px);
+            /* For Safari */
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+
+        }
+
+        /* Styles for each step in the progress bar */
+        .progress-step {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 9999px;
+            transition: background-color 0.9s ease;
+            gap: 0.75rem;
+            /* Increased gap for larger icons */
+            color: #E2E2E2;
+            font-size: 16px;
+        }
+
+        /* Container for the SVG icon */
+        .icon-container {
+            position: relative;
+            width: 60px;
+            /* Increased from 32px */
+            height: 0px;
+            /* Increased from 32px */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .icon-container .shape {
+            stroke: #ffffff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .icon-container .number {
+            position: absolute;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            /* Increased from 0.8rem */
+            color: #ffffff;
+            transition: color 0.4s ease-in-out;
+        }
+
+        #breathing-circle {
+            animation: pulse 3s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        /* Sub-progress bar styles */
+        .step-details {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sub-progress {
+            display: none;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .progress-step.active .sub-progress {
+            display: flex;
+        }
+
+        .sub-progress-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .sub-progress-bar {
+            width: 50px;
+            height: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .sub-progress-fill {
+            height: 100%;
+            background-color: #fdfdfd;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        /* Section styles for demonstration */
+        .content-section {
+            min-height: 100vh;
+            padding: 8rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: black;
+        }
+
+        #section-1 {
+            background-color: rgb(255, 106, 65);
+        }
+
+        #section-3 {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-section {
+            min-height: 50vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Header / Progress Bar -->
+    <header id="progress-header" class="progress-header">
+        <nav class="flex items-center space-x-4">
+            <!-- Step 1: Graphic Spinner -->
+            <a class="progress-step" data-target="section-1">
+                <div class="icon-container">
+                    <svg viewBox="0 0 100 100" class="animate-rotate-fast">
+                        <circle class="shape" cx="50" cy="50" r="45" stroke-width="1.5" />
+                        <circle class="shape" cx="50" cy="50" r="40" stroke-width="2" stroke-dasharray="4 8" />
+                        <circle class="shape" cx="50" cy="50" r="35" stroke-width="1.5" stroke-dasharray="1 4" />
+                    </svg>
+                    <span class="number">01</span>
+                </div>
+                <span class="hidden sm:inline">About</span>
+            </a>
+            <!-- Step 2: Radiating Lines -->
+            <a class="progress-step" data-target="section-2">
+                <div class="icon-container">
+                    <svg viewBox="0 0 100 100" class="animate-rotate-slow">
+                        <g id="radiating-lines-container" transform="translate(50,50)" stroke="#6b9b8f" stroke-width="2"
+                            fill="none">
+                            <!-- Lines generated by JS -->
+                        </g>
+                    </svg>
+                    <span class="number">02</span>
+                </div>
+                <div class="step-details">
+                    <span class="step-title hidden sm:inline">Approach</span>
+                    <div class="sub-progress">
+                        <span id="sub-progress-text" class="sub-progress-text">0 / 3</span>
+                        <div class="sub-progress-bar">
+                            <div id="sub-progress-fill" class="sub-progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- Step 3: Flowing Dots -->
+            <a class="progress-step" data-target="section-3">
+                <div class="icon-container">
+                    <svg viewBox="0 0 100 100" class="animate-rotate-slow">
+                        <circle class="shape animate-dash" cx="50" cy="50" r="45" stroke-width="4" />
+                        <circle class="shape animate-dash" cx="50" cy="50" r="35" stroke-width="2"
+                            style="animation-duration: 1.5s; animation-direction: reverse;" />
+                    </svg>
+                    <span class="number">03</span>
+                </div>
+                <span class="hidden sm:inline">Personal</span>
+            </a>
+            <!-- Step 4: Breathing Circle -->
+            <a class="progress-step" data-target="section-4">
+                <div class="icon-container">
+                    <svg viewBox="0 0 100 100">
+                        <g class="animate-rotate-slow" transform="translate(50,50)">
+                            <circle id="breathing-circle" cx="0" cy="0" r="40" class="shape" stroke-width="2.5" />
+                        </g>
+                        <g class="animate-rotate-reverse" transform="translate(50,50)">
+                            <circle class="shape" cx="0" cy="0" r="45" stroke-width="1.5" stroke-dasharray="2 6" />
+                        </g>
+                    </svg>
+                    <span class="number">04</span>
+                </div>
+                <span class="hidden sm:inline">TL;DR</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main Content Sections -->
+    <main>
+        <section id="section-1" class="content-section">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4 text-white">Section 1: About</h1>
+                <p class="text-lg text-gray-300">Scroll down to see the progress header in action.</p>
+            </div>
+        </section>
+
+        <section id="section-2" class="content-section">
+            <div class="sub-section">
+                <h2 class="text-3xl font-bold text-white">Approach: Part 1</h2>
+            </div>
+            <div class="sub-section">
+                <h2 class="text-3xl font-bold text-white">Approach: Part 2</h2>
+            </div>
+            <div class="sub-section">
+                <h2 class="text-3xl font-bold text-white">Approach: Part 3</h2>
+            </div>
+        </section>
+
+        <section id="section-3" class="content-section">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4 text-white">Section 3: Personal</h1>
+                <p class="text-lg text-gray-300">This section demonstrates the third step.</p>
+            </div>
+        </section>
+
+        <section id="section-4" class="content-section">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4 text-white">Section 4: TL;DR</h1>
+                <p class="text-lg text-gray-300">The final step in the process.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        /**
+         * This function generates the repetitive or complex SVG elements with JavaScript.
+         */
+        function generateSVGElements() {
+            // --- Generate Radiating Lines (Step 2) ---
+            const linesContainer = document.getElementById('radiating-lines-container');
+            if (linesContainer) {
+                let linesHTML = '';
+                const lineCount = 60;
+                const innerRadius = 30;
+                const outerRadius = 48;
+                for (let i = 0; i < lineCount; i++) {
+                    const angle = (360 / lineCount) * i;
+                    linesHTML += `<line x1="${innerRadius}" y1="0" x2="${outerRadius}" y2="0" transform="rotate(${angle})"/>`;
+                }
+                linesContainer.innerHTML = linesHTML;
+            }
+
+            // --- Generate Polygon (Step 4) ---
+            // Replaced with a CSS-animated circle.
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Generate the dynamic SVGs first
+            generateSVGElements();
+
+            // Original scroll-handling logic
+            const sections = document.querySelectorAll('.content-section');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const subProgressText = document.getElementById('sub-progress-text');
+            const subProgressFill = document.getElementById('sub-progress-fill');
+
+            const updateActiveStep = () => {
+                let currentSectionId = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - window.innerHeight / 2) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                progressSteps.forEach(step => {
+                    step.classList.remove('active');
+                    if (step.dataset.target === currentSectionId) {
+                        step.classList.add('active');
+                    }
+                });
+
+                const section2 = document.getElementById('section-2');
+                if (currentSectionId === 'section-2') {
+                    const subSections = section2.querySelectorAll('.sub-section');
+                    const totalSubSections = subSections.length;
+                    let currentSubSectionIndex = 0;
+
+                    const scrollInSection = pageYOffset - section2.offsetTop;
+                    const sectionScrollHeight = section2.scrollHeight - window.innerHeight;
+
+                    if (sectionScrollHeight > 0) {
+                        const progress = Math.min(1, scrollInSection / sectionScrollHeight);
+                        currentSubSectionIndex = Math.floor(progress * totalSubSections);
+                        currentSubSectionIndex = Math.min(currentSubSectionIndex, totalSubSections - 1);
+                    }
+
+                    const completedSubSections = currentSubSectionIndex + 1;
+                    subProgressText.textContent = `${completedSubSections} / ${totalSubSections}`;
+                    subProgressFill.style.width = `${(completedSubSections / totalSubSections) * 100}%`;
+
+                } else {
+                    subProgressText.textContent = `0 / 3`;
+                    subProgressFill.style.width = `0%`;
+                }
+            };
+
+            const handleStepClick = (e) => {
+                e.preventDefault();
+                const targetId = e.currentTarget.dataset.target;
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+
+            window.addEventListener('scroll', updateActiveStep);
+            progressSteps.forEach(step => step.addEventListener('click', handleStepClick));
+
+            updateActiveStep();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 01 - Marathon Product Set</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --compass-stroke: 1px;
+            --arrow-size: clamp(12px, 1.5vw, 20px);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111;
+            color: #E2E2E2;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        .insight-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #F97316;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.1), 0 3px 5px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hover effects for arrow icons */
+        .arrow {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .arrow:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hover effects for stone-50 cards */
+        .bg-stone-50 {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bg-stone-50:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Simple Checkmark Animation */
+        .animated-check {
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            animation: draw-check 0.5s ease-in-out 0.3s forwards;
+        }
+
+        @keyframes draw-check {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Scroll Animation Styles */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#3B82F6;" />
+                <stop offset="50%" style="stop-color:#60A5FA;" />
+                <stop offset="100%" style="stop-color:#14B8A6;" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="max-w-5xl mx-auto p-4 sm:p-8 md:p-12 relative z-10">
+
+        <header class="text-center pt-32 mb-20 scroll-animate">
+            <div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-2 font-serif">
+                    Marathon Product Set
+                </h1>
+                <p class="text-xl sm:text-2xl font-semibold text-gray-300">Curated Outfit Experience</p>
+                <div class="mt-8 flex items-center justify-center space-x-4">
+                    <div class="glass-panel px-4 py-2 rounded-full text-sm flex items-center text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="inline-block w-4 h-4 mr-2">
+                            <path d="M18 20a6 6 0 0 0-12 0" />
+                            <circle cx="12" cy="10" r="4" />
+                            <circle cx="12" cy="12" r="10" />
+                        </svg>
+                        Role: UX Research Intern
+                    </div>
+                    <div class="glass-panel px-4 py-2 rounded-full text-sm flex items-center text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="inline-block w-4 h-4 mr-2">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg>
+                        Timeline: June–August 2025
+                    </div>
+                </div>
+            </div>
+            <div class="mt-40 max-w-4xl mx-auto glass-panel p-2 rounded-2xl scroll-animate">
+                <img src="https://raw.githubusercontent.com/fraance/fraance.github.io/64ac3f753f28b08c9684168e4dbb8c9218760519/marathonfistpicture.png"
+                    onerror="this.onerror=null;this.src='https://placehold.co/1200x700/111827/FFFFFF?text=Image+Not+Found';"
+                    alt="A concept image of a curated marathon outfit on a mannequin or in a flat lay."
+                    class="rounded-xl w-full">
+            </div>
+        </header>
+
+        <section class="mb-20 scroll-animate">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 text-gray-800">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold mb-10 font-serif">Initial Research Focus</h2>
+                    <div class="grid md:grid-cols-2 gap-8 text-left">
+                        <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="100">
+                            <div class="flex items-center mb-4">
+                                <div class="arrow arrow-tl">
+                                    <svg viewBox="0 0 24 24" class="w-6 h-6">
+                                        <path class="shape-element" fill="url(#icon-gradient)"
+                                            d="M12 2C16 8 16 8 22 12C16 16 16 16 12 22C8 16 8 16 2 12C8 8 8 8 12 2Z" />
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">The Problem</h2>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed">
+                                Marathon runners often face decision fatigue and time constraints when shopping for
+                                gear. We
+                                needed to test if curated marathon outfits could simplify the experience, increase
+                                trust, and drive
+                                higher apparel sales.
+                            </p>
+                        </div>
+                        <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="200">
+                            <div class="flex items-center mb-4">
+                                <div class="arrow arrow-tr">
+                                    <svg viewBox="0 0 24 24" class="w-6 h-6">
+                                        <path class="shape-element" fill="url(#icon-gradient)"
+                                            d="M12 1.5L13.5 8L20 5L15 9.5L22.5 12L15 14.5L20 19L13.5 16L12 22.5L10.5 16L4 19L9 14.5L1.5 12L9 9.5L4 5L10.5 8Z" />
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">The Goal</h2>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed">
+                                How might we offer product sets that are easily accessible and match user
+                                needs—specifically for
+                                marathoners?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 text-center scroll-animate">
+                    <h2 class="text-3xl font-bold text-center mb-10 font-serif">My Contributions</h2>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-slate-900">
+                        <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="100">
+                            <p class="font-semibold text-lg mb-2">Conducted</p>
+                            <p class="text-slate-600">1:1 User Interviews</p>
+                        </div>
+                        <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="200">
+                            <p class="font-semibold text-lg mb-2">Led Synthesis</p>
+                            <p class="text-slate-600">of Qualitative Feedback</p>
+                        </div>
+                        <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="300">
+                            <p class="font-semibold text-lg mb-2">Co-Developed</p>
+                            <p class="text-slate-600">Interview Guides</p>
+                        </div>
+                        <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="400">
+                            <p class="font-semibold text-lg mb-2">Reported Insights</p>
+                            <p class="text-slate-600">to Guide Iteration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 scroll-animate">
+                    <h2 class="text-3xl font-bold text-center mb-12 font-serif">What We Learned</h2>
+                    <div class="max-w-3xl mx-auto mb-12 bg-stone-50 p-4 rounded-2xl scroll-animate" data-delay="100">
+                        <img src="https://raw.githubusercontent.com/fraance/fraance.github.io/64ac3f753f28b08c9684168e4dbb8c9218760519/marathonSet/marathonset.png"
+                            onerror="this.onerror=null;this.src='https://placehold.co/1000x600/F5F5F4/334155?text=Image+Not+Found';"
+                            alt="A mockup or visual representation of the user insights, reinforcing the 'Visuals Drive Confidence' point."
+                            class="rounded-xl w-full">
+                    </div>
+                    <div class="space-y-4 max-w-3xl mx-auto text-left">
+                        <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-blue-400 scroll-animate"
+                            data-delay="200">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="url(#icon-gradient)" stroke="url(#icon-gradient)" stroke-width="1"
+                                stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            </svg>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Comfort is King</h3>
+                                <p class="text-slate-600">Runners valued comfort over everything—avoiding irritation,
+                                    blisters,
+                                    and sizing issues.</p>
+                            </div>
+                        </div>
+                        <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-blue-400 scroll-animate"
+                            data-delay="300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
+                                <path d="M14.5 17.5 3 6V3h3l11.5 14.5" />
+                                <path d="M13 19H3" />
+                                <path d="m18 14 3-3-3-3" />
+                                <path d="m21 11-9 9" />
+                                <path d="M9.5 6.5 21 18V3H9.5Z" />
+                            </svg>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Customization is Crucial</h3>
+                                <p class="text-slate-600">Users wanted options to swap items (e.g., shorts to tights)
+                                    and
+                                    customize colors.</p>
+                            </div>
+                        </div>
+                        <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-blue-400 scroll-animate"
+                            data-delay="400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Visuals Drive Confidence</h3>
+                                <p class="text-slate-600">Virtual mannequin suggestions were frequent – users wanted to
+                                    “see”
+                                    outfits visually before buying.</p>
+                            </div>
+                        </div>
+                        <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-blue-400 scroll-animate"
+                            data-delay="500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
+                                <path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l10-10a1 1 0 0 0 0-1.41L12 2Z" />
+                                <path d="M7 7h.01" />
+                            </svg>
+                            <div>
+                                <h3 class="font-bold text-slate-900">Trust Outweighs Price</h3>
+                                <p class="text-slate-600">Trust in the brand and gear functionality often outweighed
+                                    cost
+                                    concerns for serious runners.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 bg-gradient-to-br from-blue-600 to-blue-800 p-10 rounded-2xl text-center scroll-animate">
+            <h2 class="text-3xl font-bold text-white mb-10 font-serif">Project Outcome</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+                <div class="text-white text-center">
+                    <p class="text-7xl md:text-8xl font-bold">7/7</p>
+                    <p class="text-xl font-semibold mt-1">Participants Validated<br>the Concept</p>
+                </div>
+                <div class="text-white text-left max-w-lg space-y-6">
+                    <div>
+                        <p class="flex items-start mb-3">
+                            <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" class="animated-check"></polyline>
+                            </svg>
+                            Generated actionable UX insights that influenced the product direction for the **Q4
+                            campaign**.
+                        </p>
+                        <p class="flex items-start">
+                            <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" class="animated-check"></polyline>
+                            </svg>
+                            Findings helped shape future iterations, including plans for interactive outfit
+                            customization tools.
+                        </p>
+                    </div>
+                    <hr class="border-blue-400 opacity-50">
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-6 h-6">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                            <h3 class="text-lg font-bold ml-3">Health Metrics to Quantify Impact</h3>
+                        </div>
+                        <div class="pl-9 text-sm">
+                            <p><strong>Click-Through Rate (CTR):</strong> [Data Forthcoming]</p>
+                            <p class="text-xs text-blue-200 italic mt-1">Note: The campaign is scheduled for a future
+                                launch. Metrics will be updated post-launch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 scroll-animate">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 text-gray-800">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="100">
+                        <div class="flex items-center mb-4">
+                            <div class="arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">The Team</h2>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed">
+                            I collaborated with 1 Product Manager, 2 Engineers, and 1 UX Researcher.
+                        </p>
+                    </div>
+                    <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="200">
+                        <div class="flex items-center mb-4">
+                            <div class="arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6">
+                                    <path
+                                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">Tools Used</h2>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed">
+                            Figma, Miro, Maze, Dovetail, and Google Workspace were essential for collaboration and
+                            execution.
+                        </p>
+                    </div>
+
+                    <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="300">
+                        <div class="flex items-center mb-4">
+                            <div class="arrow arrow-bl">
+                                <svg viewBox="0 0 24 24" class="w-6 h-6">
+                                    <g class="shape-element" fill="url(#icon-gradient)">
+                                        <path transform="rotate(0, 12, 12)"
+                                            d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                        <path transform="rotate(51.4, 12, 12)"
+                                            d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                        <path transform="rotate(102.8, 12, 12)"
+                                            d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                        <path transform="rotate(154.2, 12, 12)"
+                                            d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                        <path transform="rotate(205.6, 12, 12)"
+                                            d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                        <path transform="rotate(257, 12, 12)"
+                                            d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                        <path transform="rotate(308.4, 12, 12)"
+                                            d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">What I’d Improve</h2>
+                        </div>
+                        <ul class="list-disc list-inside text-slate-600 space-y-2">
+                            <li>Dig deeper into purchase behavior post-race.</li>
+                            <li>Explore A/B testing for CTA placement and visual hierarchy.</li>
+                            <li>Include more visual craft in reporting deliverables.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="400">
+                        <div class="flex items-center mb-4">
+                            <div class="arrow arrow-br">
+                                <svg viewBox="0 0 24 24" class="w-6 h-6">
+                                    <g class="shape-element" fill="url(#icon-gradient)">
+                                        <path transform="rotate(0, 12, 12)"
+                                            d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                        <path transform="rotate(51.4, 12, 12)"
+                                            d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                        <path transform="rotate(102.8, 12, 12)"
+                                            d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                        <path transform="rotate(154.2, 12, 12)"
+                                            d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                        <path transform="rotate(205.6, 12, 12)"
+                                            d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                        <path transform="rotate(257, 12, 12)"
+                                            d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                        <path transform="rotate(308.4, 12, 12)"
+                                            d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">Why This Project Matters</h2>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed">
+                            This was a fast-paced, cross-functional project that showed me how design research can
+                            directly
+                            shape **user experience strategy** and **business outcomes** in the sportswear industry.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="x-shader/x-vertex" id="vertexShader">
+        varying vec2 vUv;
+        void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentShader">
+        varying vec2 vUv;
+        uniform float u_time;
+        uniform vec2 u_mouse;
+        uniform vec2 u_resolution;
+        vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+        float snoise(vec2 v) { const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439); vec2 i  = floor(v + dot(v, C.yy)); vec2 x0 = v - i + dot(i, C.xx); vec2 i1; i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0); vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod(i, 289.0); vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0)); vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0); m = m*m; m = m*m; vec3 x = 2.0 * fract(p * C.www) - 1.0; vec3 h = abs(x) - 0.5; vec3 ox = floor(x + 0.5); vec3 a0 = x - ox; m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h); vec3 g; g.x  = a0.x  * x0.x  + h.x  * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw; return 130.0 * dot(m, g); }
+        void main() {
+            vec2 warpUv = vUv;
+            warpUv += snoise(vUv * 3.0 + u_time * 0.1) * 0.03; /* Slower animation */
+            vec3 color1 = vec3(0.2, 0.4, 0.9); /* Deep Blue */
+            vec3 color2 = vec3(0.5, 0.8, 1.0); /* Light Blue/Cyan */
+            vec3 color3 = vec3(0.1, 0.7, 0.6); /* Greenish/Teal */
+            vec3 finalColor = mix(color1, color2, smoothstep(-1.0, 1.0, snoise(warpUv * 1.5 + u_time * 0.05))); /* Slower animation */
+            finalColor = mix(finalColor, color3, smoothstep(-1.0, 1.0, snoise(warpUv * 2.0 - u_time * 0.07))); /* Slower animation */
+            float grain = (snoise(vUv * 1000.0) * 2.0 - 1.0) * 0.05;
+            finalColor += grain;
+            gl_FragColor = vec4(finalColor, 1.0);
+        }
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // lucide.createIcons(); // No longer needed as SVGs are inline
+
+            // --- Three.js Background Setup ---
+            let scene, camera, renderer, material, mesh;
+            const canvas = document.getElementById('bg-canvas');
+            function initThreeJS() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 1.5;
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                const geometry = new THREE.PlaneGeometry(4, 4, 1, 1); // Cover more area
+                material = new THREE.ShaderMaterial({
+                    uniforms: { u_time: { value: 10.10 }, u_mouse: { value: new THREE.Vector4(20, 0) }, u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) } },
+                    vertexShader: document.getElementById('vertexShader').textContent,
+                    fragmentShader: document.getElementById('fragmentShader').textContent,
+                });
+                mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+                window.addEventListener('resize', onWindowResize, false);
+            }
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                material.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+            }
+            const clock = new THREE.Clock();
+            function animateThreeJS() {
+                requestAnimationFrame(animateThreeJS);
+                material.uniforms.u_time.value = clock.getElapsedTime();
+                renderer.render(scene, camera);
+            }
+            initThreeJS();
+            animateThreeJS();
+
+            // --- Intersection Observer for Scroll Animations ---
+            const animateElements = document.querySelectorAll('.scroll-animate');
+
+            const observerOptions = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.delay) || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('animated');
+                        }, delay);
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

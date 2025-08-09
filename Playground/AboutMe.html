@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - France Hémain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Core styles from reference */
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #111111;
+            color: #E2E2E2;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        /* Adapted progress header styles for dark theme */
+        .progress-header {
+            position: fixed;
+            top: 2rem;
+            left: 4rem;
+            /* Aligned with new content padding */
+            z-index: 50;
+        }
+
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(226, 226, 226, 0.6);
+            /* Light grey for inactive */
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.2s ease-in-out;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            cursor: pointer;
+        }
+
+
+        .progress-step .number-circle {
+            position: relative;
+            width: 2.5rem;
+            /* 40px */
+            height: 2.5rem;
+            /* 40px */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+            color: rgba(226, 226, 226, 0.6);
+            flex-shrink: 0;
+        }
+
+        .progress-step .number-circle .number {
+            position: relative;
+            z-index: 1;
+            font-size: 0.875rem;
+            /* 14px */
+        }
+
+        .progress-step .number-circle svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: rgba(226, 226, 226, 0.4);
+            stroke-width: 1.5;
+            transition: stroke 0.2s ease-in-out, fill 0.2s ease-in-out;
+        }
+
+        .progress-step.active {
+            color: #111111;
+            background-color: #E2E2E2;
+        }
+
+        .progress-step.active .number-circle .number {
+            color: #E2E2E2;
+        }
+
+        .progress-step.active .number-circle svg .shape,
+        .progress-step.active .number-circle svg .shape-ticks,
+        .progress-step.active .number-circle svg .shape-inner {
+            stroke: #111111;
+        }
+
+        .progress-step.active .number-circle.shape-1 svg .shape {
+            fill: #111111;
+        }
+
+        .step-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .sub-progress {
+            display: none;
+            /* Hide by default */
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2px;
+        }
+
+        .progress-step.active .sub-progress {
+            display: flex;
+            /* Show for active step */
+        }
+
+        .sub-progress-text {
+            font-size: 0.7rem;
+            color: #555;
+            line-height: 1;
+        }
+
+        .sub-progress-bar {
+            width: 50px;
+            height: 3px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 1.5px;
+        }
+
+        .sub-progress-fill {
+            height: 100%;
+            background-color: #111111;
+            border-radius: 1.5px;
+        }
+
+        /* Individual Shape Styling */
+        .shape-2 .shape {
+            stroke-dasharray: 4 2;
+        }
+
+        .shape-3 .shape-ticks {
+            stroke-width: 2;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .shape-4 .number-circle {
+            animation: rotate 4s linear infinite;
+        }
+
+        .shape-4 .shape {
+            stroke-width: 2.5;
+            stroke-dasharray: 10 5;
+        }
+
+        /* Adapted section styles */
+        .scroll-section {
+            height: 100vh;
+            scroll-snap-align: start;
+        }
+
+        #content-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 8rem 4rem 4rem 4rem;
+            pointer-events: none;
+        }
+
+        .content-wrapper {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            position: absolute;
+            width: calc(100% - 8rem);
+            max-width: 448px;
+            /* max-w-md */
+        }
+
+        .content-wrapper.top {
+            top: 8rem;
+        }
+
+        .content-wrapper.bottom {
+            bottom: 4rem;
+        }
+
+        .content-wrapper.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The canvas element for the Three.js background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Floating Header / Progress Bar -->
+    <header id="progress-header" class="progress-header">
+        <nav class="flex items-center space-x-2">
+            <!-- Step 1 -->
+            <a class="progress-step" data-target="section-1">
+                <div class="number-circle shape-1">
+                    <svg width="40" height="40" viewBox="0 0 40 40">
+                        <path class="shape" d="M20,2 L34,10 L34,30 L20,38 L6,30 L6,10 Z" />
+                    </svg>
+                    <span class="number">01</span>
+                </div>
+                <span class="hidden sm:inline">About</span>
+            </a>
+            <!-- Step 2 -->
+            <a class="progress-step" data-target="section-2">
+                <div class="number-circle shape-2">
+                    <svg width="40" height="40" viewBox="0 0 40 40">
+                        <circle class="shape" cx="20" cy="20" r="18" />
+                    </svg>
+                    <span class="number">02</span>
+                </div>
+                <div class="step-details">
+                    <span class="step-title hidden sm:inline">Approach</span>
+                    <div class="sub-progress">
+                        <span id="sub-progress-text" class="sub-progress-text">0 / 3</span>
+                        <div class="sub-progress-bar">
+                            <div id="sub-progress-fill" class="sub-progress-fill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- Step 3 -->
+            <a class="progress-step" data-target="section-3">
+                <div class="number-circle shape-3">
+                    <svg width="40" height="40" viewBox="0 0 40 40">
+                        <circle class="shape-bg" cx="20" cy="20" r="18" />
+                        <path class="shape-ticks" d="M20,5 V10 M35,20 H30 M20,35 V30 M5,20 H10" />
+                    </svg>
+                    <span class="number">03</span>
+                </div>
+                <span class="hidden sm:inline">Personal</span>
+            </a>
+            <!-- Step 4 -->
+            <a class="progress-step" data-target="section-4">
+                <div class="number-circle shape-4">
+                    <svg width="40" height="40" viewBox="0 0 40 40">
+                        <circle class="shape" cx="20" cy="20" r="18" />
+                    </svg>
+                    <span class="number">04</span>
+                </div>
+                <span class="hidden sm:inline">TL;DR</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Main container for all scrolling sections -->
+    <main>
+        <div id="content-container">
+            <!-- Content for Section 1 -->
+            <div class="content-wrapper top" data-content-for="0">
+                <div class="section-top">
+                    <h2 class="text-xl md:text-2xl font-serif font-medium text-white">About Me</h2>
+                    <p class="mt-3 text-sm text-slate-300">A brief introduction to who I am and what drives me. I'm a
+                        junior designer with a passion for solving complex, meaningful problems.</p>
+                </div>
+            </div>
+            <div class="content-wrapper bottom" data-content-for="0">
+                <div class="grid grid-cols-1 gap-y-3 text-base text-slate-200">
+                    <div class="flex items-center space-x-3"><span>🧠</span><span>I think deeply</span></div>
+                    <div class="flex items-center space-x-3"><span>⚙️</span><span>I simplify complexity</span></div>
+                    <div class="flex items-center space-x-3"><span>🤝</span><span>I co-create with empathy</span></div>
+                    <div class="flex items-center space-x-3"><span>🧪</span><span>I learn by building</span></div>
+                    <div class="flex items-center space-x-3"><span>🤖</span><span>I use AI as a collaborator, not just a
+                            tool</span></div>
+                </div>
+            </div>
+
+            <!-- Content for Section 2 -->
+            <div class="content-wrapper top" data-content-for="1">
+                <div class="section-top">
+                    <h2 class="text-xl md:text-2xl font-serif font-medium text-white">My Approach</h2>
+                    <p class="mt-3 text-sm text-slate-300">My process is built on a foundation of empathy, systemic
+                        thinking, and a relentless drive to build and learn.</p>
+                </div>
+            </div>
+            <div class="content-wrapper bottom" data-content-for="1">
+                <div class="space-y-6">
+                    <div class="approach-step border-b border-white/10 pb-6">
+                        <div class="flex items-baseline gap-6">
+                            <span class="text-sm font-mono text-white/50">1</span>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white">Grounded in Empathy</h3>
+                                <p class="text-sm text-slate-300 mt-2">My process starts with people. Through 150+
+                                    interviews and workshops, I build trust to ensure solutions are rooted in real,
+                                    lived experiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="approach-step border-b border-white/10 pb-6">
+                        <div class="flex items-baseline gap-6">
+                            <span class="text-sm font-mono text-white/50">2</span>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white">Embracing Complexity</h3>
+                                <p class="text-sm text-slate-300 mt-2">I thrive on "wicked problems." From mapping ocean
+                                    health ecosystems with MBARI to navigating corporate structures, I apply systems
+                                    thinking to find key leverage points.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="approach-step">
+                        <div class="flex items-baseline gap-6">
+                            <span class="text-sm font-mono text-white/50">3</span>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white">Build to Learn</h3>
+                                <p class="text-sm text-slate-300 mt-2">Ideas need action. As the sole designer on an MBA
+                                    team, we built and launched an AI tool, winning 2nd place and a £2,500 prize in a
+                                    venture competition.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content for Section 3 -->
+            <div class="content-wrapper top" data-content-for="2">
+                <h2 class="text-xl md:text-2xl font-serif font-medium text-white">Personal</h2>
+                <p class="mt-3 text-sm text-slate-300">My passion for design is deeply connected to my life outside of
+                    work, fueling a personal commitment to the problems I solve.</p>
+            </div>
+            <div class="content-wrapper bottom" data-content-for="2">
+                <div class="text-base text-slate-200 leading-relaxed space-y-4">
+                    <p>When I'm not in Figma, you can usually find me in a pair of running shoes or by the water. I'm
+                        currently training for a triathlon this October in my hometown of Toulouse, which fuels my love
+                        for working on products in the sports world.</p>
+                    <p>My love for endurance sports is matched by a deep love for the ocean. As a former lifeguard, my
+                        work on ocean data with the Monterey Bay Aquarium Research Institute wasn't just a design
+                        challenge; it was personal.</p>
+                </div>
+            </div>
+
+            <!-- Content for Section 4 -->
+            <div class="content-wrapper top" data-content-for="3">
+                <h2 class="text-xl md:text-2xl font-serif font-medium text-white">TL;DR</h2>
+                <p class="mt-3 text-sm text-slate-300">A quick summary of what I bring to the table.</p>
+            </div>
+            <div class="content-wrapper bottom" data-content-for="3">
+                <ul class="space-y-3 text-slate-200 text-lg text-left">
+                    <li class="flex items-start"><span class="mr-4 mt-1 text-emerald-400">✔</span><span>I’m a junior
+                            designer with a <span class="font-semibold text-white">bias to action.</span></span></li>
+                    <li class="flex items-start"><span class="mr-4 mt-1 text-emerald-400">✔</span><span>I’ve <span
+                                class="font-semibold text-white">built things, shipped pilots, and mapped
+                                systems.</span></span></li>
+                    <li class="flex items-start"><span class="mr-4 mt-1 text-emerald-400">✔</span><span>I care about
+                            <span class="font-semibold text-white">people first, and tech second</span>—but use
+                            both.</span></li>
+                    <li class="flex items-start"><span class="mr-4 mt-1 text-emerald-400">✔</span><span>I’m <span
+                                class="font-semibold text-white">humble, honest, and hungry</span> to learn more.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Empty sections for scroll snapping -->
+        <section id="section-1" class="scroll-section" data-index="0"></section>
+        <section id="section-2" class="scroll-section" data-index="1"></section>
+        <section id="section-3" class="scroll-section" data-index="2"></section>
+        <section id="section-4" class="scroll-section" data-index="3"></section>
+    </main>
+
+    <!-- Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- GLSL Shaders for the background -->
+    <script type="x-shader/x-vertex" id="vertexShader">
+        varying vec2 vUv;
+        void main() { 
+            vUv = uv; 
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); 
+        }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentShader">
+        varying vec2 vUv;
+        uniform float u_time;
+        vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+        float snoise(vec2 v) { const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439); vec2 i  = floor(v + dot(v, C.yy)); vec2 x0 = v - i + dot(i, C.xx); vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0); vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod(i, 289.0); vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0)); vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0); m = m*m; m = m*m; vec3 x = 2.0 * fract(p * C.www) - 1.0; vec3 h = abs(x) - 0.5; vec3 ox = floor(x + 0.5); vec3 a0 = x - ox; m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h); vec3 g; g.x  = a0.x  * x0.x  + h.x  * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw; return 130.0 * dot(m, g); }
+        void main() {
+            vec2 warpUv = vUv;
+            warpUv += snoise(vUv * 3.0 + u_time * 0.1) * 0.03;
+            vec3 color1 = vec3(0.8, 0.3, 0.5);
+            vec3 color2 = vec3(0.2, 0.1, 0.3);
+            vec3 color3 = vec3(0.05, 0.05, 0.05);
+            vec3 finalColor = mix(color1, color2, smoothstep(-1.0, 1.0, snoise(warpUv * 1.5 + u_time * 0.05)));
+            finalColor = mix(finalColor, color3, smoothstep(-1.0, 1.0, snoise(warpUv * 2.0 - u_time * 0.07)));
+            float grain = (snoise(vUv * 1000.0) * 2.0 - 1.0) * 0.05;
+            finalColor += grain;
+            gl_FragColor = vec4(finalColor, 1.0);
+        }
+    </script>
+
+    <!-- Main script for interactions and Three.js scene -->
+    <script>
+        // --- Page Interaction Script ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.scroll-section');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const contentWrappers = document.querySelectorAll('.content-wrapper');
+
+            const updateActiveStep = (activeIndex) => {
+                progressSteps.forEach((step, i) => {
+                    step.classList.toggle('active', i === activeIndex);
+                });
+            };
+
+            const updateActiveContent = (activeIndex) => {
+                contentWrappers.forEach(wrapper => {
+                    const wrapperIndex = parseInt(wrapper.dataset.contentFor);
+                    wrapper.classList.toggle('active', wrapperIndex === activeIndex);
+                });
+            };
+
+            const mainObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = parseInt(entry.target.dataset.index);
+                        updateActiveStep(index);
+                        updateActiveContent(index);
+                    }
+                });
+            }, { root: null, threshold: 0.7 });
+
+            sections.forEach(section => {
+                mainObserver.observe(section);
+            });
+
+            // Sub-progress for Approach section
+            const approachSteps = document.querySelectorAll('.approach-step');
+            const subProgressText = document.getElementById('sub-progress-text');
+            const subProgressFill = document.getElementById('sub-progress-fill');
+            const totalApproachSteps = approachSteps.length;
+            const visibleApproachSteps = new Set();
+
+            const approachObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const index = Array.from(approachSteps).indexOf(entry.target);
+                    if (entry.isIntersecting) {
+                        visibleApproachSteps.add(index);
+                    } else {
+                        visibleApproachSteps.delete(index);
+                    }
+                });
+
+                const maxVisible = visibleApproachSteps.size > 0 ? Math.max(...visibleApproachSteps) + 1 : 0;
+
+                if (subProgressText && subProgressFill) {
+                    const progressPercentage = (maxVisible / totalApproachSteps) * 100;
+                    subProgressText.textContent = `${maxVisible} / ${totalApproachSteps}`;
+                    subProgressFill.style.width = `${progressPercentage}%`;
+                }
+            }, { root: null, threshold: 0.5 });
+
+            approachSteps.forEach(step => {
+                approachObserver.observe(step);
+            });
+
+
+            progressSteps.forEach(step => {
+                step.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = step.dataset.target;
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Activate the first section by default
+            updateActiveStep(0);
+            updateActiveContent(0);
+
+            // --- Three.js Background Setup ---
+            let scene, camera, renderer, material, mesh;
+            const canvas = document.getElementById('bg-canvas');
+            function initThreeJS() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 1.5;
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                const geometry = new THREE.PlaneGeometry(4, 4, 1, 1); // Cover more area
+                material = new THREE.ShaderMaterial({
+                    uniforms: { u_time: { value: 0.0 }, u_mouse: { value: new THREE.Vector2(0, 0) }, u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) } },
+                    vertexShader: document.getElementById('vertexShader').textContent,
+                    fragmentShader: document.getElementById('fragmentShader').textContent,
+                });
+                mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+                window.addEventListener('resize', onWindowResize, false);
+            }
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                material.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
+            }
+            const clock = new THREE.Clock();
+            function animateThreeJS() {
+                requestAnimationFrame(animateThreeJS);
+                material.uniforms.u_time.value = clock.getElapsedTime();
+                renderer.render(scene, camera);
+            }
+            initThreeJS();
+            animateThreeJS();
+        });
+    </script>
+</body>
+
+</html>
