@@ -111,7 +111,7 @@ export function Compass() {
     }, [isDragging]);
 
     return (
-        <div className="absolute top-[60%] left-[25%] -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[clamp(200px,30vw,350px)] h-[clamp(200px,30vw,350px)] rounded-xl z-10">
+        <div className="flex justify-center items-center w-[clamp(250px,30vw,350px)] h-[clamp(250px,30vw,350px)] rounded-xl z-10">
             <div
                 ref={containerRef}
                 className="relative w-[80%] h-[80%] cursor-grab"
@@ -188,7 +188,7 @@ export function Compass() {
                         </span>
                     </div>
                     <div className="absolute top-[15%] left-[15%] -translate-x-1/2 -translate-y-1/2 rotate-45">
-                        <span className="text-white text-[clamp(10px,1.2vw,14px)] font-normal whitespace-nowrap tracking-[0.05em] -translate-x-[clamp(40px,4vw,20px)] inline-block">
+                        <span className="text-white text-[clamp(10px,1.2vw,14px)] font-normal whitespace-nowrap tracking-[0.05em] -translate-x-[clamp(40px,3vw,20px)] inline-block">
                             UI Design
                         </span>
                     </div>
@@ -198,7 +198,7 @@ export function Compass() {
                         </span>
                     </div>
                     <div className="absolute top-[85%] left-[85%] -translate-x-1/2 -translate-y-1/2 rotate-45">
-                        <span className="text-white text-[clamp(10px,1.2vw,14px)] font-normal whitespace-nowrap tracking-[0.05em] translate-x-[clamp(20px,4vw,40px)] inline-block">
+                        <span className="text-white text-[clamp(10px,1.2vw,14px)] font-normal whitespace-nowrap tracking-[0.05em] translate-x-[clamp(20px,3vw,40px)] inline-block">
                             UX Research
                         </span>
                     </div>

@@ -8,7 +8,7 @@ import { MouseCursor } from "@/components/MouseCursor";
 
 export default function Home() {
   return (
-    <div className="min-h-dvh w-full relative cursor-none overflow-hidden select-none">
+    <div className="relative flex h-dvh w-full cursor-none select-none flex-col overflow-hidden px-8 pb-8 pt-4 md:px-12 md:pb-12 md:pt-6">
       {/* Background Shader */}
       <BackgroundCanvas />
 
@@ -18,29 +18,39 @@ export default function Home() {
       {/* Floating portrait that follows pointer */}
       <PortraitHover />
 
-      <div className="content-wrapper flex flex-col h-full px-8 md:px-12 pt-4 md:pt-6 pb-8 md:pb-12">
-        {/* Header Navigation */}
-        <header className="w-full">
-          <nav className="flex justify-between items-start">
-            {/* Left side - AI Interactive */}
-            <AIInteractive />
+      <header className="w-full">
+        <nav>
+          <Navigation />
+        </nav>
+      </header>
 
-            {/* Right side - Navigation */}
-            <Navigation />
-          </nav>
-        </header>
-
-        {/* Main Content */}
-        <main className="flex-grow flex items-center justify-center text-center">
-          {/* Compass */}
+      {/* Main Content for Desktop */}
+      <main className="hidden flex-1 md:flex justify-between">
+        <div className="flex h-full flex-1 flex-col justify-between">
           <div>
+            <AIInteractive />
+          </div>
+          <div className="flex flex-1 items-center justify-center">
             <Compass />
           </div>
-
-          {/* Tagline */}
+        </div>
+        <div className="flex flex-1 items-center justify-end">
           <Tagline />
-        </main>
-      </div>
+        </div>
+      </main>
+
+      {/* Main Content for Mobile */}
+      <main className="flex flex-1 flex-col items-center justify-between md:hidden m-4">
+        <div>
+          <AIInteractive />
+        </div>
+        <div>
+          <Tagline />
+        </div>
+        <div>
+          <Compass />
+        </div>
+      </main>
     </div>
   );
 }
