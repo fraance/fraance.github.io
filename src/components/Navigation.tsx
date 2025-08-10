@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { navigationLinks } from "@/data/portfolio";
+import { LAYOUT_SPACING } from "@/config/ui";
+import { cn } from "@/utils/cn";
 
 /**
  * Header navigation component matching the prototype design.
@@ -8,52 +10,41 @@ import { useState } from "react";
  * Responsive with collapsible mobile menu.
  */
 export function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const baseClasses = "group hover:text-white transition-colors duration-300";
+  const spanClasses = "group-hover:font-bold transition-all duration-300";
 
   return (
     <div className="relative">
-      {/* Desktop Navigation */}
-      <ul className="flex items-center justify-center md:items-end md:justify-end space-x-6 text-sm font-medium pt-2 font-serif">
-        <li>
-          <a
-            href="#"
-            className="group hover:text-white transition-colors duration-300"
-          >
-            <span className="group-hover:font-bold transition-all duration-300">
-              Resume
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            id="about-me-link"
-            className="group hover:text-white transition-colors duration-300"
-          >
-            <span className="group-hover:font-bold transition-all duration-300">
-              About me
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="group hover:text-white transition-colors duration-300 relative flex items-center"
-          >
-            <span className="absolute left-0 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0">
-              →
-            </span>
-            <span className="transition-all duration-300 ease-out group-hover:translate-x-4 group-hover:font-bold pl-1">
-              E-mail
-            </span>
-          </a>
-        </li>
+      <ul className={cn(
+        "flex items-center justify-center md:items-end md:justify-end",
+        "text-sm font-medium pt-2 font-serif",
+        LAYOUT_SPACING.nav
+      )}>
+        {navigationLinks.map((link) => (
+          <li key={link.label}>
+            <a
+              href={link.href}
+              id={link.id}
+              className={cn(
+                baseClasses,
+                link.hasArrow && "relative flex items-center"
+              )}
+            >
+              {link.hasArrow && (
+                <span className="absolute left-0 opacity-0 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0">
+                  →
+                </span>
+              )}
+              <span className={cn(
+                spanClasses,
+                link.hasArrow && "transition-all duration-300 ease-out group-hover:translate-x-4 pl-1"
+              )}>
+                {link.label}
+              </span>
+            </a>
+          </li>
+        ))}
       </ul>
-
     </div>
   );
 }

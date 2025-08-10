@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { siteMetadata } from "@/data/portfolio";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,8 +14,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Interactive Portfolio Concept",
-  description: "Product-savvy, AI-native junior designer blending empathy, systems thinking, and visual excellence.",
+  title: siteMetadata.title,
+  description: siteMetadata.description,
 };
 
 export default function RootLayout({

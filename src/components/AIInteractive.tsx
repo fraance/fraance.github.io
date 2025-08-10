@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { AIWaveIcon } from "./icons";
+import { aiAgentContent } from "@/data/portfolio";
+import { LAYOUT_SPACING } from "@/config/ui";
+import { cn } from "@/utils/cn";
 
 /**
  * AI Interactive component matching the prototype design.
@@ -14,12 +17,19 @@ export function AIInteractive() {
         <div>
             <button
                 onClick={() => setActive(!active)}
-                className={`flex flex-col items-center gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-[5px] transition-transform duration-400 ${active ? 'scale-105' : 'hover:scale-110'}`}
-                aria-label="Talk with my AI agent"
+                className={cn(
+                    "flex flex-col items-center gap-5 rounded-2xl",
+                    "bg-white/5 border border-white/10 backdrop-blur-[5px]",
+                    "transition-transform duration-400",
+                    active ? 'scale-105' : 'hover:scale-110',
+                    LAYOUT_SPACING.component
+                )}
+                aria-label={aiAgentContent.ariaLabel}
             >
                 <AIWaveIcon active={active} />
-
-                <p className="font-serif text-sm text-white/60 m-0lg:text-base">Talk with my AI agent</p>
+                <p className="font-serif text-sm text-white/60 m-0 lg:text-base">
+                    {aiAgentContent.buttonLabel}
+                </p>
             </button>
 
             <style jsx>{`
