@@ -68,14 +68,14 @@ export function MouseCursor() {
       {/* Glass follower */}
       <div
         ref={followerRef}
-        className={`fixed w-8 h-8 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm pointer-events-none z-[9999] transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'
+        className={`fixed w-8 h-8 rounded-full border border-white/30 backdrop-blur-xs pointer-events-none z-[9999] transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'
           }`}
       />
 
       {/* Dot */}
       <div
         ref={dotRef}
-        className={`fixed w-1 h-1 rounded-full bg-white pointer-events-none z-[9998] transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'
+        className={`fixed w-2 h-2 rounded-full bg-white pointer-events-none z-[9998] transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'
           }`}
       />
     </>
