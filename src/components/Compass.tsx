@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Icon } from "./icons";
 
 /**
  * Geometric Compass component inspired by the prototype.
@@ -136,48 +137,10 @@ export function Compass() {
                             key={i}
                             className={`absolute ${arrow.cls} w-[clamp(18px,2.5vw,28px)] h-[clamp(18px,2.5vw,28px)] -translate-x-1/2 -translate-y-1/2 z-20`}
                         >
-                            {arrow.shape === "diamond" && (
-                                <svg viewBox="0 0 24 24" className="w-full h-full">
-                                    <path
-                                        d="M12 2C16 8 16 8 22 12C16 16 16 16 12 22C8 16 8 16 2 12C8 8 8 8 12 2Z"
-                                        fill="white"
-                                    />
-                                </svg>
-                            )}
-                            {arrow.shape === "star" && (
-                                <svg viewBox="0 0 24 24" className="w-full h-full">
-                                    <path
-                                        d="M12 1.5L13.5 8L20 5L15 9.5L22.5 12L15 14.5L20 19L13.5 16L12 22.5L10.5 16L4 19L9 14.5L1.5 12L9 9.5L4 5L10.5 8Z"
-                                        fill="white"
-                                    />
-                                </svg>
-                            )}
-                            {arrow.shape === "burst" && (
-                                <svg viewBox="0 0 24 24" className="w-full h-full">
-                                    <g fill="white">
-                                        {[0, 51.4, 102.8, 154.2, 205.6, 257, 308.4].map((rotation, idx) => (
-                                            <path
-                                                key={idx}
-                                                d="M12 2 C10 7 10 7 12 12 C14 7 14 7 12 2Z"
-                                                transform={`rotate(${rotation} 12 12)`}
-                                            />
-                                        ))}
-                                    </g>
-                                </svg>
-                            )}
-                            {arrow.shape === "petal" && (
-                                <svg viewBox="0 0 24 24" className="w-full h-full">
-                                    <g fill="white">
-                                        {[0, 51.4, 102.8, 154.2, 205.6, 257, 308.4].map((rotation, idx) => (
-                                            <path
-                                                key={idx}
-                                                d="M12,2 C9,2 9,10 12,12 C15,10 15,2 12,2Z"
-                                                transform={`rotate(${rotation} 12 12)`}
-                                            />
-                                        ))}
-                                    </g>
-                                </svg>
-                            )}
+                            <Icon 
+                                name={arrow.shape as "diamond" | "star" | "burst" | "petal"} 
+                                className="w-full h-full text-white" 
+                            />
                         </div>
                     ))}
 
