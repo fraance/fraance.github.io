@@ -10,7 +10,7 @@ interface AIWaveIconProps {
 export function AIWaveIcon({ className = "w-20 h-20", active = false }: AIWaveIconProps) {
   return (
     <svg
-      className={`stroke-white stroke-1 fill-none stroke-linecap-round stroke-linejoin-round transition-transform duration-400 overflow-visible ${className}`}
+      className={`ai-icon stroke-white stroke-1 fill-none stroke-linecap-round stroke-linejoin-round transition-transform duration-400 overflow-visible ${className}`}
       viewBox="0 0 100 100"
     >
       {/* Wave paths - only visible when active */}
@@ -55,7 +55,7 @@ export function AIWaveIcon({ className = "w-20 h-20", active = false }: AIWaveIc
         fill="#ffffff"
         stroke="none"
         style={{ transformOrigin: "center" }}
-        className={`${active ? 'opacity-0 scale-0' : 'animate-pulse-idle'}`}
+        className={`idle-dot transition-all ${active ? 'opacity-0 scale-0' : 'animate-pulse-idle'}`}
       />
     </svg>
   );
