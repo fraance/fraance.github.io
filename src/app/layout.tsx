@@ -16,6 +16,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: siteMetadata.title,
   description: siteMetadata.description,
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
