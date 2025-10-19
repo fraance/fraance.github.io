@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 02 - Homepage Experience Research</title>
+    <title>Project - Strava Shoe Finder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +37,7 @@
             width: 100%;
             height: 100vh;
             z-index: -1;
+            opacity: 0.7;
         }
 
         .glass-panel {
@@ -127,9 +128,9 @@
         <header class="text-center pt-32 mb-20 scroll-animate">
             <div>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-2 font-serif">
-                    Homepage Experience Research
+                    Strava Shoe Finder
                 </h1>
-                <p class="text-xl sm:text-2xl font-semibold text-gray-300">Improving the Logged-In Experience</p>
+                <p class="text-xl sm:text-2xl font-semibold text-gray-300">Diagnosing Low Adoption of a New Feature</p>
                 <div class="mt-8 flex items-center justify-center space-x-4">
                     <div class="glass-panel px-4 py-2 rounded-full text-sm flex items-center text-gray-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -139,7 +140,7 @@
                             <circle cx="12" cy="10" r="4" />
                             <circle cx="12" cy="12" r="10" />
                         </svg>
-                        Role: UXR Intern
+                        UX Researcher
                     </div>
                     <div class="glass-panel px-4 py-2 rounded-full text-sm flex items-center text-gray-200">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -150,18 +151,18 @@
                             <line x1="8" x2="8" y1="2" y2="6" />
                             <line x1="3" x2="21" y1="10" y2="10" />
                         </svg>
-                        Timeline: May–July 2025
+                        Timeline: Mar–Apr 2025
                     </div>
                 </div>
             </div>
             <div class="mt-40 max-w-4xl mx-auto glass-panel p-2 rounded-2xl scroll-animate">
                 <div class="flex flex-wrap justify-center items-center gap-4 p-4">
-                    <img src="https://raw.githubusercontent.com/fraance/fraance.github.io/614b9d7c4b5c19e4afb7e7413031a9d2338e215b/homepage_pictures/homepage01.png"
-                        alt="Homepage Image 1" class="w-1/3 md:w-1/4 lg:w-1/5 rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/fraance/fraance.github.io/614b9d7c4b5c19e4afb7e7413031a9d2338e215b/homepage_pictures/homepage02.png"
-                        alt="Homepage Image 2" class="w-1/3 md:w-1/4 lg:w-1/5 rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/fraance/fraance.github.io/614b9d7c4b5c19e4afb7e7413031a9d2338e215b/homepage_pictures/homepage03.png"
-                        alt="Homepage Image 3" class="w-1/3 md:w-1/4 lg:w-1/5 rounded-lg shadow-lg">
+                    <img src="https://i.imgur.com/8Qe5YjD.png" alt="Strava Shoe Finder UI Snippet 1"
+                        class="w-1/3 md:w-1/4 lg:w-1/5 rounded-lg shadow-lg">
+                    <img src="https://i.imgur.com/uTq8A2i.png" alt="Strava Shoe Finder UI Snippet 2"
+                        class="w-1/3 md:w-1/4 lg:w-1/5 rounded-lg shadow-lg">
+                    <img src="https://i.imgur.com/B9xUv72.png" alt="Strava Shoe Finder UI Snippet 3"
+                        class="w-1/3 md:w-1/4 lg:w-1/5 rounded-lg shadow-lg">
                 </div>
             </div>
         </header>
@@ -182,12 +183,10 @@
                                 <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">The Problem</h2>
                             </div>
                             <p class="text-slate-600 leading-relaxed">
-                                The loyalty stream is actively working to increase account conversions, but users need
-                                strong incentives to sign up. To support this goal, we assessed how our current homepage
-                                is perceived, aiming to build a clear evidence base for advocating time and resources
-                                toward improvements while identifying the best direction for future iterations.
-                                Ultimately, the homepage’s X and Y features can be promoted as valuable benefits to
-                                encourage account conversion.
+                                A new shoe recommender, powered by Strava, was launched to 10% of US users,
+                                but initial quantitative data showed low adoption. The team needed
+                                to urgently understand why users were not engaging with the feature and what usability
+                                or trust barriers were preventing them from using it.
                             </p>
                         </div>
                         <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="200">
@@ -201,8 +200,9 @@
                                 <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">The Goal</h2>
                             </div>
                             <p class="text-slate-600 leading-relaxed">
-                                How might we improve the logged-in homepage to make it a more valuable and engaging
-                                experience that drives members to convert and return?
+                                How might we diagnose the reasons for low adoption and identify the critical issues with
+                                the Strava shoe finder to improve the experience, build user trust, and ultimately drive
+                                engagement?
                             </p>
                         </div>
                     </div>
@@ -212,20 +212,24 @@
                     <h2 class="text-3xl font-bold text-center mb-10 font-serif">My Contributions</h2>
                     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-slate-900">
                         <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="100">
-                            <p class="font-semibold text-lg mb-2">Set up</p>
-                            <p class="text-slate-600">Unmoderated User Tests</p>
+                            <p class="font-semibold text-lg mb-2">Co-wrote</p>
+                            <p class="text-slate-600">the testing script</p>
                         </div>
                         <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="200">
-                            <p class="font-semibold text-lg mb-2">Led Synthesis</p>
-                            <p class="text-slate-600">of Qualitative Data</p>
+                            <p class="font-semibold text-lg mb-2">Conducted</p>
+                            <p class="text-slate-600">5 Moderated User Interviews</p>
+                        </div>
+                        <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="200">
+                            <p class="font-semibold text-lg mb-2">Communicated early</p>
+                            <p class="text-slate-600">on technical issues</p>
                         </div>
                         <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="300">
-                            <p class="font-semibold text-lg mb-2">Co-Developed</p>
-                            <p class="text-slate-600">User Test Scripts</p>
+                            <p class="font-semibold text-lg mb-2">Analyzed & Synthesized</p>
+                            <p class="text-slate-600">Qualitative Data into Insights</p>
                         </div>
                         <div class="bg-stone-50 p-6 rounded-xl text-center scroll-animate" data-delay="400">
-                            <p class="font-semibold text-lg mb-2">Presented</p>
-                            <p class="text-slate-600">Findings & Recommendations</p>
+                            <p class="font-semibold text-lg mb-2">Presented & Advocated</p>
+                            <p class="text-slate-600">for Actionable Recommendations</p>
                         </div>
                     </div>
                 </div>
@@ -233,56 +237,15 @@
             </div>
         </section>
 
-        <section class="mb-20 scroll-animate">
-            <div class="bg-white rounded-3xl p-8 sm:p-12 text-gray-800">
-                <h2 class="text-3xl font-bold text-center mb-12 font-serif">So ... what makes the home page a better
-                    (logged-in)
-                    experience?</h2>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-left">
-                    <div class="bg-stone-50 p-6 rounded-xl">
-                        <h3 class="font-bold text-slate-900 mb-2">Recognition & Relevance</h3>
-                        <p class="text-slate-600 text-sm">Personalization and curated products. Show me you know who
-                            I am.</p>
-                    </div>
-                    <div class="bg-stone-50 p-6 rounded-xl">
-                        <h3 class="font-bold text-slate-900 mb-2">Enjoyment</h3>
-                        <p class="text-slate-600 text-sm">Delightful discovery process, brand knows my interests.
-                        </p>
-                    </div>
-                    <div class="bg-stone-50 p-6 rounded-xl">
-                        <h3 class="font-bold text-slate-900 mb-2">Value</h3>
-                        <p class="text-slate-600 text-sm">Exclusive deals for members/loyal customers.</p>
-                    </div>
-                    <div class="bg-stone-50 p-6 rounded-xl">
-                        <h3 class="font-bold text-slate-900 mb-2">Seamless Access</h3>
-                        <p class="text-slate-600 text-sm">Easy access to orders and rewards, find what I need or
-                            where I left off.</p>
-                    </div>
-                    <div class="bg-stone-50 p-6 rounded-xl">
-                        <h3 class="font-bold text-slate-900 mb-2">Convenience</h3>
-                        <p class="text-slate-600 text-sm">Save me time, make it easy to manage my relationship.
-                            Streamlined processes.</p>
-                    </div>
-                </div>
-                <div class="mt-8 text-center">
-                    <p class="text-blue-500 text-sm">
-                        &rarr; Evaluation criteria derived from desk research on shoppers expectations for a
-                        premium retail brand.
-
-
-                    </p>
-                </div>
-            </div>
-        </section>
 
         <section class="mb-20 scroll-animate">
             <div class="bg-white rounded-3xl p-8 sm:p-12 text-gray-800">
                 <h2 class="text-3xl font-bold text-center mb-12 font-serif">What We Learned</h2>
                 <div class="text-center mb-12">
                     <p class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-gray-800 font-serif">
-                        "It is missing a bit of exitment"
+                        "Should I trust on the results? That's the question."
                     </p>
+                    <p class="text-slate-500 mt-2">- Participant Quote</p>
                 </div>
                 <div class="space-y-4 max-w-3xl mx-auto text-left">
                     <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-orange-400 scroll-animate"
@@ -290,13 +253,51 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="w-6 h-6 flex-shrink-0 mt-1">
-                            <path d="M12 2H2v10l9.29 9.29a1 1 0 0 0 1.41 0l10-10a1 1 0 0 0 0-1.41L12 2Z"></path>
-                            <path d="M7 7h.01"></path>
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" x2="12" y1="9" y2="13"></line>
+                            <line x1="12" x2="12.01" y1="17" y2="17"></line>
                         </svg>
                         <div>
-                            <h3 class="font-bold text-slate-900">Perceived Value is Critically Low</h3>
-                            <p class="text-slate-600">Users gave a 1/5 rating for value, consistently citing a lack of
-                                exclusive deals, member perks, and even basic pricing information on product carousels.
+                            <h3 class="font-bold text-slate-900">Technical Issues Severely Eroded Trust</h3>
+                            <p class="text-slate-600">3 out of 4 participants who connected felt their data
+                                was inaccurate (reporting lower activity levels).
+                                Combined with connectivity problems for 2 participants, this created
+                                immediate skepticism.</p>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-orange-400 scroll-animate"
+                        data-delay="300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="w-6 h-6 flex-shrink-0 mt-1">
+                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+                        <div>
+                            <h3 class="font-bold text-slate-900">The Core Concept is Strongly Validated</h3>
+                            <p class="text-slate-600">Despite the issues, all 5 participants were positive
+                                about the idea and said they would use it. They found the
+                                "modern" and "cool" aesthetic appealing and valued recommendations based on their own
+                                data.</p>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-orange-400 scroll-animate"
+                        data-delay="300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="w-6 h-6 flex-shrink-0 mt-1">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" x2="12" y1="9" y2="13"></line>
+                            <line x1="12" x2="12.01" y1="17" y2="17"></line>
+                        </svg>
+                        <div>
+                            <h3 class="font-bold text-slate-900">Poor Pacing & Interaction</h3>
+                            <p class="text-slate-600">participants felt the story screens moved too quickly to absorb
+                                the information. They also found that the tap-to-pause interaction was not intuitive.
                             </p>
                         </div>
                     </div>
@@ -305,59 +306,57 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="w-6 h-6 flex-shrink-0 mt-1">
-                            <path d="M14.5 17.5 3 6V3h3l11.5 14.5"></path>
-                            <path d="M13 19H3"></path>
-                            <path d="m18 14 3-3-3-3"></path>
-                            <path d="m21 11-9 9"></path>
-                            <path d="M9.5 6.5 21 18V3H9.5Z"></path>
-                        </svg>
-                        <div>
-                            <h3 class="font-bold text-slate-900">The Experience is "Nice but Boring"</h3>
-                            <p class="text-slate-600">While the design was seen as clean and sleek, users found it
-                                unexciting and lacking visual engagement, describing it as "industry standard" but not
-                                innovative.</p>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-orange-400 scroll-animate"
-                        data-delay="400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="w-6 h-6 flex-shrink-0 mt-1">
-                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                            <circle cx="12" cy="12" r="3"></circle>
-                        </svg>
-                        <div>
-                            <h3 class="font-bold text-slate-900">Navigation is a Top Priority</h3>
-                            <p class="text-slate-600">The ability to quickly find what they need was the most-selected
-                                priority for users, closely followed by the desire for relevant deals.</p>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-lg flex items-start space-x-4 border-l-4 border-orange-400 scroll-animate"
-                        data-delay="500">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="url(#icon-gradient)" stroke="url(#icon-gradient)" stroke-width="1"
-                            stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 flex-shrink-0 mt-1">
                             <path
-                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
                             </path>
+                            <line x1="12" x2="12" y1="9" y2="13"></line>
+                            <line x1="12" x2="12.01" y1="17" y2="17"></line>
                         </svg>
                         <div>
-                            <h3 class="font-bold text-slate-900">Personalization Can Be Risky</h3>
-                            <p class="text-slate-600">While users expect some personalization, feedback showed it can be
-                                "annoying" if not done well, especially when tastes change over time.</p>
+                            <h3 class="font-bold text-slate-900">The initial entry point was not clear</h3>
+                            <p class="text-slate-600"> causing participants to mistake it for an advertisement banner.
+                            </p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
+        <section class="mb-20 scroll-animate">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 text-gray-800">
+                <h2 class="text-3xl font-bold text-center mb-12 font-serif">Exploring deeper opportunities for
+                    improvement</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 text-left">
+                    <div class="bg-stone-50 p-6 rounded-xl">
+                        <h3 class="font-bold text-slate-900 mb-2">Control & Personalization</h3>
+                        <p class="text-slate-600 text-sm">Users wanted to fine-tune the data, such as
+                            selecting a timeframe or run type, to match their current goals, not just their history.</p>
+                    </div>
+                    <div class="bg-stone-50 p-6 rounded-xl">
+                        <h3 class="font-bold text-slate-900 mb-2">Transparency & Justification</h3>
+                        <p class="text-slate-600 text-sm">"Why this shoe for me?" Users needed to understand
+                            the logic behind the "% match" to trust the recommendation.</p>
+                    </div>
+                    <div class="bg-stone-50 p-6 rounded-xl">
+                        <h3 class="font-bold text-slate-900 mb-2">Context & Comparison</h3>
+                        <p class="text-slate-600 text-sm">Seeing a top 3 was good, but users craved the
+                            ability to easily compare the recommended shoes side-by-side to make a final decision.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
         <section
             class="mb-20 bg-gradient-to-br from-orange-600 to-orange-800 p-10 rounded-2xl text-center scroll-animate">
-            <h2 class="text-3xl font-bold text-white mb-10 font-serif">Project Outcome</h2>
+            <h2 class="text-3xl font-bold text-white mb-10 font-serif">Project Outcome & Impact</h2>
             <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
                 <div class="text-white text-center">
-                    <p class="text-7xl md:text-8xl font-bold">1.0<span class="text-5xl">/5</span></p>
-                    <p class="text-xl font-semibold mt-1">Average User Rating<br>for Perceived Value</p>
+                    <p class="text-7xl md:text-8xl font-bold">75<span class="text-5xl">%</span></p>
+                    <p class="text-xl font-semibold mt-1">of Users Felt Their<br>Data Was Inaccurate</p>
                 </div>
                 <div class="text-white text-left max-w-lg space-y-6">
                     <div>
@@ -366,19 +365,21 @@
                                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="20 6 9 17 4 12" class="animated-check"></polyline>
                             </svg>
-                            Co-delivered a data-driven roadmap with actionable recommendations that received stakeholder
-                            buy-in, leading to the kickoff of a new development iteration to improve homepage value,
-                            engagement, and personalization.
+                            Delivered a data-driven report that explained the low adoption rates seen in analytics. The
+                            qualitative insights pinpointed the specific trust and usability issues causing the
+                            drop-off, providing a clear roadmap to prioritize critical fixes.
                         </p>
                         <p class="flex items-start">
                             <svg class="w-6 h-6 mr-3 mt-1 flex-shrink-0" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="20 6 9 17 4 12" class="animated-check"></polyline>
                             </svg>
-                            Co-established a baseline for user satisfaction (3.2/5 average for "best experience"), with
-                            a
-                            defined goal to increase this to 4+ in future iterations.
+                            Though the project was ultimately deprioritized, I advocated for the core
+                            findings, especially around data transparency and user control, to be adopted as principles
+                            for other data driven personalisation features across the company. (As the shoe recommender
+                            is a recuring topic)
                         </p>
+
 
                     </div>
                     <hr class="border-orange-400 opacity-50">
@@ -387,20 +388,23 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="w-6 h-6">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                             </svg>
-                            <h3 class="text-lg font-bold ml-3">Health Metrics</h3>
+
+                            <h3 class="text-lg font-bold ml-3">Health Metric</h3>
                         </div>
                         <div class="pl-9 text-sm">
-                            <p> I left the company before the final iterations.
-                                However, the primary success indicators I aimed to influence were < Click-Through Rate
-                                    (CTR) and> Bounce Rate on the Homepage. </p>
-
+                            <p>
+                                Because it was not relaunched, even though the research strongly validated the concept,
+                                we missed the opportunity to compare click rates and conversion rates after addressing
+                                all the highlighted issues from the research.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <section class="mb-12 scroll-animate">
             <div class="bg-white rounded-3xl p-8 sm:p-12 text-gray-800">
@@ -430,8 +434,11 @@
                             <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">Why This Project Matters</h2>
                         </div>
                         <p class="text-slate-600 leading-relaxed">
-                            This project demonstrates how qualitative research can be a designer’s greatest ally when
-                            advocating for meaningful improvements in user experiences.
+                            This project highlights the power of using qualitative research to explain the 'why' behind
+                            quantitative data. While analytics showed what was happening (low adoption), our
+                            interviews revealed the critical trust and usability issues that were causing it,
+                            transforming a confusing metric into something actionable.
+                        </p>
                     </div>
                     <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="200">
                         <div class="flex items-center mb-4">
@@ -458,11 +465,9 @@
                             <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">What I’d Improve</h2>
                         </div>
                         <p class="text-slate-600 leading-relaxed">
-                            Resource constraints during this phase precluded testing with On loyal customers,
-                            thereby limiting the scope of our insights. The UXR team has since been actively working
-                            on securing this resource for comprehensive user testing in subsequent iterations.
-
-
+                            A key takeaway for me is the potential value of this research when conducted earlier. In the
+                            future, when possible, I would advocate for a pre-launch study, even if it is a fast
+                            unmoderated one.
                         </p>
                     </div>
 
@@ -472,16 +477,17 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="url(#icon-gradient)" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="w-6 h-6">
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                                 </svg>
                             </div>
                             <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">The Team</h2>
                         </div>
                         <p class="text-slate-600 leading-relaxed">
-                            For the entire project I partnered with a senior UX/UI designer.
+                            I partnered with a Senior UX Researcher for continuous feedback, delivered to Product
+                            Managers, Engineers and Designers.
                         </p>
                     </div>
                     <div class="bg-stone-50 rounded-2xl p-8 scroll-animate" data-delay="400">
@@ -497,7 +503,7 @@
                             <h2 class="text-2xl font-bold text-slate-900 font-serif ml-3">Tools Used</h2>
                         </div>
                         <p class="text-slate-600 leading-relaxed">
-                            Figma, User Testing, Gemini deep research, Slack.
+                            UserTesting, Figma, TestFlight, Slack.
                         </p>
                     </div>
 
@@ -514,16 +520,16 @@
         vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
         float snoise(vec2 v) { const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439); vec2 i  = floor(v + dot(v, C.yy)); vec2 x0 = v - i + dot(i, C.xx); vec2 i1; i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0); vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1; i = mod(i, 289.0); vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0)); vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0); m = m*m; m = m*m; vec3 x = 2.0 * fract(p * C.www) - 1.0; vec3 h = abs(x) - 0.5; vec3 ox = floor(x + 0.5); vec3 a0 = x - ox; m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h); vec3 g; g.x  = a0.x  * x0.x  + h.x  * x0.y; g.yz = a0.yz * x12.xz + h.yz * x12.yw; return 130.0 * dot(m, g); }
         void main() {
-            vec2 warpUv = vUv;
-            warpUv += snoise(vUv * 3.0 + u_time * 0.1) * 0.03; /* Slower animation */
-            vec3 color1 = vec3(0.9, 0.3, 0.1); /* Deep Orange */
-            vec3 color2 = vec3(1.0, 0.6, 0.3); /* Light Orange */
-            vec3 color3 = vec3(0.8, 0.5, 0.2); /* Muted Orange */
-            vec3 finalColor = mix(color1, color2, smoothstep(-1.0, 1.0, snoise(warpUv * 1.5 + u_time * 0.05))); /* Slower animation */
-            finalColor = mix(finalColor, color3, smoothstep(-1.0, 1.0, snoise(warpUv * 2.0 - u_time * 0.07))); /* Slower animation */
-            float grain = (snoise(vUv * 1000.0) * 2.0 - 1.0) * 0.05;
-            finalColor += grain;
-            gl_FragColor = vec4(finalColor, 1.0);
+            vec2 st = gl_FragCoord.xy/u_resolution.xy;
+            st.x *= u_resolution.x/u_resolution.y;
+            vec3 color = vec3(0.0);
+            float d = 1.0;
+            for (int i = 0; i < 5; i++){
+                st.xy = st.xy*2.1 + vec2(st.y,st.x)*d*0.1;
+                d = snoise(st+u_time*0.1);
+            }
+            color = vec3(d*0.8, d*0.5, d*0.4);
+            gl_FragColor = vec4(color,1.0);
         }
     </script>
                     <script>
@@ -539,11 +545,12 @@
                                 renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
                                 renderer.setSize(window.innerWidth, window.innerHeight);
                                 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-                                const geometry = new THREE.PlaneGeometry(4, 4, 1, 1); // Cover more area
+                                const geometry = new THREE.PlaneGeometry(8, 8, 1, 1); // Cover more area
                                 material = new THREE.ShaderMaterial({
-                                    uniforms: { u_time: { value: 10.10 }, u_mouse: { value: new THREE.Vector4(20, 0) }, u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) } },
+                                    uniforms: { u_time: { value: 0 }, u_mouse: { value: new THREE.Vector2(0, 0) }, u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) } },
                                     vertexShader: document.getElementById('vertexShader').textContent,
                                     fragmentShader: document.getElementById('fragmentShader').textContent,
+                                    transparent: true
                                 });
                                 mesh = new THREE.Mesh(geometry, material);
                                 scene.add(mesh);
