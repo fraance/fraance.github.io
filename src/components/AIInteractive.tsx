@@ -18,15 +18,16 @@ export function AIInteractive() {
             <button
                 onClick={() => setActive(!active)}
                 className={cn(
-                    "flex flex-col items-center gap-4 rounded-2xl p-5",
+                    "flex flex-col items-center gap-3 rounded-2xl p-4",
+                    "sm:gap-4 sm:p-5 md:gap-5 md:p-6 lg:gap-6 lg:p-8",
                     "bg-white/5 border border-white/10 backdrop-blur-[5px]",
                     "transition-transform duration-400",
                     active ? 'scale-105' : 'hover:scale-110'
                 )}
                 aria-label={aiAgentContent.ariaLabel}
             >
-                <AIWaveIcon active={active} className="w-[70px] h-[70px]" />
-                <p className="font-serif text-sm text-white/60 m-0 lg:text-base">
+                <AIWaveIcon active={active} className="w-16 h-16 sm:w-[70px] sm:h-[70px] md:w-20 md:h-20 lg:w-24 lg:h-24" />
+                <p className="font-serif text-xs text-white/60 m-0 sm:text-sm md:text-base lg:text-lg">
                     {aiAgentContent.buttonLabel}
                 </p>
             </button>
